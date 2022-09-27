@@ -9,7 +9,7 @@ const Map: React.FC = () => {
 	console.log('isTablet : ', isTablet);
 	
 	return (
-		<Container width={isTablet ? 600 : 300} height={isTablet ? 600 : 300}>
+		<Container width={isTablet ? 600 : window.innerWidth} height={isTablet ? 600 : window.innerHeight}>
 			<Layer>
 				<Text text="Try to drag a star" />
 			</Layer>
