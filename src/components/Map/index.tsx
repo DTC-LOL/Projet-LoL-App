@@ -7,30 +7,7 @@ import useBreakpoint from '../../hooks/useBreakpoints';
 
 const Map: React.FC = () => {
 	const {isTablet} = useBreakpoint();
-	console.log('isTablet : ', isTablet);
 
-	// fetch game by uuid
-	axios.get('http://localhost:8000/api/game?uuid=EUW1_6081248019', {
-		headers: {
-			'content-type': 'application/json',
-		}
-	}).then((response) => {
-		console.log(response);
-	}).catch((error) => {
-		console.log(error);
-	});
-
-	// fetch player by name
-	axios.get('http://localhost:8000/api/player?name=qrab', {
-		headers: {
-			'content-type': 'application/json',
-		}
-	}).then((response) => {
-		console.log(response);
-	}).catch((error) => {
-		console.log(error.message);
-	});
-	
 	return (
 		<Container width={window.innerWidth/2} height={window.innerHeight/2}>
 			<Layer>
