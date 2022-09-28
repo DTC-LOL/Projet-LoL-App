@@ -3,7 +3,7 @@ import { Stage, Layer, Circle, Image } from 'react-konva';
 import useBreakpoint from '../../hooks/useBreakpoints';
 import useImage from 'use-image';
 import styled from 'styled-components';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../store/hooks';
 
 const URLImage = ({ image }: any) => {
 	const [img] = useImage(image.src);

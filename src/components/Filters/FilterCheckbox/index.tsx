@@ -1,8 +1,8 @@
 import useTranslation from '../../../hooks/useTranslation';
 import React from 'react';
 import styled from 'styled-components';
-import { useAppDispatch } from '../../../hooks';
-import {setActiveFilter} from "../../../features/filters/filtersSlice";
+import { useAppDispatch } from '../../../store/hooks';
+import {setActiveFilter} from "../../../store/features/filters/filtersSlice";
 
 interface IProps {
     filterType: string;
