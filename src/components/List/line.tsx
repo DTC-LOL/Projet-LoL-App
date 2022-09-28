@@ -9,7 +9,7 @@ type Props = {
 	mode: any
 }
 
-const Line: React.FC<Props> = ({creation, mode}: Props) => {
+const Line: React.FC<Props> = ({ creation, mode }: Props) => {
 
 	return (
 		<ListGroup.Item disabled>

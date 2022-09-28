@@ -25,7 +25,7 @@ function App() {
 		};
 
 		const fetchData = async () => {
-			const player_url = `http://127.0.0.1:8000/api/player?name=${data.name}&location=${data.location}`;
+			const player_url = `http://localhost:8000/api/player?name=${data.name}&location=${data.location}`;
 			try {
 				await axios.get(player_url, {
 					headers: {
@@ -45,20 +45,12 @@ function App() {
 		fetchData();
 	};
 
-	const displayErrorOrList = () => {
-		if(!loading) {
-			if(error) {
-				return <p>{error}</p>;
-			} else {
-				return <List playerData={player} gamesData={games} isLoading={loading} />;
-			}
-		}
-	};
-	
 	return (
 		<div className="App">
 			<Search submitMethod={handleSubmit}/>
-			{displayErrorOrList()}
+			{
+				!error ? <List playerData={player} gamesData={games} isLoading={loading} /> : <p>{error}</p>
+			}
 			<Map/>
 			<Filters />
 		</div>

@@ -10,30 +10,23 @@ type Props = {
 	isLoading: boolean
 }
 
-const List: React.FC<Props> = ({playerData, gamesData, isLoading}: Props) => {
+const List: React.FC<Props> = ({ playerData, gamesData, isLoading }) => {
 
-	if(!isLoading) {
-		return (
-			<Container>
-				
-				<ListGroup>
-					{gamesData.map((item: { gameMode: string, gameCreation: Date, uuid: string}) => (
-						<Line 
-							key={item.uuid}
-							creation={item.gameCreation}
-							mode={item.gameMode}
-						/>
-					))}
-				</ListGroup> 
-			</Container>
-		);
-	} else {
-		return (
-			<Container>
-				<p>Loading...</p>
-			</Container>
-		);
-	}
+	return (
+		!isLoading ? <Container>
+			<ListGroup>
+				{gamesData.map((item: { gameMode: string, gameCreation: Date, uuid: string }) => (
+					<Line
+						key={item.uuid}
+						creation={item.gameCreation}
+						mode={item.gameMode}
+					/>
+				))}
+			</ListGroup>
+		</Container> 
+		: 
+		<Container><p>Loading...</p></Container>
+	);
 };
 
 export default List;
