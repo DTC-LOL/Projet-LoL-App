@@ -14,14 +14,15 @@ const List: React.FC<Props> = ({playerData, gamesData, isLoading}: Props) => {
 
 	if(!isLoading) {
 		return (
-			<Container>
+			<Container className="py-4">
 				
 				<ListGroup>
-					{gamesData.map((item: { gameMode: string, gameCreation: Date, uuid: string}) => (
+					{gamesData.map((item: { recap: any, uuid: string}) => (
 						<Line 
 							key={item.uuid}
-							creation={item.gameCreation}
-							mode={item.gameMode}
+							creation={item.recap.game_creation}
+							mode={item.recap.game_code}
+							uuid={item.uuid}
 						/>
 					))}
 				</ListGroup> 

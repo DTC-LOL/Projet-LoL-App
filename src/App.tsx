@@ -31,6 +31,7 @@ function App() {
 						'content-type': 'application/json',
 					}
 				}).then(response => {
+					console.log(response.data);
 					setPlayer(response.data);
 					setGames(response.data.games);
 					setLoading(false);
