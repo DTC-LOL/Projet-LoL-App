@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import './App.css';
 import Map from './components/Map';
+import Filters from './components/Filters';
 import Search from './components/Search';
 import List from './components/List';
 
@@ -59,6 +60,7 @@ function App() {
 			<Search submitMethod={handleSubmit}/>
 			{displayErrorOrList()}
 			<Map/>
+			<Filters />
 		</div>
 	);
 }
