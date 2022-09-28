@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Konva from 'konva';
+import axios from 'axios';
 import { Stage, Layer, Circle, Image } from 'react-konva';
 import useBreakpoint from '../../hooks/useBreakpoints';
 import useImage from 'use-image';
@@ -20,8 +22,7 @@ const URLImage = ({ image }: any) => {
 
 const Map: React.FC = () => {
 	const {isTablet} = useBreakpoint();
-	console.log('isTablet : ', isTablet);
-	
+
 	return (
 		<Container width="360" height="360">
 			<Layer>
