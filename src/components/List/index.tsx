@@ -14,11 +14,11 @@ const List: React.FC<Props> = ({ playerData, gamesData }) => {
 	return (
 		<Container>
 			<ListGroup>
-				{gamesData.map((item: { gameMode: string, gameCreation: Date, uuid: string }) => (
+				{gamesData.map((item: { recap: any, uuid: string }) => (
 					<Line
 						key={item.uuid}
-						creation={item.gameCreation}
-						mode={item.gameMode}
+						creation={item.recap.game_creation}
+						mode={item.recap.game_mode}
 					/>
 				))}
 			</ListGroup>

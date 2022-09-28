@@ -1,5 +1,5 @@
 import { useMediaQuery } from '@react-hook/media-query';
-import { breakpoints } from '../services/media';
+import { breakpoints } from '@services/media';
 import { useTheme } from 'styled-components';
 
 const useBreakpoint = (): {

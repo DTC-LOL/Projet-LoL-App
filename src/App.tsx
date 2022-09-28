@@ -1,8 +1,6 @@
 import React, { FormEvent, FormEventHandler } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import logo from './logo.svg';
 import './App.css';
 import Map from './components/Map';
 import Filters from './components/Filters';
