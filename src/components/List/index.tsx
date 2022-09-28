@@ -7,13 +7,12 @@ import Line from './line';
 type Props = {
 	playerData: any,
 	gamesData: Array<any>,
-	isLoading: boolean
 }
 
-const List: React.FC<Props> = ({ playerData, gamesData, isLoading }) => {
+const List: React.FC<Props> = ({ playerData, gamesData }) => {
 
 	return (
-		!isLoading ? <Container>
+		<Container>
 			<ListGroup>
 				{gamesData.map((item: { gameMode: string, gameCreation: Date, uuid: string }) => (
 					<Line
@@ -23,9 +22,8 @@ const List: React.FC<Props> = ({ playerData, gamesData, isLoading }) => {
 					/>
 				))}
 			</ListGroup>
-		</Container> 
-		: 
-		<Container><p>Loading...</p></Container>
+		</Container>
+
 	);
 };
 

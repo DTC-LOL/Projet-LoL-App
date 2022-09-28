@@ -8,15 +8,19 @@ import Map from './components/Map';
 import Filters from './components/Filters';
 import Search from './components/Search';
 import List from './components/List';
+import Container from 'react-bootstrap/Container';
 
 function App() {
-	const [loading, setLoading] = React.useState(true);
+	const [isLoading, setLoading] = React.useState(true);
 	const [player, setPlayer] = React.useState<any>();
 	const [games, setGames] = React.useState<any>();
 	const [error, setError] = React.useState<string>();
+	const [submited, setSubmited] = React.useState<boolean>(false);
+
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
+		setSubmited(true);
 		const formData = new FormData(e.target);
 
 		const data = {
@@ -49,7 +53,9 @@ function App() {
 		<div className="App">
 			<Search submitMethod={handleSubmit}/>
 			{
-				!error ? <List playerData={player} gamesData={games} isLoading={loading} /> : <p>{error}</p>
+				submited ? isLoading ? <Container><p>Loading...</p></Container> :
+					!error ? <List playerData={player} gamesData={games} /> : 
+					<p>{error}</p> : ""
 			}
 			<Map/>
 			<Filters />
