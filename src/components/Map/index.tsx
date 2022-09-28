@@ -24,7 +24,7 @@ const Map: React.FC = () => {
 	const {isTablet} = useBreakpoint();
 
 	return (
-		<Container width="360" height="360">
+		<Container width="300" height="300">
 			<Layer>
 				<Test style={{visibility: 'hidden'}}>
 					<div>
