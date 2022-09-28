@@ -23,7 +23,7 @@ const Map: React.FC = () => {
 	console.log('isTablet : ', isTablet);
 	
 	return (
-		<Container width={window.innerWidth/3} height={window.innerHeight/2}>
+		<Container width="360" height="360">
 			<Layer>
 				<Test style={{visibility: 'hidden'}}>
 					<div>
