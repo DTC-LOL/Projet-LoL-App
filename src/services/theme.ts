@@ -1,4 +1,4 @@
-import { Theme } from "../types/theme";
+import { Theme } from "@typesDef/theme";
 
 const theme: Theme = {
 	colors: {

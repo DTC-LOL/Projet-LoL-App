@@ -1,22 +1,25 @@
 import React, { FormEvent, FormEventHandler } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import logo from './logo.svg';
 import './App.css';
 import Map from './components/Map';
 import Filters from './components/Filters';
 import Search from './components/Search';
 import List from './components/List';
+import Container from 'react-bootstrap/Container';
+import getGamesByUserNameAndLocation from '@services/api/getGamesByUserNameAndLocation';
 
 function App() {
-	const [loading, setLoading] = React.useState(true);
+	const [isLoading, setLoading] = React.useState(true);
 	const [player, setPlayer] = React.useState<any>();
 	const [games, setGames] = React.useState<any>();
 	const [error, setError] = React.useState<string>();
+	const [submited, setSubmited] = React.useState<boolean>(false);
 
-	const handleSubmit = (e: any) => {
+
+	const handleSubmit = async (e: any) => {
 		e.preventDefault();
+		setSubmited(true);
 		const formData = new FormData(e.target);
 
 		const data = {
@@ -24,42 +27,22 @@ function App() {
 			location: formData.get('location')
 		};
 
-		const fetchData = async () => {
-			const player_url = `http://127.0.0.1:8000/api/player?name=${data.name}&location=${data.location}`;
-			try {
-				await axios.get(player_url, {
-					headers: {
-						'content-type': 'application/json',
-					}
-				}).then(response => {
-					console.log(response.data);
-					setPlayer(response.data);
-					setGames(response.data.games);
-					setLoading(false);
-				}).catch(error => {
-					setError(error.message);
-				});
-			} catch (error: any) {
-				setError(error.message);
-			}
-		};
-		fetchData();
+		const response = await getGamesByUserNameAndLocation(data);
+		
+		setPlayer(response.data);
+		setGames(response.data.games);
+		
+		setLoading(false);
 	};
 
-	const displayErrorOrList = () => {
-		if(!loading) {
-			if(error) {
-				return <p>{error}</p>;
-			} else {
-				return <List playerData={player} gamesData={games} isLoading={loading} />;
-			}
-		}
-	};
-	
 	return (
 		<div className="App">
 			<Search submitMethod={handleSubmit}/>
-			{displayErrorOrList()}
+			{
+				submited ? isLoading ? <Container><p>Loading...</p></Container> :
+					!error ? <List playerData={player} gamesData={games} /> : 
+					<p>{error}</p> : ""
+			}
 			<Map/>
 			<Filters />
 		</div>
