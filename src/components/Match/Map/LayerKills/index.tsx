@@ -32,7 +32,7 @@ const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
                 kills.map((kill, key) => (
                     <Circle
                         x={Math.round((kill.x / 41.6))}
-                        y={Math.round((kill.y / 41.6))}
+                        y={Math.round(360 - (kill.y / 41.6))}
                         radius={4}
                         fill="red"
                         shadowBlur={10}
