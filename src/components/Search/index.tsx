@@ -12,7 +12,7 @@ type Props = {
 
 const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 	return (
-		<Container>
+		<Container className="pt-5">
 			<Form onSubmit={submitMethod}>
 				<Row>
 					<Col>

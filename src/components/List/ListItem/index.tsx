@@ -4,30 +4,80 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import moment from 'moment';
+import {Link} from 'react-router-dom';
 import localSelector from '@services/momentjs/locales/fr';
 import { IGameData } from '@typesDef/match';
 import styled from 'styled-components';
 
+import {capitalizeFirstLowercaseRest} from '@services/utility';
+
 type Props = {
 	gamesData: IGameData,
+	playerData: any,
 }
 
-const ListItem: React.FC<Props> = ({ gamesData }) => {
-	React.useEffect(() => {
+const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
+
+	React.useEffect(() => {		
 		localSelector(navigator.language.split("-")[0]);
 	},[])
+
+	let playerRecap: any = [];
+
+	gamesData.recap.participants.forEach((participant: any) => {
+		if(participant.summonerName === playerData.name){
+			playerRecap = participant;
+		}
+	});
+
 	return (
 		<ListGroupItem disabled winned={gamesData.timeline.info.frames.slice(-1)[0].events.slice(-1)[0].winningTeam}>
-			<Row>
-				<Col>Partie {gamesData.recap.game_mode}</Col>
-				<Col>Jouée le {moment(gamesData.recap.game_creation).format("dddd D MMMM  YYYY à h:mm:ss ")}</Col>
-			</Row>
+			<LinkStyled to="">
+				<Row>
+					<Col lg={3}>
+						<Paragraph className="fw-bold">{capitalizeFirstLowercaseRest(gamesData.recap.game_mode)}</Paragraph>
+						<Paragraph>Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
+						<Paragraph>{moment.unix(gamesData.recap.game_duration).format("m:s")}</Paragraph>
+					</Col>
+					<Col lg={5}>
+						<Row>
+							<Col>
+								<Paragraph>Champion Level : {playerRecap.champlevel}</Paragraph>
+								<Paragraph>Role : {capitalizeFirstLowercaseRest(playerRecap.role)}</Paragraph>
+							</Col>
+							<Col>
+								<Paragraph>KDA : {playerRecap.kills}.{playerRecap.assists}:{playerRecap.deaths}</Paragraph>
+								<Paragraph>Score Vision : {playerRecap.visionScore}</Paragraph>
+								<Paragraph>CS : {playerRecap.totalMinionsKilled}</Paragraph>
+							</Col>
+						</Row>
+					</Col>
+					<Col lg={4}>
+						<Row>
+							{gamesData.recap.participants.map((participant: any) => {
+								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold text-white" : ""} lg={6}>{participant.summonerName}</Col>	
+							})}
+						</Row>
+					</Col>
+				</Row>
+			</LinkStyled>
 		</ListGroupItem>
 	);
 };
 
 const ListGroupItem = styled(ListGroup.Item)`
 	background-color: #124980 !important;
+	margin-bottom: 0.5rem
+`
+
+const Paragraph = styled.p`
+	margin: 0 !important;
+`
+
+const LinkStyled = styled(Link)`
+	color: rgb(255, 255, 255, .7) !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
 `
 
 export default ListItem;
