@@ -36,7 +36,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 		<ListGroupItem winned={winingTeam}>
 			<LinkStyled to={"/match/"+gamesData.id}>
 				<Row>
-					<Col lg={3}>
+					<Col lg={2}>
 						<Paragraph className="fw-bold">{capitalizeFirstLowercaseRest(gamesData.recap.game_mode)}</Paragraph>
 
 						<Paragraph className="border-bottom visible-border pb-2 w-50">Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
@@ -47,8 +47,11 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 
 						<Paragraph>{moment.unix(gamesData.recap.game_duration).format("m:s")}</Paragraph>
 					</Col>
-					<Col lg={5} className="border-start border-end visible-border">
+					<Col lg={6} className="border-start border-end visible-border">
 						<Row>
+							<Col lg={2}>
+								<ChampionImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + playerRecap.championName + ".png"} />
+							</Col>
 							<Col>
 								<Paragraph>Champion Level : {playerRecap.champlevel}</Paragraph>
 
@@ -66,7 +69,10 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 					<Col lg={4}>
 						<Row>
 							{gamesData.recap.participants.map((participant: any) => {
-								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold" : ""} lg={6}>{participant.summonerName}</Col>	
+								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold" : ""} lg={6}>
+									<ParticipantsChampionImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participant.championName + ".png"} />
+									{participant.summonerName}
+								</Col>	
 							})}
 						</Row>
 					</Col>
@@ -90,5 +96,17 @@ const LinkStyled = styled(Link)`
 	text-decoration: none !important;
 	cursor: pointer !important;
 `
+const ChampionImage = styled.img`
+    width: 80px;
+    height: 80px; 
+	border-radius: 50%; 
+`;
+
+const ParticipantsChampionImage = styled.img`
+	width: 25px;
+	height: 25px; 
+	border-radius: 50%; 
+	margin-right: 0.5rem;
+`;
 
 export default ListItem;
