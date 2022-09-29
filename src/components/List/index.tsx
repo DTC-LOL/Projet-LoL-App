@@ -22,6 +22,7 @@ const List: React.FC<Props> = ({ playerData, gamesData }) => {
 					<ListItem
 						key={"Game_"+ key}
 						gamesData={gamesData}
+						playerData={playerData}
 					/>
 				))}
 			</ListGroup>

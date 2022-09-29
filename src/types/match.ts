@@ -137,27 +137,7 @@ export type IGameData = {
     game_duration: number
     game_creation: number
     game_mode: string
-    participants: {
-      summonerName: string
-      teamId: number
-      championId: number
-      champlevel: number
-      role: string
-      kills: number
-      deaths: number
-      assists: number
-      totalMinionsKilled: number
-      item0: number
-      item1: number
-      item2: number
-      item3: number
-      item4: number
-      item5: number
-      item6: number
-      visionScore: number
-      summoner2Id: number
-      summoner1Id: number
-    }
+	participants: Array<string>
   }
   createdAt: string
   updatedAt: any
