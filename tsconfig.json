@@ -1,15 +1,7 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "@/components/*" : ["./components/*"],
-      "@/data/*" : ["./data/*"],
-      "@/hooks/*" : ["./hooks/*"],
-      "@/pages/*" : ["./pages/*"],
-      "@/services/*" : ["./services/*"],
-      "@/store/*" : ["./store/*"],
-      "@/typesDef/*" : ["./types/*"],
-    },
+  
     "target": "es5",
     "lib": [
       "dom",
@@ -28,7 +20,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react"
   },
   "include": [
     "src"

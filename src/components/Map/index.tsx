@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Konva from 'konva';
 import axios from 'axios';
 import { Stage, Layer, Circle, Image } from 'react-konva';
-import useBreakpoint from '../../hooks/useBreakpoints';
+import useBreakpoint from '@hooks/useBreakpoints';
 import useImage from 'use-image';
 import styled from 'styled-components';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '@store/hooks';
 
 const URLImage = ({ image }: any) => {
 	const [img] = useImage(image.src);
@@ -23,7 +23,6 @@ const URLImage = ({ image }: any) => {
 
 const Map: React.FC = () => {
 	const { isTablet } = useBreakpoint();
-	console.log('isTablet : ', isTablet);
 	const selectedFilter = useAppSelector(state => state.filters.selectedFilter)
 
 	return (

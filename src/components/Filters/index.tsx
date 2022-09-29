@@ -1,4 +1,4 @@
-import useTranslation from '../../hooks/useTranslation';
+import useTranslation from '@hooks/useTranslation';
 import React from 'react';
 import styled from 'styled-components';
 import FilterCheckbox from './FilterCheckbox';
