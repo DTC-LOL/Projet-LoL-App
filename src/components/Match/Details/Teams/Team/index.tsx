@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {IGameData, IParticipant} from '@typesDef/match';
-import SummonerCard from './SummonerCard/index';
+import SummonerCard from './SummonerCard';
 
 interface IProps {
     teamName: string;
