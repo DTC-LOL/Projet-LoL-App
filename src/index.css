@@ -1,6 +1,11 @@
 :root {
-	--bg-dark: 33, 37, 41;
+	/* --bg-dark: 33, 37, 41;
 	--bg-dark-secondary: 66, 66, 66;
+	--font-color: #ffffff */
+
+	--bg-dark: #ffffff;
+	--bg-dark-secondary: #dddddd;
+	--font-color: #000000
 }
 
 body {
@@ -12,7 +17,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   background-color: rgb(var(--bg-dark)) !important;
-  color: white !important;
+  color: var(--font-color);
 }
 
 code {
@@ -21,12 +26,20 @@ code {
 }
 
 input, select {
-	color: white !important;
+	color: var(--font-color) !important;
 	background-color: rgb(var(--bg-dark-secondary)) !important;
 	border: none !important;
 	border-radius: 0 !important;
 }
 
-.light-dark-bg {
+a {
+	color: var(--font-color) !important;
+}
+
+.list-group-item {
 	background-color: rgb(var(--bg-dark-secondary)) !important;
+}
+
+.visible-border {
+	border-color: rgb(var(--bg-dark)) !important;
 }

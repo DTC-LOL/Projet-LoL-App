@@ -33,13 +33,13 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 	const winingTeam = gamesData.timeline.info.frames.slice(-1)[0].events.slice(-1)[0].winningTeam;
 
 	return (
-		<ListGroupItem winned={winingTeam} className="light-dark-bg">
+		<ListGroupItem winned={winingTeam}>
 			<LinkStyled to={"/match/"+gamesData.id}>
 				<Row>
 					<Col lg={3}>
 						<Paragraph className="fw-bold">{capitalizeFirstLowercaseRest(gamesData.recap.game_mode)}</Paragraph>
 
-						<Paragraph className="border-bottom border-dark pb-2 w-50">Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
+						<Paragraph className="border-bottom visible-border pb-2 w-50">Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
 
 						<Paragraph className={winingTeam === playerRecap.teamId ? "text-success pt-2 fw-bold" : "text-danger pt-2 fw-bold"}>
 							{winingTeam === playerRecap.teamId ? "Victoire" : "Défaite"}
@@ -47,7 +47,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 
 						<Paragraph>{moment.unix(gamesData.recap.game_duration).format("m:s")}</Paragraph>
 					</Col>
-					<Col lg={5} className="border-start border-end border-dark">
+					<Col lg={5} className="border-start border-end visible-border">
 						<Row>
 							<Col>
 								<Paragraph>Champion Level : {playerRecap.champlevel}</Paragraph>
@@ -66,7 +66,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 					<Col lg={4}>
 						<Row>
 							{gamesData.recap.participants.map((participant: any) => {
-								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold text-white" : ""} lg={6}>{participant.summonerName}</Col>	
+								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold" : ""} lg={6}>{participant.summonerName}</Col>	
 							})}
 						</Row>
 					</Col>
@@ -87,7 +87,6 @@ const Paragraph = styled.p`
 `
 
 const LinkStyled = styled(Link)`
-	color: rgb(255, 255, 255, .7) !important;
 	text-decoration: none !important;
 	cursor: pointer !important;
 `
