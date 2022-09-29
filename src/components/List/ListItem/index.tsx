@@ -33,21 +33,21 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 	const winingTeam = gamesData.timeline.info.frames.slice(-1)[0].events.slice(-1)[0].winningTeam;
 
 	return (
-		<ListGroupItem disabled winned={winingTeam}>
+		<ListGroupItem disabled winned={winingTeam} className="light-dark-bg">
 			<LinkStyled to="">
 				<Row>
 					<Col lg={3}>
 						<Paragraph className="fw-bold">{capitalizeFirstLowercaseRest(gamesData.recap.game_mode)}</Paragraph>
 
-						<Paragraph className="border-bottom pb-3 pe-4">Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
+						<Paragraph className="border-bottom border-dark pb-2 w-50">Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
 
-						<Paragraph className={winingTeam === playerRecap.teamId ? "text-success fw-bold" : "text-danger fw-bold"}>
+						<Paragraph className={winingTeam === playerRecap.teamId ? "text-success pt-2 fw-bold" : "text-danger pt-2 fw-bold"}>
 							{winingTeam === playerRecap.teamId ? "Victoire" : "Défaite"}
 						</Paragraph>
 
 						<Paragraph>{moment.unix(gamesData.recap.game_duration).format("m:s")}</Paragraph>
 					</Col>
-					<Col lg={5} className="border-start border-end">
+					<Col lg={5} className="border-start border-end  border-dark">
 						<Row>
 							<Col>
 								<Paragraph>Champion Level : {playerRecap.champlevel}</Paragraph>
@@ -66,7 +66,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 					<Col lg={4}>
 						<Row>
 							{gamesData.recap.participants.map((participant: any) => {
-								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold text-black" : ""} lg={6}>{participant.summonerName}</Col>	
+								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold text-white" : ""} lg={6}>{participant.summonerName}</Col>	
 							})}
 						</Row>
 					</Col>
@@ -77,9 +77,9 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 };
 
 const ListGroupItem = styled(ListGroup.Item)`
-	background-color: #F5F5F5 !important;
 	margin-bottom: 0.5rem;
 	border: none !important;
+	font-size: 0.8rem !important;
 `
 
 const Paragraph = styled.p`
@@ -87,7 +87,7 @@ const Paragraph = styled.p`
 `
 
 const LinkStyled = styled(Link)`
-	color: rgb(0, 0, 0, .7) !important;
+	color: rgb(255, 255, 255, .7) !important;
 	text-decoration: none !important;
 	cursor: pointer !important;
 `
