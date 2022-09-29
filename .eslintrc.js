@@ -18,23 +18,5 @@ module.exports = {
 	'plugins': [
 		'react',
 		'@typescript-eslint'
-	],
-	'rules': {
-		'indent': [
-			'warn',
-			'tab'
-		],
-		'linebreak-style': [
-			'warn',
-			'windows'
-		],
-		'quotes': [
-			'warn',
-			'single'
-		],
-		'semi': [
-			'warn',
-			'always'
-		]
-	}
+	]
 };

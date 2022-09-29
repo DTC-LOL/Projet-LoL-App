@@ -55,7 +55,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 								<Paragraph>Role : {capitalizeFirstLowercaseRest(playerRecap.role)}</Paragraph>
 							</Col>
 							<Col>
-								<Paragraph>KDA : {playerRecap.kills}.{playerRecap.assists}:{playerRecap.deaths}</Paragraph>
+								<Paragraph>KDA : {playerRecap.kills}.{playerRecap.deaths}:{playerRecap.assists}</Paragraph>
 
 								<Paragraph>Score Vision : {playerRecap.visionScore}</Paragraph>
 								

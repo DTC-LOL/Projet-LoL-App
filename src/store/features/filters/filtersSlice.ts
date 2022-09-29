@@ -4,11 +4,13 @@ import type { RootState } from '@store/store'
 // Define a type for the slice state
 interface FiltersState {
     selectedFilter: string
+    isVisibleBuilding: boolean
 }
 
 // Define the initial state using that type
 const initialState: FiltersState = {
-    selectedFilter: ""
+    selectedFilter: "",
+    isVisibleBuilding: false,
 }
 
 export const filtersSlice = createSlice({
@@ -19,6 +21,9 @@ export const filtersSlice = createSlice({
     // Use the PayloadAction type to declare the contents of `action.payload`
     setActiveFilter: (state, action: PayloadAction<string>) => {
       state.selectedFilter = action.payload
+    },
+    setIsVisibleBuilding: (state, action: PayloadAction<boolean>) => {
+      state.isVisibleBuilding = action.payload
     }
   }
 })
