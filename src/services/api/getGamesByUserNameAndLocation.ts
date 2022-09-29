@@ -10,7 +10,11 @@ interface IResponse {
     data?: any;
     error?: any;
 }
-
+/**
+* This function is used to get the games by username and location
+* @param {IFormData} formData - The form data
+* @returns {Promise<IResponse>} - The response
+*/
 const getGamesByUserNameAndLocation = async (data: IFormData) => {
     const response:IResponse = {
         success: false

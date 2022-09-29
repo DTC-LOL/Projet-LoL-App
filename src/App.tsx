@@ -11,7 +11,7 @@ function App() {
 				<Routes>
 					<Route path="/" >
 						<Route index element={<Home />} />
-						<Route path="/match" element={<Match />} />
+						<Route path="/match/:id" element={<Match />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>

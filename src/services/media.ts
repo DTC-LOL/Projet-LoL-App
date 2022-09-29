@@ -12,7 +12,7 @@ export const breakpoints:Breakpoints = {
 	uhd: 1980,
 	widescreen: 1366,
 	desktop: 1024,
-	tablet: 766,
+	tablet: 768,
 };
   
 export const mediaQueries = (key:string) => {
