@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
-import Line from './ListItem';
+import ListItem from './ListItem';
 import { releaseCapture } from 'konva/lib/PointerEvents';
 import { IGameData } from '@typesDef/match';
 
@@ -19,7 +19,7 @@ const List: React.FC<Props> = ({ playerData, gamesData }) => {
 		<Container>
 			<ListGroup>
 				{gamesData.map(( gamesData, key ) => (
-					<Line
+					<ListItem
 						key={"Game_"+ key}
 						gamesData={gamesData}
 					/>

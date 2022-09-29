@@ -12,7 +12,7 @@ type Props = {
 	gamesData: IGameData,
 }
 
-const Line: React.FC<Props> = ({ gamesData }) => {
+const ListItem: React.FC<Props> = ({ gamesData }) => {
 	React.useEffect(() => {
 		localSelector(navigator.language.split("-")[0]);
 	},[])
@@ -30,4 +30,4 @@ const ListGroupItem = styled(ListGroup.Item)`
 	background-color: #124980 !important;
 `
 
-export default Line;
+export default ListItem;

@@ -7,6 +7,7 @@ import Filters from './components/Filters';
 import Search from './components/Search';
 import List from './components/List';
 import Container from 'react-bootstrap/Container';
+import getGamesByUserNameAndLocation from '@services/api/getGamesByUserNameAndLocation';
 
 function App() {
 	const [isLoading, setLoading] = React.useState(true);
@@ -16,7 +17,7 @@ function App() {
 	const [submited, setSubmited] = React.useState<boolean>(false);
 
 
-	const handleSubmit = (e: any) => {
+	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		setSubmited(true);
 		const formData = new FormData(e.target);
@@ -26,26 +27,12 @@ function App() {
 			location: formData.get('location')
 		};
 
-		const fetchData = async () => {
-			const player_url = `http://localhost:8000/api/player?name=${data.name}&location=${data.location}`;
-			try {
-				await axios.get(player_url, {
-					headers: {
-						'content-type': 'application/json',
-					}
-				}).then(response => {
-					setPlayer(response.data);
-					setGames(response.data.games);
-					
-					setLoading(false);
-				}).catch(error => {
-					setError(error.message);
-				});
-			} catch (error: any) {
-				setError(error.message);
-			}
-		};
-		fetchData();
+		const response = await getGamesByUserNameAndLocation(data);
+		
+		setPlayer(response.data);
+		setGames(response.data.games);
+		
+		setLoading(false);
 	};
 
 	return (
