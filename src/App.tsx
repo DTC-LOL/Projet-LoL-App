@@ -36,6 +36,7 @@ function App() {
 				}).then(response => {
 					setPlayer(response.data);
 					setGames(response.data.games);
+					
 					setLoading(false);
 				}).catch(error => {
 					setError(error.message);
