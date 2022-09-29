@@ -33,8 +33,8 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 	const winingTeam = gamesData.timeline.info.frames.slice(-1)[0].events.slice(-1)[0].winningTeam;
 
 	return (
-		<ListGroupItem disabled winned={winingTeam} className="light-dark-bg">
-			<LinkStyled to="">
+		<ListGroupItem winned={winingTeam} className="light-dark-bg">
+			<LinkStyled to={"/match/"+gamesData.id}>
 				<Row>
 					<Col lg={3}>
 						<Paragraph className="fw-bold">{capitalizeFirstLowercaseRest(gamesData.recap.game_mode)}</Paragraph>
@@ -47,7 +47,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 
 						<Paragraph>{moment.unix(gamesData.recap.game_duration).format("m:s")}</Paragraph>
 					</Col>
-					<Col lg={5} className="border-start border-end  border-dark">
+					<Col lg={5} className="border-start border-end border-dark">
 						<Row>
 							<Col>
 								<Paragraph>Champion Level : {playerRecap.champlevel}</Paragraph>
@@ -55,7 +55,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 								<Paragraph>Role : {capitalizeFirstLowercaseRest(playerRecap.role)}</Paragraph>
 							</Col>
 							<Col>
-								<Paragraph>KDA : {playerRecap.kills}.{playerRecap.deaths}:{playerRecap.assists}</Paragraph>
+								<Paragraph>KDA : {playerRecap.kills} / {playerRecap.deaths} / {playerRecap.assists}</Paragraph>
 
 								<Paragraph>Score Vision : {playerRecap.visionScore}</Paragraph>
 								
