@@ -17,8 +17,11 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail }) => {
                 <SummonerCardInfosSummonerName>{summonerDetail.summonerName}</SummonerCardInfosSummonerName>
                 <KDA kills={summonerDetail.kills} deaths={summonerDetail.deaths} assists={summonerDetail.assists} />
                 <p>CS :{summonerDetail.totalMinionsKilled}</p>
+                <p>Gold :{summonerDetail.goldEarned}</p>
+                <p>Gold :{summonerDetail.goldSpent}</p>
+                <ItemsGrid summonerDetail={summonerDetail} />
             </SummonerCardInfos>
-            <ItemsGrid summonerDetail={summonerDetail} />
+
         </Container>);
 };
 
