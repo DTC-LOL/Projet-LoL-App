@@ -7,13 +7,15 @@ interface IProps {
     isVisibleBuildings: boolean;
 }
 
+const division = 15000/(window.innerWidth/5);
+
 const URLImage = ({ image }: any) => {
 	const [img] = useImage(image.src);
 	return (
 		<Image
 			image={img}
-			x={image.x}
-			y={image.y}
+			x={image.x/division}
+			y={image.y/division}
 			width={15}
 			height={15}
 		/>
@@ -24,35 +26,35 @@ const LayerBuildings: React.FC<IProps> = ({ isVisibleBuildings }) => {
     return (<Layer  visible={isVisibleBuildings === false ? true : false}>
         <div>
             {/* top Lane blue  building */}
-				<URLImage image={{ src: '/blue-innib.png', x: 22, y: 250 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 22, y: 230 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 28, y: 175 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 16, y: 100 }} />
+				<URLImage image={{ src: '/blue-innib.png', x: 916, y: 10400 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 916, y: 9568 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 1165, y: 7280 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 666, y: 4160 }} />
 			{/* mid Lane blue building */}
-				<URLImage image={{ src: '/blue-innib.png', x: 72, y: 272 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 85, y: 255 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 115, y: 232 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 135, y: 195 }} />
+				<URLImage image={{ src: '/blue-innib.png', x: 2996, y: 11315 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 3536, y: 10608 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 4784, y: 9652 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 5616, y: 8112 }} />
 			{/* bot Lane blue building */}
-				<URLImage image={{ src: '/blue-innib.png', x: 90, y: 321 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 110, y: 321 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 165, y: 315 }} />
-				<URLImage image={{ src: '/blue-turret.png', x: 250, y: 327 }} />
+				<URLImage image={{ src: '/blue-innib.png', x: 3744, y: 13354 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 4576, y: 13354 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 6864, y: 13104 }} />
+				<URLImage image={{ src: '/blue-turret.png', x: 10400, y: 13604 }} />
 			{/* top Lane red  building */}
-				<URLImage image={{ src: '/red-innib.png', x: 260, y: 22 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 240, y: 22 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 180, y: 26 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 100, y: 14 }} />
+				<URLImage image={{ src: '/red-innib.png', x: 10816, y: 913 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 9984, y: 913 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 7488, y: 1082 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 4160, y: 583 }} />
 			{/* mid Lane red building */}
-				<URLImage image={{ src: '/red-innib.png', x: 272, y: 75 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 257, y: 85 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 228, y: 102 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 215, y: 140 }} />
+				<URLImage image={{ src: '/red-innib.png', x: 11316, y: 3120 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 10692, y: 3586 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 9485, y: 4244 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 8944, y: 5824 }} />
 			{/* bot Lane red building */}
-				<URLImage image={{ src: '/red-innib.png', x: 325, y: 95 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 325, y: 105 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 315, y: 160 }} />
-				<URLImage image={{ src: '/red-turret.png', x: 330, y: 250 }} />
+				<URLImage image={{ src: '/red-innib.png', x: 13520, y: 3952 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 13520, y: 4368 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 13104, y: 6656 }} />
+				<URLImage image={{ src: '/red-turret.png', x: 13728, y: 10400 }} />
 		</div>
     </Layer>);
 };

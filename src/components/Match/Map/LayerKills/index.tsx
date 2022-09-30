@@ -13,6 +13,8 @@ interface IKill {
     y: number;
 }
 
+const division = 15000/(window.innerWidth/5);
+
 const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
     const kills: Array<IKill> = [];
 
@@ -31,8 +33,8 @@ const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
             {kills.length > 0 &&
                 kills.map((kill, key) => (
                     <Circle
-                        x={Math.round((kill.x / 41.6))}
-                        y={Math.round(360 - (kill.y / 41.6))}
+                        x={kill.x / division}
+                        y={(window.innerWidth/5) - (kill.y / division)}
                         radius={4}
                         fill="red"
                         shadowBlur={10}
