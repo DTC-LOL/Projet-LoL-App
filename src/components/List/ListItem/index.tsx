@@ -39,7 +39,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 					<Col lg={2}>
 						<Paragraph className="fw-bold">{capitalizeFirstLowercaseRest(gamesData.recap.game_mode)}</Paragraph>
 
-						<Paragraph className="border-bottom visible-border pb-2 w-50">Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
+						<Paragraph className="border-bottom border-dark pb-2 w-50">Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
 
 						<Paragraph className={winingTeam === playerRecap.teamId ? "text-success pt-2 fw-bold" : "text-danger pt-2 fw-bold"}>
 							{winingTeam === playerRecap.teamId ? "Victoire" : "Défaite"}
@@ -47,7 +47,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 
 						<Paragraph>{moment.unix(gamesData.recap.game_duration).format("m:s")}</Paragraph>
 					</Col>
-					<Col lg={6} className="border-start border-end visible-border">
+					<Col lg={6} className="border-start border-end border-dark">
 						<Row>
 							<Col>
 								<Row>
@@ -72,7 +72,9 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 									KDA : {playerRecap.kills} / {playerRecap.deaths} / {playerRecap.assists}
 								</Paragraph>
 								<Paragraph className="text-center">
-									{Math.round((playerRecap.kills+playerRecap.assists)/playerRecap.deaths)}
+									{
+										playerRecap.kills && playerRecap.deaths && playerRecap.assists ? ((playerRecap.kills+playerRecap.assists)/playerRecap.deaths).toFixed(2) : 0
+									}
 								</Paragraph>
 
 								<Paragraph>Score Vision : {playerRecap.visionScore}</Paragraph>
@@ -98,6 +100,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 };
 
 const ListGroupItem = styled(ListGroup.Item)`
+	background-color: #363636;
 	margin-bottom: 0.5rem;
 	border: none !important;
 	font-size: 0.8rem !important;
@@ -108,8 +111,14 @@ const Paragraph = styled.p`
 `
 
 const LinkStyled = styled(Link)`
+	color: rgb(255, 255, 255, .8);
 	text-decoration: none !important;
 	cursor: pointer !important;
+	transition: all .3s;
+	&:hover {
+		opacity: .5;
+		color: rgba(255, 255, 255, .8) !important;
+	}
 `
 const ChampionImage = styled.img`
     width: 80px;

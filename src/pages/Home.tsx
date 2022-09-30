@@ -41,7 +41,7 @@ const Home: React.FC = () => {
             {
                 submited ? isLoading ? <Container><p>Loading...</p></Container> :
                     !error ? <List playerData={player} gamesData={games} /> :
-                        <p>{error}</p> : ""
+                        <p className="text-danger">{error}</p> : ""
             }
 
         </Container>

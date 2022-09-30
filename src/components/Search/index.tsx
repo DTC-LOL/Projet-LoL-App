@@ -18,16 +18,16 @@ const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 				<Row>
 					<Col>
 						<Form.Group className="mb-3" controlId="name">
-							<Form.Control type="text" name="name" placeholder="Pseudo du joueur" />
+							<FormInput type="text" name="name" placeholder="Pseudo du joueur" />
 						</Form.Group>
 					</Col>
 					<Col>
 						<Form.Group className="mb-3" controlId="location">
-							<Form.Select name="location">
+							<FormSelect name="location">
 								<option>Localisation du joueur</option>
 								<option value="europe">Europe</option>
 								<option value="asie">Asie</option>
-							</Form.Select>
+							</FormSelect>
 						</Form.Group>
 					</Col>
 					<Col>
@@ -45,6 +45,20 @@ const ButtonPrimary = styled(Button)`
 	background-color: #0D47A1 !important;
 	border-radius: 0 !important;
 	border: none !important;
-`
+`;
+
+const FormInput = styled(Form.Control)`
+	color: #fff !important;
+	background-color: #363636 !important;
+	border: none !important;
+	border-radius: 0 !important;
+`;
+
+const FormSelect = styled(Form.Select)`
+	color: #fff !important;
+	background-color: #363636 !important;
+	border: none !important;
+	border-radius: 0 !important;
+`;
 
 export default Search;
