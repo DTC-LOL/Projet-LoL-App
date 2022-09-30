@@ -157,6 +157,8 @@ export interface IParticipant {
   visionScore: number
   summoner2Id: number
   summoner1Id: number
+  goldEarned: number
+  goldSpent: number
 }
 
 export interface IGameRecap {
