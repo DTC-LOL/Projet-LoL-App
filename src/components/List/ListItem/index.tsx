@@ -34,7 +34,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 
 	return (
 		<ListGroupItem winned={winingTeam}>
-			<LinkStyled to={"/match/"+gamesData.id}>
+			<LinkStyled to={"/match/"+gamesData.uuid}>
 				<Row>
 					<Col lg={2}>
 						<Paragraph className="fw-bold">{capitalizeFirstLowercaseRest(gamesData.recap.game_mode)}</Paragraph>
