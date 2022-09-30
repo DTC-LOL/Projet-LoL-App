@@ -7,25 +7,35 @@ import styled from 'styled-components';
 import { useAppSelector } from '@store/hooks';
 import { MatchTimeline } from '@typesDef/matchtimeline';
 import LayerKill from './LayerKills/index';
+import LayerKillAram from './LayerKillsAram/index';
 import LayerBuildings from './LayerBuildings/index';
+import LayerBuildingsAram from './LayerBuildingsAram/index';
 import { IGameTimeLine } from '@typesDef/match';
 
 interface IProps {
 	gameTimelineData: IGameTimeLine;
+	gameMode: string;
 }
 
-const Map: React.FC<IProps> = ({ gameTimelineData }) => {
+const Map: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
 	const { isTablet } = useBreakpoint();
 	const selectedFilter = useAppSelector(state => state.filters.selectedFilter);
 	const IsVisibleBuildings = useAppSelector(state => state.filters.isVisibleBuilding);
-	//const gameTimelineData = 
 	return (
 		<Container>
-			<Canvas width={360} height={360}>
-				{/* Couche Batîments  */}
-				<LayerBuildings isVisibleBuildings={IsVisibleBuildings} />
-				{/* Couche Kills */}
-				<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+			<Canvas width={360} height={360} gameMode={gameMode}>
+				{
+					gameMode === "CLASSIC" &&
+						<>
+						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} />
+						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} /></>
+				}
+				{
+					gameMode === "ARAM" &&
+						<>
+						<LayerBuildingsAram isVisibleBuildings={IsVisibleBuildings} />
+						<LayerKillAram selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} /></>
+				}
 			</Canvas>
 		</Container>
 	);
@@ -36,7 +46,7 @@ const Container = styled.div`
 `;
 
 const Canvas = styled(Stage)`
-	background-image: url("/summoner_rift.webp");
+	background-image: url("http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map${(props) => props.gameMode === 'ARAM' ? "12" : "11"}.png");
 	background-size: contain;
     background-repeat: no-repeat;
 `;
@@ -44,8 +54,5 @@ const Canvas = styled(Stage)`
 const Filter = styled.div`
 
 `
-
-
-
 
 export default Map;

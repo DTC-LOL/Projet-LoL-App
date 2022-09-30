@@ -52,7 +52,7 @@ const Match: React.FC = () => {
                                     <DetailsContainer>
                                         <Teams gameRecapData={gameRecapData} />
                                     </DetailsContainer>
-                                    <Map gameTimelineData={gameTimelineData} />
+                                    <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
                                     <Filters />
                                 </>,
                             },
