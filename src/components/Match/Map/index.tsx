@@ -23,7 +23,7 @@ const Map: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
 	const IsVisibleBuildings = useAppSelector(state => state.filters.isVisibleBuilding);
 	return (
 		<Container>
-			<Canvas width={360} height={360} gameMode={gameMode}>
+			<Canvas width={window.innerWidth/5} height={window.innerWidth/5} gameMode={gameMode}>
 				{
 					gameMode === "CLASSIC" &&
 						<>
