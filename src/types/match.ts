@@ -136,6 +136,7 @@ export interface IGameTimeLine {
 }
 
 export interface IParticipant {
+  [key: string]: any;
   summonerName: string
   teamId: number
   championId: number

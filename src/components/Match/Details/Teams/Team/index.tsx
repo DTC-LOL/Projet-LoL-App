@@ -12,7 +12,7 @@ const TeamDetails: React.FC<IProps> = ({teamName,participants}) => {
 
     return (
     <Container>
-        <p>{teamName} Team</p>
+        <TeamName>{teamName} Team</TeamName>
         {participants.map((participant, key) => (
             <SummonerCard key={teamName + "_Summoner_"+ key} summonerDetail={participant}/>
 
@@ -22,6 +22,10 @@ const TeamDetails: React.FC<IProps> = ({teamName,participants}) => {
 
 const Container = styled.div`
     width: 50%;
+`;
+
+const TeamName = styled.div`
+    color: #fff;
 `;
 
 export default TeamDetails;

@@ -3,10 +3,10 @@ export interface Theme {
         layout: {
             body: string,
             primary: string,
+            secondary: string,
         },
         text: {
             primary: string,
-            secondary: string,
         },
     },
     fontSize: {

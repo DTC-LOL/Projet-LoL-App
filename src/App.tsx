@@ -1,11 +1,14 @@
-import React, { FormEvent, FormEventHandler } from 'react';
+import './App.css';
+import React from 'react';
+import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from '@pages/Home';
 import Match from '@pages/Match';
 
+
 function App() {
 	return (
-		<div className="App">
+		<Container>
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" >
@@ -14,8 +17,14 @@ function App() {
 					</Route>
 				</Routes>
 			</BrowserRouter>
-		</div>
+		</Container>
 	);
 }
+
+const Container = styled.div`
+  background-color: ${(props) => props.theme.colors.layout.body};
+  min-height: 100vh;
+`;
+
 
 export default App;

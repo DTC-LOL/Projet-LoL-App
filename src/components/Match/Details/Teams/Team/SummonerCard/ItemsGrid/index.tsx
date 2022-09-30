@@ -8,62 +8,40 @@ interface IProps {
 const ItemsGrid: React.FC<IProps> = ({ summonerDetail }) => {
     return (
         <Container>
-            <Item>
-                {
-                    summonerDetail.item0 ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail.item0 + ".png"} /> : <PlaceHolder />
-                }
-            </Item>
-            <Item>
-                {
-                    summonerDetail.item1 ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail.item1 + ".png"} /> : <PlaceHolder />
-                }
-            </Item>
-            <Item>
-                {
-                    summonerDetail.item2 ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail.item2 + ".png"} /> : <PlaceHolder />
-                }
-            </Item>
-            <Item>
-                {
-                    summonerDetail.item3 ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail.item3 + ".png"} /> : <PlaceHolder />
-                }
-            </Item>
-            <Item>
-                {
-                    summonerDetail.item4 ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail.item4 + ".png"} /> : <PlaceHolder />
-                }
-            </Item>
-            <Item>
-                {
-                    summonerDetail.item5 ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail.item5 + ".png"} /> : <PlaceHolder />
-                }
-            </Item>
-            <Item>
-                {
-                    summonerDetail.item6 ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail.item6 + ".png"} /> : <PlaceHolder />
-                }
-            </Item>
+            {
+                Array(7).fill(null).map((_, index) => (
+                    <Item  key={"summonerCardItem" + index + "_" + Math.floor(Math.random() * 5000)}>
+                        {
+                            summonerDetail['item' + index] ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail['item' + index] + ".png"} /> : <PlaceHolder />
+                        }
+                    </Item>
+                ))
+            }
         </Container>
     );
 };
 const Container = styled.div`
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    justify-content:center;
-    height: 64px;
+    align-items: center;
+    height:fit-content;
+    gap: 5px;
+    margin: auto 0;
 `;
 
-const Item = styled.div``;
+const Item = styled.div`
+
+`;
 
 const ItemImage = styled.img`
-    width: 32px;
-    height: 32px;  
+    width: 48px;
+    height: 48px;  
 `;
 
 const PlaceHolder = styled.div`
-background-color: black;
-width: 32px;
-height: 32px;  
+    background-color: #363636;
+    width: 48px;
+    height: 48px;
+ 
 `;
 export default ItemsGrid;

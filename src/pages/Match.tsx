@@ -49,11 +49,16 @@ const Match: React.FC = () => {
                             {
                                 title: "Recap",
                                 render: () => <>
+                                    <MapContainer>
+                                        <Map gameTimelineData={gameTimelineData} />
+                                        <Filters />
+                                    </MapContainer>
+
                                     <DetailsContainer>
                                         <Teams gameRecapData={gameRecapData} />
                                     </DetailsContainer>
-                                    <Map gameTimelineData={gameTimelineData} />
-                                    <Filters />
+
+
                                 </>,
                             },
                             {
@@ -77,9 +82,12 @@ const Container = styled.div`
 `;
 
 const DetailsContainer = styled.div`
-
   ${mediaQueries('desktop')`
-
+  `}
+`;
+const MapContainer = styled.div`
+  ${mediaQueries('desktop')`
+    display: flex;
   `}
 `;
 

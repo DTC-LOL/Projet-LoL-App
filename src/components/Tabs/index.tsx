@@ -21,7 +21,7 @@ const Tabs: React.FC<IProps> = ({ tabs }) => {
 						active={activeTab === index}
 						onClick={() => setActiveTab(index)}
 					>
-						<Title active={activeTab === index}>{tab.title}</Title>
+						<Title>{tab.title}</Title>
 						<Indicator active={activeTab === index} />
 					</TabButton>
 				))}
@@ -36,7 +36,6 @@ const TabContainer = styled.section`
   flex-direction: row;
   width: 100%;
   height: 60px;
-  margin-top: 20px;
 `;
 
 const TabButton = styled.button`
@@ -49,7 +48,7 @@ const TabButton = styled.button`
   align-items: center;
   position: relative;
   transition: 0.6s;
-  background: ${(props: IActive) => (props.active ? "#d1e0e0" : "#f2f2f2")};
+  background: ${(props: IActive) => (props.active ? "#363636" : "#363636")};
   &:focus {
     outline: none;
   }
@@ -63,7 +62,7 @@ const Title = styled.span`
   height: inherit;
   text-transform: uppercase;
   font-size: 20px;
-  color: ${(props: IActive) => (props.active ? "#3e5b5b" : "#333")};
+  color: #fff;
   transition: 0.6s;
 `;
 
@@ -76,7 +75,7 @@ const Indicator = styled.span`
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: ${(props: IActive) =>
-		props.active ? "#3e5b5b" : "#f1f1f1"};
+	props.active ? "#dd0054" : "#1d1d1d"};
   transition: 0.6s;
 `;
 

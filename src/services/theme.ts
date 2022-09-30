@@ -3,12 +3,12 @@ import { Theme } from "@typesDef/theme";
 const theme: Theme = {
 	colors: {
 		layout: {
-			body: "#f8f9fa",
-			primary: "#5449e",
+			body: "#141414",
+			primary: "#363636",
+			secondary: "#dd0054"
 		},
 		text: {
-			primary: "#000",
-			secondary: "#fff ",
+			primary: "#fff"
 		},
 	},
 	fontSize: {

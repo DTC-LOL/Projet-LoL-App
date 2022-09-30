@@ -8,7 +8,7 @@ const useTranslation = (
 	locale: string | undefined;
 } => {
 	const locale = navigator.language.split("-")[0];
-
+	console.log("locale", locale);
 	let translation: any;
 
 	try {
