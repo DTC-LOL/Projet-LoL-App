@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import styled from 'styled-components';
 
 type Props = {
 	submitMethod: FormEventHandler<HTMLFormElement> | undefined
@@ -12,7 +13,7 @@ type Props = {
 
 const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 	return (
-		<Container>
+		<Container className="pt-5 pb-3">
 			<Form onSubmit={submitMethod}>
 				<Row>
 					<Col>
@@ -30,13 +31,20 @@ const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 						</Form.Group>
 					</Col>
 					<Col>
-						<Button variant="primary" type="submit">
+						<ButtonPrimary variant="primary" type="submit">
 							Rechercher
-						</Button>
+						</ButtonPrimary>
 					</Col>
 				</Row>
 			</Form>
 		</Container>
 	);
 };
+
+const ButtonPrimary = styled(Button)`
+	background-color: #0D47A1 !important;
+	border-radius: 0 !important;
+	border: none !important;
+`
+
 export default Search;

@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { FormEvent, FormEventHandler } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from '@pages/Home';
