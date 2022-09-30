@@ -6,7 +6,10 @@ import getGameRecap from '@services/api/getGameRecap';
 import { IGameData } from '@typesDef/match';
 import { mediaQueries } from '@services/media';
 import Teams from '@components/Match/Details/Teams';
+import Tabs from '@components/Tabs/index';
+
 import {
+
     useParams,
     useNavigate,
 } from "react-router-dom";
@@ -20,13 +23,13 @@ const Match: React.FC = () => {
 
     React.useEffect(() => {
         if (id) {
-            getGameRecap("EUW1_6084252366").then((res) => {
+            getGameRecap(id).then((res) => {
                 console.log("data fetched !");
-    
+
                 const gameData: IGameData = res.data;
                 setGameRecapData(gameData.recap);
                 setGameTimelineData(gameData.timeline);
-    
+
             }).then(() => {
                 setLoading(false);
             });
@@ -42,11 +45,25 @@ const Match: React.FC = () => {
             {
                 !loading ?
                     <>
-                        <DetailsContainer>
-                            <Teams gameRecapData={gameRecapData} />
-                        </DetailsContainer>
-                        <Map gameTimelineData={gameTimelineData} />
-                        <Filters />
+                        <Tabs tabs={[
+                            {
+                                title: "Recap",
+                                render: () => <>
+                                    <DetailsContainer>
+                                        <Teams gameRecapData={gameRecapData} />
+                                    </DetailsContainer>
+                                    <Map gameTimelineData={gameTimelineData} />
+                                    <Filters />
+                                </>,
+                            },
+                            {
+                                title: "Timeline",
+                                render: () => <></>,
+                            },
+                        ]}
+
+                        />
+
                     </>
                     : <p>Loading...</p>
             }
