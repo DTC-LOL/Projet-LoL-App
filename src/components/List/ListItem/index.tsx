@@ -72,7 +72,9 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 									KDA : {playerRecap.kills} / {playerRecap.deaths} / {playerRecap.assists}
 								</Paragraph>
 								<Paragraph className="text-center">
-									{Math.round((playerRecap.kills+playerRecap.assists)/playerRecap.deaths)}
+									{
+										playerRecap.kills && playerRecap.deaths && playerRecap.assists ? ((playerRecap.kills+playerRecap.assists)/playerRecap.deaths).toFixed(2) : 0
+									}
 								</Paragraph>
 
 								<Paragraph>Score Vision : {playerRecap.visionScore}</Paragraph>
