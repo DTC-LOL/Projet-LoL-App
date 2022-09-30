@@ -33,7 +33,7 @@ const Home: React.FC = () => {
 			setError('');
 		}
 
-		console.log(error);
+        setLoading(false);
     };
     return (
         <Container>
