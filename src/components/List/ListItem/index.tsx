@@ -49,16 +49,31 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 					</Col>
 					<Col lg={6} className="border-start border-end visible-border">
 						<Row>
-							<Col lg={2}>
-								<ChampionImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + playerRecap.championName + ".png"} />
+							<Col>
+								<Row>
+									<Col className="pe-0 pl-2">
+										<ChampionImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + playerRecap.championName + ".png"} />
+									</Col>
+									<Col className="px-0">
+										<SpellImage src={"http://ddragon.leagueoflegends.com/cdn/12.18.1/img/spell/"+playerRecap.summoner1Id+".png"} />
+										<SpellImage src={"http://ddragon.leagueoflegends.com/cdn/12.18.1/img/spell/"+playerRecap.summoner2Id+".png"} />
+									</Col>
+								</Row>
 							</Col>
 							<Col>
-								<Paragraph>Champion Level : {playerRecap.champlevel}</Paragraph>
+								<Paragraph>
+									Champion Level : {playerRecap.champlevel}
+								</Paragraph>
 
 								<Paragraph>Role : {capitalizeFirstLowercaseRest(playerRecap.role)}</Paragraph>
 							</Col>
 							<Col>
-								<Paragraph>KDA : {playerRecap.kills} / {playerRecap.deaths} / {playerRecap.assists}</Paragraph>
+								<Paragraph>
+									KDA : {playerRecap.kills} / {playerRecap.deaths} / {playerRecap.assists}
+								</Paragraph>
+								<Paragraph className="text-center">
+									{Math.round((playerRecap.kills+playerRecap.assists)/playerRecap.deaths)}
+								</Paragraph>
 
 								<Paragraph>Score Vision : {playerRecap.visionScore}</Paragraph>
 								
@@ -101,6 +116,14 @@ const ChampionImage = styled.img`
     height: 80px; 
 	border-radius: 50%; 
 `;
+
+const SpellImage = styled.img`
+	display: block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-bottom: 0.2rem
+`
 
 const ParticipantsChampionImage = styled.img`
 	width: 25px;

@@ -50,15 +50,14 @@ const Match: React.FC = () => {
                                 title: "Recap",
                                 render: () => <>
                                     <MapContainer>
-                                        <Map gameTimelineData={gameTimelineData} />
+                                        <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
                                         <Filters />
                                     </MapContainer>
 
                                     <DetailsContainer>
                                         <Teams gameRecapData={gameRecapData} />
                                     </DetailsContainer>
-
-
+                                    
                                 </>,
                             },
                             {

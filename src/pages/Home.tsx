@@ -25,8 +25,13 @@ const Home: React.FC = () => {
 
         const response = await getGamesByUserNameAndLocation(data);
 
-        setPlayer(response.data);
-        setGames(response.data.games);
+		if(response.error) {
+			setError(response.error);
+		} else if(response.data) {
+			setPlayer(response.data);
+			setGames(response.data.games);
+			setError('');
+		}
 
         setLoading(false);
     };
