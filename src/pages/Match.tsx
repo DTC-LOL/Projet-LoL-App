@@ -25,8 +25,6 @@ const Match: React.FC = () => {
     React.useEffect(() => {
         if (id) {
             getGameRecap(id).then((res) => {
-                console.log("data fetched !");
-
                 const gameData: IGameData = res.data;
                 setGameRecapData(gameData.recap);
                 setGameTimelineData(gameData.timeline);

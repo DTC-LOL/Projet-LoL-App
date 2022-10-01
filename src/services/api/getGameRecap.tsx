@@ -17,15 +17,13 @@ const getGameRecap = async (gameId: string) => {
 	};
 
 	const game_url = `http://localhost:8000/api/game?uuid=${gameId}`;
-	console.log('game_ul : ', game_url);
-	
+
 	try {
 		await axios.get(game_url, {
 			headers: {
 				'content-type': 'application/json',
 			}
 		}).then(res => {
-			console.log('res:', res)
 			response['success'] = true;
 
 			response['data'] = res.data;

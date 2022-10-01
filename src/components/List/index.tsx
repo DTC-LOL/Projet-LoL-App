@@ -12,9 +12,7 @@ type Props = {
 }
 
 const List: React.FC<Props> = ({ playerData, gamesData }) => {
-	React.useEffect(() => {
-		console.log(gamesData);
-	},[])
+
 	return (
 		<Container>
 			<ListGroup>
