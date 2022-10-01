@@ -13,6 +13,7 @@ import {
     useParams,
     useNavigate,
 } from "react-router-dom";
+import TimeLineList from '@components/Timeline/List/indes';
 
 const Match: React.FC = () => {
     const [loading, setLoading] = React.useState(true);
@@ -62,7 +63,9 @@ const Match: React.FC = () => {
                             },
                             {
                                 title: "Timeline",
-                                render: () => <></>,
+                                render: () => <>
+                                    <TimeLineList gameTimelineData={gameTimelineData}/>
+                                </>,
                             },
                         ]}
 
