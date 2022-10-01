@@ -20,7 +20,7 @@ const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames }) => {
 
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
-            if (event.type === "CHAMPION_KILL") {
+            if (event.type === "CHAMPION_KILL" || event.type === "CHAMPION_SPECIAL_KILL") {
                 if (event.position) {
                     kills.push({ x: event.position.x, y: event.position.y });
                 }

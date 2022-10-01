@@ -2,27 +2,32 @@ import useTranslation from '@hooks/useTranslation';
 import React from 'react';
 import styled from 'styled-components';
 import FilterCheckbox from './FilterCheckbox';
+import FilterBuildings from './FilterBuildings';
 // interface IProps { };
 // const defaultProps: IProps = {};
 const Filters: React.FC = (props) => {
     const { t } = useTranslation("filters/common");
 
-    return (<Container>
-        <FilterCheckbox filterType={"kills"}/>
-        <FilterCheckbox filterType={"deaths"}/>
-        <FilterCheckbox filterType={"champions"}/>
-        {/* 
-           TODO: Ajouter des filtres qui permet de d'afficher 
-           les Champions présent dans la game et donc
-           de pouvoir suivre leur déplacement au cas par cas
-           ex : 
-                - Je veux comparer les déplacements des deux Jungle 
+    return (<>
+        <Container>
+            <FilterCheckbox filterType={"kills"} />
+            <FilterCheckbox filterType={"deaths"} />
+            <FilterCheckbox filterType={"champions"} />
+            {/*
+                TODO: Ajouter des filtres qui permet de d'afficher
+                les Champions présent dans la game et donc
+                de pouvoir suivre leur déplacement au cas par cas
+                ex :
+                - Je veux comparer les déplacements des deux Jungle
                 sur la carte
                 
-                - Je veux voir les erreurs de placement de mon equipe 
+                - Je veux voir les erreurs de placement de mon equipe
 
-        */}
-    </Container>);
+            */}
+        </Container>
+        <FilterBuildings filterState={false}/>
+        </>
+    );
 };
 
 const Container = styled.div`
@@ -31,6 +36,6 @@ const Container = styled.div`
     justify-content: start;
     flex-wrap: wrap;
     gap: 1rem;
-    width: 100%;
+    width: 25%;
 `;
 export default Filters;

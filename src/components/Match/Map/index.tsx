@@ -11,6 +11,7 @@ import LayerKillAram from './LayerKillsAram/index';
 import LayerBuildings from './LayerBuildings/index';
 import LayerBuildingsAram from './LayerBuildingsAram/index';
 import { IGameTimeLine } from '@typesDef/match';
+import LayerDeaths from './LayerDeaths';
 
 interface IProps {
 	gameTimelineData: IGameTimeLine;
@@ -28,7 +29,9 @@ const Map: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
 					gameMode === "CLASSIC" &&
 						<>
 						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} />
-						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} /></>
+						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+						<LayerDeaths selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+						</>
 				}
 				{
 					gameMode === "ARAM" &&

@@ -15,23 +15,23 @@ interface IKill {
 
 const division = 15000/(window.innerWidth/5);
 
-const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
+const LayerDeaths: React.FC<IProps> = ({ selectedFilter, frames }) => {
     const kills: Array<IKill> = [];
 
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
-            if ((event.type === "CHAMPION_KILL" &&
-            event.killerId === 1 ||
-            event.killerId === 2 ||
-            event.killerId === 3 ||
-            event.killerId === 4 ||
-            event.killerId === 5) || 
-            (event.type === "CHAMPION_SPECIAL_KILL" &&
-            event.killerId === 1 ||
-            event.killerId === 2 ||
-            event.killerId === 3 ||
-            event.killerId === 4 ||
-            event.killerId === 5)) {
+            if ((event.type === "CHAMPION_KILL" && 
+                event.killerId === 6 || 
+                event.killerId === 7 || 
+                event.killerId === 8 || 
+                event.killerId === 9 ||
+                event.killerId === 10 ) || 
+                (event.type === "CHAMPION_SPECIAL_KILL" &&
+                event.killerId === 6 ||
+                event.killerId === 7 ||
+                event.killerId === 8 ||
+                event.killerId === 9 ||
+                event.killerId === 10)) {
                 if (event.position) {
                     kills.push({ x: event.position.x, y: event.position.y });
                 }
@@ -40,14 +40,14 @@ const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
     })
 
     return (
-        <Layer visible={selectedFilter === "kills" ? true : false}>
+        <Layer visible={selectedFilter === "deaths" ? true : false}>
             {kills.length > 0 &&
                 kills.map((kill, key) => (
                     <Circle
                         x={kill.x / division}
                         y={(window.innerWidth/5) - (kill.y / division)}
                         radius={4}
-                        fill="blue"
+                        fill="red"
                         shadowBlur={10}
                         opacity={0.5}
                         key={key + "zzkjztjetl"}
@@ -58,4 +58,4 @@ const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
     );
 };
 
-export default LayerKill;
+export default LayerDeaths;

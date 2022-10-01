@@ -10,7 +10,7 @@ interface FiltersState {
 // Define the initial state using that type
 const initialState: FiltersState = {
     selectedFilter: "",
-    isVisibleBuilding: false,
+    isVisibleBuilding: true,
 }
 
 export const filtersSlice = createSlice({
@@ -29,6 +29,7 @@ export const filtersSlice = createSlice({
 })
 
 export const { setActiveFilter } = filtersSlice.actions
+export const { setIsVisibleBuilding } = filtersSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const getSelectedFilter = (state: RootState) => state.filters.selectedFilter
