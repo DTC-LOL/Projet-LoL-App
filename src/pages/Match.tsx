@@ -13,6 +13,7 @@ import {
     useParams,
     useNavigate,
 } from "react-router-dom";
+import TimeLineList from '@components/Timeline/List/indes';
 
 const Match: React.FC = () => {
     const [loading, setLoading] = React.useState(true);
@@ -24,8 +25,6 @@ const Match: React.FC = () => {
     React.useEffect(() => {
         if (id) {
             getGameRecap(id).then((res) => {
-                console.log("data fetched !");
-
                 const gameData: IGameData = res.data;
                 setGameRecapData(gameData.recap);
                 setGameTimelineData(gameData.timeline);
@@ -62,7 +61,9 @@ const Match: React.FC = () => {
                             },
                             {
                                 title: "Timeline",
-                                render: () => <></>,
+                                render: () => <>
+                                    <TimeLineList gameTimelineData={gameTimelineData}/>
+                                </>,
                             },
                         ]}
 

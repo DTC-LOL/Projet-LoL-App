@@ -42,7 +42,7 @@ const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 };
 
 const ButtonPrimary = styled(Button)`
-	background-color: #0D47A1 !important;
+	background-color: ${(props) => props.theme.colors.layout.secondary} !important;
 	border-radius: 0 !important;
 	border: none !important;
 `;
