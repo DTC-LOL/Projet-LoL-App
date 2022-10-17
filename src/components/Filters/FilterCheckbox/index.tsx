@@ -10,7 +10,7 @@ interface IProps {
 
 const FilterCheckbox: React.FC<IProps> = ({ filterType }) => {
     const { t } = useTranslation("filters/common");
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
 
     const IconSelector = () => {
 

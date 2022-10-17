@@ -10,16 +10,21 @@ interface IProps {
 const KDA: React.FC<IProps> = ({ kills, deaths, assists }) => {
     return (
         <Container>
-            <tr>
-                <th>K</th>
-                <th>D</th>
-                <th>A</th>
-            </tr>
-            <tr>
-                <td>{kills}</td>
-                <td>{deaths}</td>
-                <td>{assists}</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>K</th>
+                    <th>D</th>
+                    <th>A</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{kills}</td>
+                    <td>{deaths}</td>
+                    <td>{assists}</td>
+                </tr>
+            </tbody>
+
         </Container>);
 };
 

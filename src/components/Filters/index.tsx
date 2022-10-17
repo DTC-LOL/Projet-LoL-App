@@ -14,7 +14,7 @@ const Filters: React.FC = (props) => {
         {/* 
            TODO: Ajouter des filtres qui permet de d'afficher 
            les Champions présent dans la game et donc
-           de pouvoir suivre leur déplacement au cas par cas
+           de pouvoir suivre leurs déplacements au cas par cas
            ex : 
                 - Je veux comparer les déplacements des deux Jungle 
                 sur la carte

@@ -21,7 +21,6 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail }) => {
                 <p>Gold :{summonerDetail.goldSpent}</p>
                 <ItemsGrid summonerDetail={summonerDetail} />
             </SummonerCardInfos>
-
         </Container>);
 };
 

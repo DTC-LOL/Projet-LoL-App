@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {IGameData, IGameRecap} from '@typesDef/match';
 import TeamDetails from './Team';
+import { mediaQueries } from '@services/media';
 
 interface IProps {
     gameRecapData: IGameRecap;
@@ -18,6 +19,8 @@ const Teams: React.FC<IProps> = ({gameRecapData}) => {
 
 const Container = styled.div`
     display: flex;
+
+
 `;
 
 export default Teams;
