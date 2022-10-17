@@ -1,19 +1,20 @@
-import { useMediaQuery } from '@react-hook/media-query';
-import { breakpoints } from '@services/media';
-import { useTheme } from 'styled-components';
+import React from "react"
 
-const useBreakpoint = (): {
-  isTablet: boolean;
-  isDesktop: boolean;
-  isDesktopLarge: boolean;
-} => {
-	const theme = useTheme();
+const useBreakpoint = () => {
+    const [breakpoint, setBreakpoint] = React.useState(1200)
+    const resize = () => {
+        setBreakpoint(window.innerWidth)
+    }
 
-	return {
-		isTablet: useMediaQuery(`(min-width: ${breakpoints.tablet})`),
-		isDesktop: useMediaQuery(`(min-width: ${breakpoints.desktop})`),
-		isDesktopLarge: useMediaQuery(`(min-width: ${breakpoints.widescreen})`),
-	};
-};
+    React.useEffect(() => {
+        window.addEventListener('resize', resize)
+
+        return () => {
+            window.removeEventListener('resize', resize)
+        }
+    }, [])
+
+    return breakpoint
+}
 
 export default useBreakpoint;

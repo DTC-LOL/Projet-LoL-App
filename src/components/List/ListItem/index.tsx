@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import localSelector from '@services/momentjs/locales/fr';
 import { IGameData } from '@typesDef/match';
 import styled from 'styled-components';
-
+import { mediaQueries } from '@services/media';
 import {capitalizeFirstLowercaseRest} from '@services/utility';
 
 type Props = {
@@ -83,7 +83,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 							</Col>
 						</Row>
 					</Col>
-					<Col lg={4}>
+					<ParticipantsList lg={4}>
 						<Row>
 							{gamesData.recap.participants.map((participant: any) => {
 								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold" : ""} lg={6}>
@@ -92,7 +92,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 								</Col>	
 							})}
 						</Row>
-					</Col>
+					</ParticipantsList>
 				</Row>
 			</LinkStyled>
 		</ListGroupItem>
@@ -121,17 +121,33 @@ const LinkStyled = styled(Link)`
 	}
 `
 const ChampionImage = styled.img`
-    width: 80px;
-    height: 80px; 
+    width: 40px;
+    height: 40px; 
 	border-radius: 50%; 
+
+	${mediaQueries("desktop")`
+	    width: 80px;
+    	height: 80px; 
+	`} 
 `;
 
 const SpellImage = styled.img`
 	display: block;
-	width: 30px;
-	height: 30px;
+	width: 18px;
+	height: 18px;
 	border-radius: 50%;
-	margin-bottom: 0.2rem
+	margin-bottom: 0.2rem;
+	${mediaQueries("desktop")`
+		width: 30px;
+		height: 30px;
+	`} 
+`
+const ParticipantsList = styled(Col)`
+	display: none;
+
+	${mediaQueries("desktop")`
+		display: block;
+	`} 
 `
 
 const ParticipantsChampionImage = styled.img`

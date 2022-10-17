@@ -1,3 +1,4 @@
+import { mediaQueries } from '@services/media';
 import { IParticipant } from '@typesDef/match';
 import React from 'react';
 import styled from 'styled-components';
@@ -21,12 +22,16 @@ const ItemsGrid: React.FC<IProps> = ({ summonerDetail }) => {
     );
 };
 const Container = styled.div`
-    display: flex;
-    flex-wrap: wrap;
+display: none;
+	${mediaQueries("desktop")`
+        display: flex;
+        flex-wrap: wrap;
     align-items: center;
     height:fit-content;
     gap: 5px;
     margin: auto 0;
+	`} 
+ 
 `;
 
 const Item = styled.div`

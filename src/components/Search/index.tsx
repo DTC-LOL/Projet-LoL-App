@@ -2,7 +2,7 @@ import React, { FormEventHandler } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
@@ -13,24 +13,24 @@ type Props = {
 
 const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 	return (
-		<Container className="pt-5 pb-3">
+		<Container >
 			<Form onSubmit={submitMethod}>
 				<Row>
-					<Col>
+					<Col sm={4}>
 						<Form.Group className="mb-3" controlId="name">
-							<FormInput type="text" name="name" placeholder="Pseudo du joueur" />
+							<FormInput type="text" name="name" placeholder="Nom d'invocateur" />
 						</Form.Group>
 					</Col>
-					<Col>
+					<Col sm={2}>
 						<Form.Group className="mb-3" controlId="location">
 							<FormSelect name="location">
-								<option>Localisation du joueur</option>
+								<option>Region</option>
 								<option value="europe">Europe</option>
 								<option value="asie">Asie</option>
 							</FormSelect>
 						</Form.Group>
 					</Col>
-					<Col>
+					<Col sm={1}>
 						<ButtonPrimary variant="primary" type="submit">
 							Rechercher
 						</ButtonPrimary>
@@ -41,8 +41,12 @@ const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 	);
 };
 
+const Container = styled.div`
+
+`;
+
 const ButtonPrimary = styled(Button)`
-	background-color: #0D47A1 !important;
+	background-color: ${(props) => props.theme.colors.layout.secondary} !important;
 	border-radius: 0 !important;
 	border: none !important;
 `;
@@ -59,6 +63,8 @@ const FormSelect = styled(Form.Select)`
 	background-color: #363636 !important;
 	border: none !important;
 	border-radius: 0 !important;
+	position: relative;
+
 `;
 
 export default Search;

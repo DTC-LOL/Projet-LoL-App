@@ -14,6 +14,8 @@ export interface IGameTimeLineFrameEvent {
   bounty?: number
   killStreakLength?: number
   killerId?: number
+  monsterSubType?: string
+  monsterType?: string
   position?: {
     x: number
     y: number

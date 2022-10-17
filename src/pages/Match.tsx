@@ -3,16 +3,17 @@ import styled from 'styled-components';
 import Map from '@components/Match/Map';
 import Filters from '@components/Filters';
 import getGameRecap from '@services/api/getGameRecap';
-import { IGameData } from '@typesDef/match';
+import { IGameData, IGameRecap } from '@typesDef/match';
 import { mediaQueries } from '@services/media';
 import Teams from '@components/Match/Details/Teams';
 import Tabs from '@components/Tabs/index';
-
 import {
-
     useParams,
     useNavigate,
 } from "react-router-dom";
+import TimeLineList from '@components/Timeline/List/indes';
+import  Wrapper  from '@components/Layout/Wrapper';
+import TimeLineMap from '@components/Timeline/TimelineMap';
 
 const Match: React.FC = () => {
     const [loading, setLoading] = React.useState(true);
@@ -24,8 +25,6 @@ const Match: React.FC = () => {
     React.useEffect(() => {
         if (id) {
             getGameRecap(id).then((res) => {
-                console.log("data fetched !");
-
                 const gameData: IGameData = res.data;
                 setGameRecapData(gameData.recap);
                 setGameTimelineData(gameData.timeline);
@@ -43,12 +42,15 @@ const Match: React.FC = () => {
     return (
         <Container>
             {
+                
                 !loading ?
+
                     <>
+                       
                         <Tabs tabs={[
                             {
                                 title: "Recap",
-                                render: () => <>
+                                render: () => <Wrapper>
                                     <MapContainer>
                                         <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
                                         <Filters />
@@ -58,11 +60,15 @@ const Match: React.FC = () => {
                                         <Teams gameRecapData={gameRecapData} />
                                     </DetailsContainer>
                                     
-                                </>,
+                                </Wrapper>,
                             },
                             {
                                 title: "Timeline",
-                                render: () => <></>,
+                                render: () => 
+                                <Wrapper>
+                                    <TimeLineMap gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode}/>
+                                    <TimeLineList participants={gameRecapData.participants} gameTimelineData={gameTimelineData}/>
+                                </Wrapper>,
                             },
                         ]}
 

@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 
 import ListGroup from 'react-bootstrap/ListGroup';
-import Container from 'react-bootstrap/Container';
+
 import ListItem from './ListItem';
 import { releaseCapture } from 'konva/lib/PointerEvents';
 import { IGameData } from '@typesDef/match';
+import styled from 'styled-components';
 
 type Props = {
 	playerData: any,
@@ -12,9 +13,7 @@ type Props = {
 }
 
 const List: React.FC<Props> = ({ playerData, gamesData }) => {
-	React.useEffect(() => {
-		console.log(gamesData);
-	},[])
+
 	return (
 		<Container>
 			<ListGroup>
@@ -30,5 +29,9 @@ const List: React.FC<Props> = ({ playerData, gamesData }) => {
 
 	);
 };
+
+const Container = styled.div`
+
+`
 
 export default List;
