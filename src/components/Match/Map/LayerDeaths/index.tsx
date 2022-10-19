@@ -13,14 +13,25 @@ interface IKill {
     y: number;
 }
 
-const division = 13000/(window.innerWidth/5);
+const division = 15000/(window.innerWidth/5);
 
-const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames }) => {
+const LayerDeaths: React.FC<IProps> = ({ selectedFilter, frames }) => {
     const kills: Array<IKill> = [];
 
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
-            if (event.type === "CHAMPION_KILL" || event.type === "CHAMPION_SPECIAL_KILL") {
+            if ((event.type === "CHAMPION_KILL" && 
+                event.killerId === 6 || 
+                event.killerId === 7 || 
+                event.killerId === 8 || 
+                event.killerId === 9 ||
+                event.killerId === 10 ) || 
+                (event.type === "CHAMPION_SPECIAL_KILL" &&
+                event.killerId === 6 ||
+                event.killerId === 7 ||
+                event.killerId === 8 ||
+                event.killerId === 9 ||
+                event.killerId === 10)) {
                 if (event.position) {
                     kills.push({ x: event.position.x, y: event.position.y });
                 }
@@ -29,11 +40,11 @@ const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames }) => {
     })
 
     return (
-        <Layer visible={selectedFilter === "kills" ? true : false}>
+        <Layer visible={selectedFilter === "deaths" ? true : false}>
             {kills.length > 0 &&
                 kills.map((kill, key) => (
                     <Circle
-                        x={(kill.x /division)}
+                        x={kill.x / division}
                         y={(window.innerWidth/5) - (kill.y / division)}
                         radius={4}
                         fill="red"
@@ -47,4 +58,4 @@ const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames }) => {
     );
 };
 
-export default LayerKillAram;
+export default LayerDeaths;

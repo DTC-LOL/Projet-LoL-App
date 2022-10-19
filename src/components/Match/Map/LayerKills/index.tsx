@@ -20,7 +20,18 @@ const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
 
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
-            if (event.type === "CHAMPION_KILL") {
+            if ((event.type === "CHAMPION_KILL" &&
+            event.killerId === 1 ||
+            event.killerId === 2 ||
+            event.killerId === 3 ||
+            event.killerId === 4 ||
+            event.killerId === 5) || 
+            (event.type === "CHAMPION_SPECIAL_KILL" &&
+            event.killerId === 1 ||
+            event.killerId === 2 ||
+            event.killerId === 3 ||
+            event.killerId === 4 ||
+            event.killerId === 5)) {
                 if (event.position) {
                     kills.push({ x: event.position.x, y: event.position.y });
                 }
