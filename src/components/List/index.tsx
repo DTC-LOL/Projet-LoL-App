@@ -6,18 +6,28 @@ import ListItem from './ListItem';
 import { releaseCapture } from 'konva/lib/PointerEvents';
 import { IGameData } from '@typesDef/match';
 import styled from 'styled-components';
+import Pagination from '@components/List/Pagination';
 
 type Props = {
 	playerData: any,
 	gamesData: Array<IGameData>,
+	total: number,
 }
 
-const List: React.FC<Props> = ({ playerData, gamesData }) => {
+const List: React.FC<Props> = ({ playerData, gamesData, total }) => {
+	const [currentPage, setCurrentPage] = React.useState(1);
+	
+	const handlePageChange = (pageNumber: any) => {
+		setCurrentPage(pageNumber);
+	};
+	
+	const pageSize = 6;
+	const games = gamesData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
 	return (
 		<Container>
 			<ListGroup>
-				{gamesData.map(( gamesData, key ) => (
+				{games.map(( gamesData, key ) => (
 					<ListItem
 						key={"Game_"+ key}
 						gamesData={gamesData}
@@ -25,6 +35,12 @@ const List: React.FC<Props> = ({ playerData, gamesData }) => {
 					/>
 				))}
 			</ListGroup>
+			<Pagination
+				totalItems={total}
+				pageSize={pageSize}
+				currentPage={currentPage} 
+				handlePageChange={handlePageChange}
+			/>
 		</Container>
 
 	);
