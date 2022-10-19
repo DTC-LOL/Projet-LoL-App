@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import filtersReducer from './features/filters/filtersSlice';
 import timelineReducer from './features/timeline/timelineSlice';
-import matchsReducer from './features/matchs/matchSlice';
+import gamesReducer from './features/games/gameSlice';
 const store = configureStore({
   reducer: {
     filters: filtersReducer,
     timeline: timelineReducer,
-	matchs: matchsReducer
+	gamesData: gamesReducer
   }
 })
 
