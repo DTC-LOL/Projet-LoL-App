@@ -8,11 +8,18 @@ import List from '@components/List';
 import getGamesByUserNameAndLocation from '@services/api/getGamesByUserNameAndLocation';
 
 const SearchPage: React.FC = () => {
+	const [currentPage, setCurrentPage] = React.useState(1);
     const [isLoading, setLoading] = React.useState(true);
     const [player, setPlayer] = React.useState<any>();
     const [games, setGames] = React.useState<any>();
     const [error, setError] = React.useState<string>();
     const [submited, setSubmited] = React.useState<boolean>(false);
+
+	if(sessionStorage.getItem('player') && sessionStorage.getItem('games')) {
+		setPlayer(JSON.parse(sessionStorage.getItem('player') || ''));
+		setGames(JSON.parse(sessionStorage.getItem('games') || ''));
+		setLoading(false);
+	}
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -29,7 +36,7 @@ const SearchPage: React.FC = () => {
         if (response.error) {
             setError(response.error);
         } else if (response.data) {
-            setPlayer(response.data);
+			setPlayer(response.data);
             setGames(response.data.games);
             setError('');
         }
@@ -41,7 +48,10 @@ const SearchPage: React.FC = () => {
             <Search submitMethod={handleSubmit} />
             {
                 submited ? isLoading ? <p>Loading...</p> :
-                    !error ? <List playerData={player} gamesData={games} /> :
+                    !error ? <List 
+								playerData={player} 
+								gamesData={games} 
+								total={games.length}/> :
                         <p className="text-danger">{error}</p> : ""
             }
         </Container>);
