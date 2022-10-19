@@ -10,8 +10,8 @@ const Filters: React.FC = (props) => {
 
     return (<>
     <Container>
-        <FilterCheckbox filterType={"kills"}/>
-        <FilterCheckbox filterType={"deaths"}/>
+        <FilterCheckbox filterType={"Bkills"}/>
+        <FilterCheckbox filterType={"Rkills"}/>
         <FilterCheckbox filterType={"champions"}/>
         {/* 
            TODO: Ajouter des filtres qui permet de d'afficher 

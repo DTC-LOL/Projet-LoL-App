@@ -40,7 +40,7 @@ const LayerDeaths: React.FC<IProps> = ({ selectedFilter, frames }) => {
     })
 
     return (
-        <Layer visible={selectedFilter === "deaths" ? true : false}>
+        <Layer visible={selectedFilter === "Rkills" ? true : false}>
             {kills.length > 0 &&
                 kills.map((kill, key) => (
                     <Circle

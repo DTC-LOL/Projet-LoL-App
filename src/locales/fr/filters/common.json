@@ -1,6 +1,6 @@
 {
-    "kills": "Tués",
-    "deaths": "Morts",
+    "Bkills": "Kills Bleu",
+    "Rkills": "Kills Rouge",
     "movements": "Mouvements",
     "champions": "Champions",
     "firstBlood": "Premier sang"

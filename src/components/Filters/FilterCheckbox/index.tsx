@@ -15,16 +15,12 @@ const FilterCheckbox: React.FC<IProps> = ({ filterType }) => {
     const IconSelector = () => {
 
         switch (filterType) {
-            case "deaths":
-                return "deaths.svg";
-            case "firstBloods":
-                return "firstBloods.svg";
-            case "kills":
-                return "kills.svg";
-            case "wards":
-                return "wards.svg";
+            case "Rkills":
+                return "/kills.svg";
+            case "Bkills":
+                return "/kills.svg";
             case "champions":
-                return "champion.svg";
+                return "/champion.svg";
             default:
                 return undefined;
         }
@@ -54,6 +50,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 10px;
 `;
 

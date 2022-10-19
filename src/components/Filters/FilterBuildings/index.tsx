@@ -27,7 +27,7 @@ const FilterBuildings: React.FC<IProps> = ({ filterState }) => {
 
     return (
         <Button onClick={() => handleFilterClick()} >
-            <button><Icon src={"champion.svg"}/>Show Buildings</button>
+            <button><Icon src={"/turret.svg"}/>Show Buildings</button>
         </Button>
     );
   
@@ -48,7 +48,7 @@ const Button = styled.div`
 `;
 
 const Icon = styled.img`
-    width: 50px;
+    width: 20px;
 `
 
 export default FilterBuildings;

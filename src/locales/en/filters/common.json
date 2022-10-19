@@ -1,6 +1,6 @@
 {
-    "kills": "Kills",
-    "deaths": "Deaths",
+    "Bkills": "Blue team Kills",
+    "Rkills": "Red team Kills",
     "movements": "Movements",
     "champions": "Champions",
     "firstBlood": "First Blood"
