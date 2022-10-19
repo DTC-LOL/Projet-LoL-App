@@ -24,12 +24,15 @@ const LayerKill: React.FC<IProps> = ({ selectedFilter,selectedTime, frames }) =>
             if (event.position) {
                 kills.push({ x: event.position.x, y: event.position.y });
             }
-            console.log(kills)
+            // console.log(kills)
         }
     })
 
     return (
-        <Layer >
+        <Layer  
+         
+           
+            >
             {kills.length > 0 &&
                 kills.map((kill, key) => (
                     <Circle

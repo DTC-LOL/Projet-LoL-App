@@ -101,18 +101,17 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             break;
 
         case "BUILDING_KILL":
+            console.log(event);
             if (event.killerId !== undefined) {
                 return (
                     <>
-                        <Placeholder />
-
+                       <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId].championName + ".png"} />
                         <TimeLineListItemText>
-                            {/* <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId].championName + ".png"} /> */}
                             TOURRELLE Détruite
                             {/* 
                             TODO: Voir pour ajouter/fix l'id du destructeur du batiment afin d'afficher un beau message. 
                                 ex: Qrab a détruit la tourelle 1 du mid 
-                        */}
+                            */}
 
                         </TimeLineListItemText>
                         <Placeholder />

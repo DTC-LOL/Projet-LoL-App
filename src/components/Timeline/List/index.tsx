@@ -57,7 +57,7 @@ const TimeLineList: React.FC<IProps> = ({ gameTimelineData, participants }) => {
       </Container>
       <TimeLineRangeInputContainer>
         <p>Minutes : {selectedTime}</p>
-        <input onChange={handleRangeInputChange} type="range" value={selectedTime} min="1" max={gameTimelineData.info.frames.length - 1} name="" id="" />
+        <input onChange={handleRangeInputChange} type="range" value={selectedTime} min= "1" max={gameTimelineData.info.frames.length - 1} name="" id="" />
       </TimeLineRangeInputContainer>
 
     </>

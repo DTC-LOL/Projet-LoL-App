@@ -11,7 +11,7 @@ import {
     useParams,
     useNavigate,
 } from "react-router-dom";
-import TimeLineList from '@components/Timeline/List/indes';
+import TimeLineList from '@components/Timeline/List';
 import  Wrapper  from '@components/Layout/Wrapper';
 import TimeLineMap from '@components/Timeline/TimelineMap';
 
