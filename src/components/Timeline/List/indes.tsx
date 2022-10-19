@@ -18,19 +18,31 @@ const TimeLineList: React.FC<IProps> = ({ gameTimelineData }) => {
         }
     }
 
-    return (
-        <Container>
-            {gameTimelineData.info.frames[1].events.map((event, key) =>
-                excludedItems.includes(event.type) ?
-                    "" : (
-                        <TimeLineListItem key={"Event_" + key}>
-                            {event.timestamp} : {event.type}
-                            {valueSelectorByType(event)}
-                        </TimeLineListItem>
-                    )
-            )}
-        </Container>
-    );
+
+
+  return (
+    <>
+      <Container>
+        {gameTimelineData.info.frames[selectedTime].events.map((event, key) => excludedItems.includes(event.type) ?
+          "" : (
+            <TimeLineListItem key={"Event_" + key} teamColor={event.participantId}>
+              {/* {event.type} */}
+              <TimeLineListItemTime>
+                {unixTimestampToMinutes(event.timestamp)}
+              </TimeLineListItemTime>
+              {valueSelectorByType(event, participants) ? valueSelectorByType(event, participants) : event.type}
+            </TimeLineListItem>
+          )
+        )}
+
+      </Container>
+      <TimeLineRangeInputContainer>
+        <p>Minutes : {selectedTime}</p>
+        <input onChange={handleRangeInputChange} type="range" value={selectedTime} min= "1" max={gameTimelineData.info.frames.length - 1} name="" id="" />
+      </TimeLineRangeInputContainer>
+
+    </>
+  );
 };
 
 const Container = styled.ul`
