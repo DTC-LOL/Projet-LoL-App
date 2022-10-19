@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import filtersReducer from './features/filters/filtersSlice';
 import timelineReducer from './features/timeline/timelineSlice';
+import matchsReducer from './features/matchs/matchSlice';
 const store = configureStore({
   reducer: {
     filters: filtersReducer,
-    timeline: timelineReducer
+    timeline: timelineReducer,
+	matchs: matchsReducer
   }
 })
 
