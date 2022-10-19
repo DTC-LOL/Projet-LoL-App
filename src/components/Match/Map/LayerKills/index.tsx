@@ -47,7 +47,7 @@ const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
                         x={kill.x / division}
                         y={(window.innerWidth/5) - (kill.y / division)}
                         radius={4}
-                        fill="red"
+                        fill="blue"
                         shadowBlur={10}
                         opacity={0.5}
                         key={key + "zzkjztjetl"}
