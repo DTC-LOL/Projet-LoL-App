@@ -26,25 +26,25 @@ const FilterBuildings: React.FC<IProps> = ({ filterState }) => {
     
 
     return (
-        <Button onClick={() => handleFilterClick()} >
-            <button><Icon src={"/turret.svg"}/>Show Buildings</button>
-        </Button>
+        <Container onClick={() => handleFilterClick()} >
+           <Icon src={"/turret.svg"}/>
+           Show Buildings
+        </Container>
+        
     );
   
 }
 
-const Button = styled.div`
+const Container = styled.button`
     width: 100%;
-    button {
-        position: relative;
-        border-radius: 30px;
-        border: none;
-        background-color: #dd0054;
-        width: 20%;
-        height: 15%;
-        padding: 10px;
-        color: white;
-    }
+    position: relative;
+    border-radius: 30px;
+    border: none;
+    background-color: #dd0054;
+    width: 20%;
+    height: 15%;
+    padding: 10px;
+    color: white;
 `;
 
 const Icon = styled.img`

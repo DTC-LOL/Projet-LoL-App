@@ -5,12 +5,14 @@ import type { RootState } from '@store/store'
 interface FiltersState {
     selectedFilter: string
     isVisibleBuilding: boolean
+    selectedSummoner: string
 }
 
 // Define the initial state using that type
 const initialState: FiltersState = {
     selectedFilter: "",
     isVisibleBuilding: true,
+    selectedSummoner: "",
 }
 
 export const filtersSlice = createSlice({
@@ -24,12 +26,17 @@ export const filtersSlice = createSlice({
     },
     setIsVisibleBuilding: (state, action: PayloadAction<boolean>) => {
       state.isVisibleBuilding = action.payload
+    },
+    setSelectedSummoner: (state, action: PayloadAction<string>) => {
+      state.selectedSummoner = action.payload
     }
+
   }
 })
 
 export const { setActiveFilter } = filtersSlice.actions
 export const { setIsVisibleBuilding } = filtersSlice.actions
+export const { setSelectedSummoner } = filtersSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const getSelectedFilter = (state: RootState) => state.filters.selectedFilter

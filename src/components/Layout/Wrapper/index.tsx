@@ -23,6 +23,10 @@ const Container = styled.div`
     ${mediaQueries("tablet")`
           max-width: 780px;
     `}
+  
+    ${mediaQueries("laptop")`
+        max-width: 1024px;
+    `}
     ${mediaQueries("desktop")`
           max-width: 1440px;
     `}

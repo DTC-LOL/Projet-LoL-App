@@ -105,7 +105,10 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             if (event.killerId !== undefined) {
                 return (
                     <>
-                       <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId].championName + ".png"} />
+                       {/* TODO: FIXER L'AFFICHAGE DE LA THUMBNAIL DU DESTRUCTEUR DE LA TURRET 
+                            <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + event.killerId !== '10' ? participants[event.killerId].championName : ""  + ".png"} /> 
+                            Sachant que le destructeur de la tour portant l'id 10 est un sbire
+                       */}
                         <TimeLineListItemText>
                             TOURRELLE Détruite
                             {/* 

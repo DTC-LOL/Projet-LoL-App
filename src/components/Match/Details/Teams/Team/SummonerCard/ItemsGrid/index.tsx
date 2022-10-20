@@ -22,6 +22,7 @@ const ItemsGrid: React.FC<IProps> = ({ summonerDetail }) => {
     );
 };
 const Container = styled.div`
+
 display: none;
 	${mediaQueries("desktop")`
         display: flex;
@@ -30,6 +31,7 @@ display: none;
     height:fit-content;
     gap: 5px;
     margin: auto 0;
+    margin-top: 5px;
 	`} 
  
 `;
@@ -39,14 +41,14 @@ const Item = styled.div`
 `;
 
 const ItemImage = styled.img`
-    width: 48px;
-    height: 48px;  
+    width: 36px;
+    height: 36px;  
 `;
 
 const PlaceHolder = styled.div`
     background-color: #363636;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
  
 `;
 export default ItemsGrid;

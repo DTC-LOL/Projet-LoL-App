@@ -12,7 +12,7 @@ import {
     useNavigate,
 } from "react-router-dom";
 import TimeLineList from '@components/Timeline/List';
-import  Wrapper  from '@components/Layout/Wrapper';
+import Wrapper from '@components/Layout/Wrapper';
 import TimeLineMap from '@components/Timeline/TimelineMap';
 
 const Match: React.FC = () => {
@@ -42,33 +42,38 @@ const Match: React.FC = () => {
     return (
         <Container>
             {
-                
+
                 !loading ?
 
                     <>
-                       
+
                         <Tabs tabs={[
                             {
                                 title: "Recap",
-                                render: () => <Wrapper>
-                                    <MapContainer>
-                                        <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
-                                        <Filters />
-                                    </MapContainer>
+                                render: () =>
+                                        <MatchLayout>
+                                            <MatchLayoutLeftPart>
+                                                <MapContainer>
+                                                    <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
+                                                </MapContainer>
+                                                <Filters />
+                                            </MatchLayoutLeftPart>
 
-                                    <DetailsContainer>
-                                        <Teams gameRecapData={gameRecapData} />
-                                    </DetailsContainer>
-                                    
-                                </Wrapper>,
+                                            <MatchLayoutRightPart>
+                                                <DetailsContainer>
+                                                    <Teams gameRecapData={gameRecapData} />
+                                                </DetailsContainer>
+                                            </MatchLayoutRightPart>
+                                        </MatchLayout>
+                                
                             },
                             {
                                 title: "Timeline",
-                                render: () => 
-                                <Wrapper>
-                                    <TimeLineMap gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode}/>
-                                    <TimeLineList participants={gameRecapData.participants} gameTimelineData={gameTimelineData}/>
-                                </Wrapper>,
+                                render: () =>
+                                    <Wrapper>
+                                        <TimeLineMap gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
+                                        <TimeLineList participants={gameRecapData.participants} gameTimelineData={gameTimelineData} />
+                                    </Wrapper>,
                             },
                         ]}
 
@@ -81,6 +86,25 @@ const Match: React.FC = () => {
         </Container>
     );
 };
+
+const MatchLayout = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    ${mediaQueries('laptop')`
+        flex-direction: row;
+`}
+`
+const MatchLayoutLeftPart = styled.div`
+    width: 100%;
+    ${mediaQueries('laptop')`
+        width: 50%;
+    `}
+`
+
+const MatchLayoutRightPart = styled.div`
+    flex: 1;
+`
 
 const Container = styled.div`
 
