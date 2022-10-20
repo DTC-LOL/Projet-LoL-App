@@ -19,8 +19,9 @@ const Teams: React.FC<IProps> = ({gameRecapData}) => {
 
 const Container = styled.div`
     display: flex;
-
-
+    gap: 2rem;
+    padding: 0 25px;
+    margin: 20px 0;
 `;
 
 export default Teams;

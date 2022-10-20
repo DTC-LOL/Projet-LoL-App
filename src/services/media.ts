@@ -5,13 +5,15 @@ interface Breakpoints {
 	uhd: number;
 	widescreen: number,
 	desktop: number,
+	laptop: number,
 	tablet: number,
 }
 
 export const breakpoints:Breakpoints = {
 	uhd: 1980,
 	widescreen: 1366,
-	desktop: 1024,
+	desktop: 1120,
+	laptop: 1024,
 	tablet: 768,
 };
   
