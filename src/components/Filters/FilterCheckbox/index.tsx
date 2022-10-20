@@ -2,7 +2,7 @@ import useTranslation from '@hooks/useTranslation';
 import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from '@store/hooks';
-import {setActiveFilter} from "@store/features/filters/filtersSlice";
+import {setActiveFilter, setSelectedSummoner} from "@store/features/filters/filtersSlice";
 
 interface IProps {
     filterType: string;
@@ -28,6 +28,7 @@ const FilterCheckbox: React.FC<IProps> = ({ filterType }) => {
 
     const handleFilterClick = () => {
         dispatch(setActiveFilter(filterType));
+        dispatch(setSelectedSummoner(""));
     }
 
     return (

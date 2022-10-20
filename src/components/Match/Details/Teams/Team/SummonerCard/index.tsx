@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { mediaQueries } from '@services/media';
 import { IParticipant } from '@typesDef/match';
-import KDA from './KDA';
 import ItemsGrid from './ItemsGrid';
+import { useAppDispatch } from '@store/hooks';
+import {setActiveFilter, setSelectedSummoner} from "@store/features/filters/filtersSlice";
 
 interface IProps {
     summonerDetail: IParticipant;
@@ -11,12 +12,19 @@ interface IProps {
 }
 
 const SummonerCard: React.FC<IProps> = ({ summonerDetail }) => {
+    const dispatch = useAppDispatch();
+
+    const handleSummonerClick = () => {
+        dispatch(setSelectedSummoner(summonerDetail.puuid));
+        dispatch(setActiveFilter(""));
+    }
+
     return (
         <Container>
             
             <SummonerCardInfosSummonerName>{summonerDetail.summonerName}</SummonerCardInfosSummonerName>
             <SummonerCardInfos>
-                <CheckBox name="summoner-filter" />
+                <CheckBox name="filter" onClick={() => handleSummonerClick()}/>
                 <ChampionThumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + summonerDetail.championName + ".png"} />
             </SummonerCardInfos>
             <SummonerCardKDA>
