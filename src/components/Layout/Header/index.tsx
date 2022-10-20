@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header: React.FC = () => {
+	const location = useLocation();
+
     return (
         <Container>
             <Link to="/"><Logo src="/logo.png" alt="" /></Link>
             <Nav>
                 <NavItem to="/">Acceuil</NavItem>
-                <NavItem to="/search">Chercher un invocateur</NavItem>
+                <NavItem to="/search">
+					{location.pathname.split('/')[1] === "match" ? 'Retour' : 'Chercher un invocateur'}
+				</NavItem>
             </Nav>
         </Container>
     );
