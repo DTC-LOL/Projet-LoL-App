@@ -6,7 +6,7 @@ const store = configureStore({
   reducer: {
     filters: filtersReducer,
     timeline: timelineReducer,
-	gamesData: gamesReducer
+	gameDatas: gamesReducer
   }
 })
 

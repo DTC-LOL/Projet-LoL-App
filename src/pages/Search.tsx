@@ -7,17 +7,33 @@ import List from '@components/List';
 //  import Container from 'react-bootstrap/Container';
 import getGamesByUserNameAndLocation from '@services/api/getGamesByUserNameAndLocation';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { setGamesData } from '@store/features/games/gameSlice';
+import { setGamesData, setPlayerData } from '@store/features/games/gameSlice';
 
 const SearchPage: React.FC = () => {
+    const { gameDatas } = useAppSelector(state=>state);
+	
     const [isLoading, setLoading] = React.useState(true);
-    const [player, setPlayer] = React.useState<any>();
-    const [games, setGames] = React.useState<any>();
+    const [player, setPlayer] = React.useState<any>(gameDatas.player);
+    const [games, setGames] = React.useState<any>(gameDatas.games);
     const [error, setError] = React.useState<string>();
     const [submited, setSubmited] = React.useState<boolean>(false);
-	
-    const { gamesData } = useAppSelector(state=>state)
-	
+
+	useEffect(() => {
+		if(gameDatas.games !== null && gameDatas.player !== null) {
+			setSubmited(true);
+			setLoading(false);
+			setError('');
+		}
+	}, []);
+
+	console.log({
+		'games': games, 
+		'cached': gameDatas, 
+		'submited': submited,
+		'loading': isLoading,
+		'error': error
+	});
+
 	const dispatch = useAppDispatch();
 
     const handleSubmit = async (e: any) => {
@@ -35,13 +51,13 @@ const SearchPage: React.FC = () => {
         if (response.error) {
             setError(response.error);
         } else if (response.data) {
-			setPlayer(response.data);
-            setGames(response.data.games);
             setError('');
-			// store data in redux
-			if(gamesData.games === null) {
-				dispatch(setGamesData(response.data.games));
-			}
+			// store games data in redux
+			dispatch(setPlayerData(response.data));
+			dispatch(setGamesData(response.data.games));
+
+			setPlayer(response.data);
+			setGames(response.data.games);
         }
 
         setLoading(false);
@@ -54,7 +70,7 @@ const SearchPage: React.FC = () => {
                     !error ? <List 
 								playerData={player} 
 								gamesData={games} 
-								total={games.length}/> :
+								total={games?.length}/> :
                         <p className="text-danger">{error}</p> : ""
             }
         </Container>);
