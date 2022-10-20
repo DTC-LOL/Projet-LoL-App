@@ -27,10 +27,11 @@ const getGamesByUserNameAndLocation = async (data: IFormData) => {
                 'content-type': 'application/json',
             }
         }).then(res => {
+            response.success = true;
             response['data'] = res.data;
 
         }).catch(err => {
-            response['error'] = err.response.data;
+            response['error'] = err.message;
         });
     } catch (err: any) {
         response['error'] = err.message;
