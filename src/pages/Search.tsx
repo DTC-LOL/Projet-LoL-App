@@ -12,7 +12,7 @@ import { setGamesData, setPlayerData } from '@store/features/games/gameSlice';
 const SearchPage: React.FC = () => {
     const { gameDatas } = useAppSelector(state=>state);
 	
-    const [isLoading, setLoading] = React.useState(true);
+    const [isLoading, setLoading] = React.useState(false);
     const [player, setPlayer] = React.useState<any>(gameDatas.player);
     const [games, setGames] = React.useState<any>(gameDatas.games);
     const [error, setError] = React.useState<string>();
@@ -21,7 +21,6 @@ const SearchPage: React.FC = () => {
 	useEffect(() => {
 		if(gameDatas.games !== null && gameDatas.player !== null) {
 			setSubmited(true);
-			setLoading(false);
 			setError('');
 		}
 	}, []);
