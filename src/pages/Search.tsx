@@ -26,14 +26,6 @@ const SearchPage: React.FC = () => {
 		}
 	}, []);
 
-	console.log({
-		'games': games, 
-		'cached': gameDatas, 
-		'submited': submited,
-		'loading': isLoading,
-		'error': error
-	});
-
 	const dispatch = useAppDispatch();
 
     const handleSubmit = async (e: any) => {
