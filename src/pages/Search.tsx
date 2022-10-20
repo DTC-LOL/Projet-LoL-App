@@ -8,15 +8,17 @@ import List from '@components/List';
 import getGamesByUserNameAndLocation from '@services/api/getGamesByUserNameAndLocation';
 
 const SearchPage: React.FC = () => {
-    const [isLoading, setLoading] = React.useState(true);
+    const [isLoading, setLoading] = React.useState(false);
     const [player, setPlayer] = React.useState<any>();
     const [games, setGames] = React.useState<any>();
-    const [error, setError] = React.useState<string>();
+    const [error, setError] = React.useState<string | null>(null);
     const [submited, setSubmited] = React.useState<boolean>(false);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        setLoading(true);
         setSubmited(true);
+        
         const formData = new FormData(e.target);
 
         const data = {
@@ -25,13 +27,14 @@ const SearchPage: React.FC = () => {
         };
 
         const response = await getGamesByUserNameAndLocation(data);
-
-        if (response.error) {
+        
+        if (!response.success) {
+            
             setError(response.error);
-        } else if (response.data) {
+        } else{
             setPlayer(response.data);
             setGames(response.data.games);
-            setError('');
+            setError(null);
         }
 
         setLoading(false);
@@ -39,11 +42,11 @@ const SearchPage: React.FC = () => {
     return (
         <Container>
             <Search submitMethod={handleSubmit} />
-            {
-                submited ? isLoading ? <p>Loading...</p> :
-                    !error ? <List playerData={player} gamesData={games} /> :
-                        <p className="text-danger">{error}</p> : ""
-            }
+            {submited && !isLoading && !error && (
+                <List playerData={player} gamesData={games} />
+            )}
+            {isLoading && <p>Loading...</p>}
+            {error && <p className="text-danger">{error}</p>}
         </Container>);
 };
 const Container = styled(Wrapper)``;
