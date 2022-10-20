@@ -30,7 +30,9 @@ const SearchPage: React.FC = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        setLoading(true);
         setSubmited(true);
+        
         const formData = new FormData(e.target);
 
         const data = {
@@ -39,8 +41,9 @@ const SearchPage: React.FC = () => {
         };
 
         const response = await getGamesByUserNameAndLocation(data);
-
-        if (response.error) {
+        
+        if (!response.success) {
+            
             setError(response.error);
         } else if (response.data) {
             setError('');
@@ -57,14 +60,11 @@ const SearchPage: React.FC = () => {
     return (
         <Container>
             <Search submitMethod={handleSubmit} />
-            {
-                submited ? isLoading ? <p>Loading...</p> :
-                    !error ? <List 
-								playerData={player} 
-								gamesData={games} 
-								total={games?.length}/> :
-                        <p className="text-danger">{error}</p> : ""
-            }
+            {submited && !isLoading && !error && (
+                <List playerData={player} gamesData={games} total={games.length}/>
+            )}
+            {isLoading && <p>Loading...</p>}
+            {error && <p className="text-danger">{error}</p>}
         </Container>);
 };
 const Container = styled(Wrapper)``;
