@@ -22,8 +22,8 @@ jobs:
         target: "~/projetLol/app/"
     
     - name: Executing remote command
-        uses: appleboy/ssh-action@master
-        with:
+      uses: appleboy/ssh-action@master
+      with:
           HOST: ${{ secrets.VPS_HOST }}
           USERNAME: ${{ secrets.VPS_USERNAME }}
           PORT: ${{ secrets.PORT }}
