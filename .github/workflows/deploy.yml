@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy reat app
 
 on: 
     pull_request:
