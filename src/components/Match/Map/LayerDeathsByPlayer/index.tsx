@@ -16,7 +16,7 @@ interface IKill {
 
 const division = 15000/(window.innerWidth/5);
 
-const LayerKillsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, participants }) => {
+const LayerDeathsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, participants }) => {
     const kills: Array<IKill> = [];
     let i = 0;
 
@@ -27,9 +27,9 @@ const LayerKillsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, partic
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
             if ((event.type === "CHAMPION_KILL" &&
-            event.killerId === i) || 
+            event.victimId === i) || 
             (event.type === "CHAMPION_SPECIAL_KILL" &&
-            event.killerId === i )) {
+            event.victimId === i )) {
                 if (event.position) {
                     kills.push({ x: event.position.x, y: event.position.y });
                 }
@@ -45,7 +45,7 @@ const LayerKillsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, partic
                         x={kill.x / division}
                         y={(window.innerWidth/5) - (kill.y / division)}
                         radius={4}
-                        fill="blue"
+                        fill="red"
                         shadowBlur={10}
                         opacity={0.5}
                         key={key + "zzkjztjetl"}
@@ -56,4 +56,4 @@ const LayerKillsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, partic
     );
 };
 
-export default LayerKillsByPlayer;
+export default LayerDeathsByPlayer;

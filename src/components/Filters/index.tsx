@@ -13,8 +13,6 @@ const Filters: React.FC = (props) => {
         <Container>
             <FilterCheckbox filterType={"Bkills"} />
             <FilterCheckbox filterType={"Rkills"} />
-            <FilterCheckbox filterType={"champions"} />
-
             {/* 
            TODO: Ajouter des filtres qui permet de d'afficher 
            les Champions présent dans la game et donc
