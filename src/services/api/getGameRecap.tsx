@@ -16,7 +16,7 @@ const getGameRecap = async (gameId: string) => {
 		success: false
 	};
 
-	const game_url = `http://localhost:8000/api/game?uuid=${gameId}`;
+	const game_url = `http://51.83.73.96:8000/api/game?uuid=${gameId}`;
 
 	try {
 		await axios.get(game_url, {
