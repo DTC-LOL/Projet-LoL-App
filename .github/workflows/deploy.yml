@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy react app
 
 on: 
     pull_request:
