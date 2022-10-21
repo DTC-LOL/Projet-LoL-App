@@ -6,8 +6,11 @@ import LayerKill from './LayerKills/index';
 import LayerKillAram from './LayerKillsAram/index';
 import LayerBuildings from './LayerBuildings/index';
 import LayerBuildingsAram from './LayerBuildingsAram/index';
-import { IGameTimeLine } from '@typesDef/match';
+import LayerKillsByPlayer from './LayerKillsByPlayer/index';
 import LayerDeaths from './LayerDeaths';
+import LayerDeathsByPlayer from './LayerDeathsByPlayer/index';
+import { IGameTimeLine } from '@typesDef/match';
+
 
 interface IProps {
 	gameTimelineData: IGameTimeLine;
@@ -17,6 +20,8 @@ interface IProps {
 const Map: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
 	const selectedFilter = useAppSelector(state => state.filters.selectedFilter);
 	const IsVisibleBuildings = useAppSelector(state => state.filters.isVisibleBuilding);
+	const selectedSummoner = useAppSelector(state => state.filters.selectedSummoner);
+	
 	return (
 		<Container>
 			<Canvas width={window.innerWidth/5} height={window.innerWidth/5} gameMode={gameMode}>
@@ -26,6 +31,8 @@ const Map: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
 						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} />
 						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
 						<LayerDeaths selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+						<LayerKillsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} />
+						<LayerDeathsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} />
 						</>
 				}
 				{

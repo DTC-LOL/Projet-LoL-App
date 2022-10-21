@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { mediaQueries } from '@services/media';
 import { IParticipant } from '@typesDef/match';
-import KDA from './KDA';
 import ItemsGrid from './ItemsGrid';
+import { useAppDispatch } from '@store/hooks';
+import {setActiveFilter, setSelectedSummoner} from "@store/features/filters/filtersSlice";
 
 interface IProps {
     summonerDetail: IParticipant;
@@ -11,12 +12,19 @@ interface IProps {
 }
 
 const SummonerCard: React.FC<IProps> = ({ summonerDetail }) => {
+    const dispatch = useAppDispatch();
+
+    const handleSummonerClick = () => {
+        dispatch(setSelectedSummoner(summonerDetail.puuid));
+        dispatch(setActiveFilter(""));
+    }
+
     return (
         <Container>
             
             <SummonerCardInfosSummonerName>{summonerDetail.summonerName}</SummonerCardInfosSummonerName>
             <SummonerCardInfos>
-                <CheckBox name="summoner-filter" />
+                <CheckBox name="filter" onClick={() => handleSummonerClick()} teamid={summonerDetail.teamId}/>
                 <ChampionThumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + summonerDetail.championName + ".png"} />
             </SummonerCardInfos>
             <SummonerCardKDA>
@@ -48,7 +56,7 @@ const Container = styled.div`
     position: relative;
 `;
 
-const CheckBox = styled.input.attrs({ type: "radio" })`
+const CheckBox = styled.input.attrs({ type: "radio" }) <{ teamid: number }>`
     appearance: unset;
     width: 100%;
     height: 100%;
@@ -57,9 +65,11 @@ const CheckBox = styled.input.attrs({ type: "radio" })`
     position: absolute;
     top: 0;
     left: 0;
+    
+    
 
     &:checked {
-        border: 4px solid #dd0054;
+        border: 4px solid ${props => props.teamid === 100 ? "#E84855" : "#222A68"};
     }
 `;
 

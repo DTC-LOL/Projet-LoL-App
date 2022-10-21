@@ -61,6 +61,7 @@ export interface IGameTimeLineParticipants {
   puuid: string;
 }
 
+
 export interface IGameTimeLineFrame {
   events: Array<IGameTimeLineFrameEvent>
   participantFrames: Array<{
