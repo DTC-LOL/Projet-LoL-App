@@ -20,13 +20,12 @@ jobs:
       with:
         source: "."
         target: "~/projetLol/app/"
-        script: sudo touch /home/debian/test
-
-    # - name: Executing remote command
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.VPS_HOST }}
-    #     USERNAME: ${{ secrets.VPS_USERNAME }}
-    #     PORT: ${{ secrets.PORT }}
-    #     KEY: ${{ secrets.SSHKEY }}
-    #     script: yarn && yarn start
+    
+    - name: Executing remote command
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.VPS_HOST }}
+          USERNAME: ${{ secrets.VPS_USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSHKEY }}
+          script: yarn && yarn start
