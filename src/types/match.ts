@@ -56,6 +56,11 @@ export interface IGameTimeLineFrameEvent {
   winningTeam?: number
 }
 
+export interface IGameTimeLineParticipants {
+  participantId: number;
+  puuid: string;
+}
+
 export interface IGameTimeLineFrame {
   events: Array<IGameTimeLineFrameEvent>
   participantFrames: Array<{
