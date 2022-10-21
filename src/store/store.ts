@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import filtersReducer from './features/filters/filtersSlice';
 import timelineReducer from './features/timeline/timelineSlice';
+import gamesReducer from './features/games/gameSlice';
 
 const store = configureStore({
   reducer: {
     filters: filtersReducer,
-    timeline: timelineReducer
+    timeline: timelineReducer,
+	gameDatas: gamesReducer
   }
 })
 

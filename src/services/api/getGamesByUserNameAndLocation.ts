@@ -20,17 +20,19 @@ const getGamesByUserNameAndLocation = async (data: IFormData) => {
         success: false
     };
 
-    const player_url = `http://localhost:8000/api/player?name=${data.name}&location=${data.location}`;
+    const player_url = `http://51.83.73.96:8000/api/player?name=${data.name}&location=${data.location}`;
+
     try {
         await axios.get(player_url, {
             headers: {
                 'content-type': 'application/json',
             }
         }).then(res => {
+            response.success = true;
             response['data'] = res.data;
 
         }).catch(err => {
-            response['error'] = err.response.data;
+            response['error'] = err.message;
         });
     } catch (err: any) {
         response['error'] = err.message;
