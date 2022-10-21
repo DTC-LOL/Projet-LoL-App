@@ -24,7 +24,7 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail }) => {
             
             <SummonerCardInfosSummonerName>{summonerDetail.summonerName}</SummonerCardInfosSummonerName>
             <SummonerCardInfos>
-                <CheckBox name="filter" onClick={() => handleSummonerClick()}/>
+                <CheckBox name="filter" onClick={() => handleSummonerClick()} teamid={summonerDetail.teamId}/>
                 <ChampionThumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + summonerDetail.championName + ".png"} />
             </SummonerCardInfos>
             <SummonerCardKDA>
@@ -56,7 +56,7 @@ const Container = styled.div`
     position: relative;
 `;
 
-const CheckBox = styled.input.attrs({ type: "radio" })`
+const CheckBox = styled.input.attrs({ type: "radio" }) <{ teamid: number }>`
     appearance: unset;
     width: 100%;
     height: 100%;
@@ -65,9 +65,11 @@ const CheckBox = styled.input.attrs({ type: "radio" })`
     position: absolute;
     top: 0;
     left: 0;
+    
+    
 
     &:checked {
-        border: 4px solid #dd0054;
+        border: 4px solid ${props => props.teamid === 100 ? "#E84855" : "#222A68"};
     }
 `;
 
