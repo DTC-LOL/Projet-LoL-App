@@ -28,4 +28,5 @@ jobs:
           USERNAME: ${{ secrets.VPS_USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
-          script: touch /home/debian/test.txt
+          script: cd ~/projetLol/app/ && yarn build && mv ./build/* /var/www/html 
+          
