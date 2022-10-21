@@ -20,7 +20,7 @@ jobs:
       with:
         source: "."
         target: "~/projetLol/app/"
-        script: sudo touch ~/test.txt
+        script: sudo touch /home/debian/test
 
     # - name: Executing remote command
     #   uses: appleboy/ssh-action@master
