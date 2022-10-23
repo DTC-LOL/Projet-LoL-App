@@ -40,4 +40,4 @@ jobs:
           USERNAME: ${{ secrets.VPS_USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
-          script: cd ~/projetLol/app/ && yarn build && sudo rm -r /var/www/dtc-lol.ovh/ && sudo mkdir /var/www/dtc-lol.ovh/ && sudo mv ./build/* /var/www/dtc-lol.ovh/ 
+          script: cd ~/projetLol/app/ && yarn && yarn build && sudo rm -r /var/www/dtc-lol.ovh/ && sudo mkdir /var/www/dtc-lol.ovh/ && sudo mv ./build/* /var/www/dtc-lol.ovh/ 
