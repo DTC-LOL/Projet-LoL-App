@@ -1,4 +1,5 @@
 import axios from "axios";
+import getApiUrl from "./getApiUrl";
 
 interface IResponse {
 	success: boolean;
@@ -15,9 +16,10 @@ const getGameRecap = async (gameId: string) => {
 	const response: IResponse = {
 		success: false
 	};
-
-	const game_url = `http://51.83.73.96:8000/api/game?uuid=${gameId}`;
-
+	
+	const game_url = getApiUrl() + 'game?uuid=' + gameId;
+	console.log('game_url_env : ', process.env.NODE_ENV);
+	
 	try {
 		await axios.get(game_url, {
 			headers: {
