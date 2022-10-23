@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-     - name: Executing remote command (delete)
+    - name: Executing remote command (delete)
       uses: appleboy/ssh-action@master
       with:
           HOST: ${{ secrets.VPS_HOST }}
