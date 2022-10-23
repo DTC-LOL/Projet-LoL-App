@@ -21,8 +21,7 @@ const getGamesByUserNameAndLocation = async (data: IFormData) => {
         success: false
     };
     
-    const player_url = getApiUrl() + `name=${data.name}&location=${data.location}`;
-
+    const player_url = getApiUrl() + 'player?name=${data.name}&location=${data.location}';
     try {
         await axios.get(player_url, {
             headers: {
