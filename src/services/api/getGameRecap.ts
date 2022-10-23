@@ -18,7 +18,7 @@ const getGameRecap = async (gameId: string) => {
 	};
 	
 	const game_url = getApiUrl() + 'game?uuid=' + gameId;
-	console.log('game_url_env : ', process.env.NODE_ENV);
+	
 	
 	try {
 		await axios.get(game_url, {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import getApiUrl from "./getApiUrl";
 
 interface IFormData {
     name: FormDataEntryValue | null;
@@ -20,8 +21,8 @@ const getGamesByUserNameAndLocation = async (data: IFormData) => {
         success: false
     };
     
-    const player_url = `http://localhost:8000/api/player?name=${data.name}&location=${data.location}`;
-    
+    const player_url = getApiUrl() + `name=${data.name}&location=${data.location}`;
+
     try {
         await axios.get(player_url, {
             headers: {
