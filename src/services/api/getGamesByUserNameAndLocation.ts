@@ -32,7 +32,7 @@ const getGamesByUserNameAndLocation = async (data: IFormData) => {
             response['data'] = res.data;
 
         }).catch(err => {
-            response['error'] = err.message;
+            response['error'] = err && err.response && err.response.data ? err.response.data : err.message;
         });
     } catch (err: any) {
         response['error'] = err.message;
