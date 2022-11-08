@@ -54,6 +54,10 @@ const Canvas = styled(Stage)`
 	background-image: url("http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map${(props) => props.gameMode === 'ARAM' ? "12" : "11"}.png");
 	background-size: contain;
     background-repeat: no-repeat;
+    @media screen and (max-width: 768px) {
+    	width: 100%;
+    	height: auto
+    }
 `;
 
 const Filter = styled.div`

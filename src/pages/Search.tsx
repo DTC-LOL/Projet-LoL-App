@@ -59,13 +59,19 @@ const SearchPage: React.FC = () => {
     return (
         <Container>
             <Search submitMethod={handleSubmit} />
-            {submited && !isLoading && !error && (
-                <List playerData={player} gamesData={games} total={games.length}/>
-            )}
-            {isLoading && <p>Loading...</p>}
-            {error && <p className="text-danger">{error}</p>}
+            <Content>
+                {submited && !isLoading && !error && (
+                    <List playerData={player} gamesData={games} total={games.length}/>
+                )}
+                {isLoading && <p>Loading...</p>}
+                {error && <p className="text-danger">{error}</p>}
+            </Content>
         </Container>);
 };
 const Container = styled(Wrapper)``;
+
+const Content = styled.div`
+    margin: 1rem 0;
+`
 
 export default SearchPage;

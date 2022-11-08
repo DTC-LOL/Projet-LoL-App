@@ -128,12 +128,14 @@ const SummonerCardInfosSummonerName = styled.div`
 `;
 
 const ChampionThumbnail = styled.img`
-    ${mediaQueries("desktop")`
-        width: 48px;
-        height: 48px;
-        border-radius: 999px;
-        background-color: #000;
-    `}
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background-color: #000;
+    @media (min-width: 768px) and (max-width: 1020px) {
+        width: 80px;
+        height: 80px;
+    }
 `;
 
 

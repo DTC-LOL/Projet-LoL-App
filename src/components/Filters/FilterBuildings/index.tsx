@@ -36,7 +36,8 @@ const FilterBuildings: React.FC<IProps> = ({ filterState }) => {
 }
 
 const Container = styled.button`
-    width: 100%;
+    display: flex;
+    align-items: center;
     position: relative;
     border-radius: 30px;
     border: none;
@@ -45,10 +46,14 @@ const Container = styled.button`
     height: 15%;
     padding: 10px;
     color: white;
+    @media screen and (max-width: 768px) {
+        width: auto;
+    }
 `;
 
 const Icon = styled.img`
     width: 20px;
+    margin-right: 0.5rem;
 `
 
 export default FilterBuildings;
