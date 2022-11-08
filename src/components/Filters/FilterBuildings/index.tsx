@@ -42,13 +42,9 @@ const Container = styled.button`
     border-radius: 30px;
     border: none;
     background-color: #dd0054;
-    width: 20%;
     height: 15%;
     padding: 10px;
     color: white;
-    @media screen and (max-width: 768px) {
-        width: auto;
-    }
 `;
 
 const Icon = styled.img`

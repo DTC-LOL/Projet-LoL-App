@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Map from '@components/Match/Map';
 import Filters from '@components/Filters';
 import getGameRecap from '@services/api/getGameRecap';
-import { IGameData, IGameRecap } from '@typesDef/match';
+import { IGameData } from '@typesDef/match';
 import { mediaQueries } from '@services/media';
 import Teams from '@components/Match/Details/Teams';
 import Tabs from '@components/Tabs/index';
@@ -52,21 +52,23 @@ const Match: React.FC = () => {
                                 title: "Recap",
                                 render: () =>
                                         <MatchLayout>
-                                            <MatchLayoutLeftPart>
-                                                <MapContainer>
-                                                    <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
-                                                </MapContainer>
-                                                <Filters />
-                                            </MatchLayoutLeftPart>
 
-                                            <MatchLayoutRightPart>
-                                                <DetailsContainer>
-                                                    <Teams gameRecapData={gameRecapData} />
-                                                </DetailsContainer>
-                                            </MatchLayoutRightPart>
+                                            <DetailsContainer>
+                                                <Teams gameRecapData={gameRecapData}>
+
+                                                    <InnerContainer className={"innerContainer"}>
+                                                        <MapContainer>
+                                                            <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
+                                                        </MapContainer>
+                                                        <Filters />
+                                                    </InnerContainer>
+
+                                                </Teams>
+
+                                            </DetailsContainer>
+
                                         </MatchLayout>
-                                
-                            },
+                        },
                             {
                                 title: "Timeline",
                                 render: () =>
@@ -93,31 +95,28 @@ const MatchLayout = styled.div`
 
     ${mediaQueries('laptop')`
         flex-direction: row;
-`}
-`
-const MatchLayoutLeftPart = styled.div`
-    width: 100%;
-    ${mediaQueries('laptop')`
-        width: 50%;
     `}
 `
 
-const MatchLayoutRightPart = styled.div`
-    flex: 1;
-`
-
 const Container = styled.div`
+`;
 
+const InnerContainer = styled.div`
+    width: 75%;
+    @media (max-width: 820px) {
+        order: -1;
+        width: 100%;
+    }
 `;
 
 const DetailsContainer = styled.div`
-  ${mediaQueries('desktop')`
-  `}
+      ${mediaQueries('desktop')`
+      `}
 `;
 const MapContainer = styled.div`
-  ${mediaQueries('desktop')`
-    display: flex;
-  `}
+      ${mediaQueries('desktop')`
+        display: flex;
+      `}
 `;
 
 export default Match;
