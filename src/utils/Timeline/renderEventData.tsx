@@ -1,4 +1,4 @@
-import { IGameTimeLineFrameEvent, IParticipant } from "@typesDef/match";
+import { IGameTimeLineFrameEvent, IParticipant } from "types/match";
 import React from "react";
 import styled from 'styled-components';
 
@@ -19,7 +19,7 @@ const getMonsterTextByIsType = (event: IGameTimeLineFrameEvent) => {
                     break;
             }
 
-            break;
+            break;  
 
         default:
             break;
@@ -27,12 +27,12 @@ const getMonsterTextByIsType = (event: IGameTimeLineFrameEvent) => {
 }
 
 export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants : IParticipant[]) => {
-
+    console.log('event : ', event);
     switch (event.type) {
         case "ITEM_PURCHASED":
             if (event.participantId) {
                 return (
-                    <>
+                    <> 
                         <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.participantId - 1].championName + ".png"} />
                         <TimeLineListItemText>{participants[event.participantId - 1].summonerName} a acheté </TimeLineListItemText>
                         <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + event.itemId + ".png"} />
@@ -145,13 +145,16 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
 
         case "WARD_PLACED":
             if (event.creatorId) {
-                return (
-                    <>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.creatorId - 1].championName + ".png"} />
-                        <TimeLineListItemText>{participants[event.creatorId - 1].summonerName} a placé/utilisé une ward </TimeLineListItemText>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + participants[event.creatorId - 1].item6 + ".png"} />
-                    </>
-                );
+                if (event.wardType !== "UNDEFINED") {
+                    return (
+                        <>
+                            <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.creatorId - 1].championName + ".png"} />
+                            <TimeLineListItemText>{participants[event.creatorId - 1].summonerName} a placé/utilisé une ward </TimeLineListItemText>
+                            <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + participants[event.creatorId - 1].item6 + ".png"} />
+                        </>
+                    );
+                }
+                
             }
             break;
 

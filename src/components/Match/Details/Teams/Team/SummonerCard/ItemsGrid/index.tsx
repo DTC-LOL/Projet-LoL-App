@@ -1,5 +1,5 @@
-import { mediaQueries } from '@services/media';
-import { IParticipant } from '@typesDef/match';
+import { mediaQueries } from 'services/media';
+import { IParticipant } from 'types/match';
 import React from 'react';
 import styled from 'styled-components';
 interface IProps {

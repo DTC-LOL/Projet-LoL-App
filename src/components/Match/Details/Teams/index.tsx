@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import {IGameData, IGameRecap} from '@typesDef/match';
+import {IGameData, IGameRecap} from 'types/match';
 import TeamDetails from './Team';
-import { mediaQueries } from '@services/media';
+import { mediaQueries } from 'services/media';
 
 interface IProps {
     gameRecapData: IGameRecap;

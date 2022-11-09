@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Stage, Layer, Circle, Image } from 'react-konva';
 import styled from 'styled-components';
-import { useAppSelector } from '@store/hooks';
+import { useAppSelector } from 'store/hooks';
 import LayerKill from './LayerKills/index';
 import LayerKillAram from './LayerKillsAram/index';
 import LayerBuildings from './LayerBuildings/index';
@@ -9,7 +9,7 @@ import LayerBuildingsAram from './LayerBuildingsAram/index';
 import LayerKillsByPlayer from './LayerKillsByPlayer/index';
 import LayerDeaths from './LayerDeaths';
 import LayerDeathsByPlayer from './LayerDeathsByPlayer/index';
-import { IGameTimeLine } from '@typesDef/match';
+import { IGameTimeLine } from 'types/match';
 
 
 interface IProps {
@@ -18,9 +18,9 @@ interface IProps {
 }
 
 const Map: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
-	const selectedFilter = useAppSelector(state => state.filters.selectedFilter);
-	const IsVisibleBuildings = useAppSelector(state => state.filters.isVisibleBuilding);
-	const selectedSummoner = useAppSelector(state => state.filters.selectedSummoner);
+	const selectedFilter = useAppSelector((state: { filters: { selectedFilter: any; }; }) => state.filters.selectedFilter);
+	const IsVisibleBuildings = useAppSelector((state: { filters: { isVisibleBuilding: any; }; }) => state.filters.isVisibleBuilding);
+	const selectedSummoner = useAppSelector((state: { filters: { selectedSummoner: any; }; }) => state.filters.selectedSummoner);
 	
 	return (
 		<Container>
