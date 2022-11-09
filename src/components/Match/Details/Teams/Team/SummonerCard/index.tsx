@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mediaQueries } from '@services/media';
-import { IParticipant } from '@typesDef/match';
+import { mediaQueries } from 'services/media';
+import { IParticipant } from 'types/match';
 import ItemsGrid from './ItemsGrid';
-import { useAppDispatch } from '@store/hooks';
-import {setActiveFilter, setSelectedSummoner} from "@store/features/filters/filtersSlice";
+import { useAppDispatch } from 'store/hooks';
+import {setActiveFilter, setSelectedSummoner} from "store/features/filters/filtersSlice";
 
 interface IProps {
     summonerDetail: IParticipant;

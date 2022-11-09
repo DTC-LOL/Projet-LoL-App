@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {IGameData, IParticipant} from '@typesDef/match';
+import {IGameData, IParticipant} from 'types/match';
 import SummonerCard from './SummonerCard';
 
 interface IProps {

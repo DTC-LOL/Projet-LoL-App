@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Stage, Layer, Circle, Image } from 'react-konva';
-import { IGameTimeLineFrame, IGameTimeLineFrameEvent, IGameTimeLineParticipants } from '@typesDef/match';
+import { IGameTimeLineFrame, IGameTimeLineFrameEvent, IGameTimeLineParticipants } from 'types/match';
 
 interface IProps {
     selectedSummoner: string;

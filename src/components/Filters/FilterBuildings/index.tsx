@@ -1,8 +1,8 @@
-import useTranslation from '@hooks/useTranslation';
+import useTranslation from 'hooks/useTranslation';
 import React from 'react';
 import styled from 'styled-components';
-import { useAppDispatch } from '@store/hooks';
-import {setIsVisibleBuilding} from "@store/features/filters/filtersSlice";
+import { useAppDispatch } from 'store/hooks';
+import {setIsVisibleBuilding} from "store/features/filters/filtersSlice";
 
 
 interface IProps {
@@ -28,7 +28,7 @@ const FilterBuildings: React.FC<IProps> = ({ filterState }) => {
     return (
         <Container onClick={() => handleFilterClick()} >
            <Icon src={"/turret.svg"}/>
-           Show Buildings
+           {t('showBuildings')}
         </Container>
         
     );

@@ -1,14 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '@store/store'
 
 // Define a type for the slice state
 interface TimelineState {
-    selectedTime: number
+    selectedTime: number[]
 }
 
 // Define the initial state using that type
 const initialState: TimelineState = {
-    selectedTime: 1,
+    selectedTime: [1],
 }
 
 export const timeLineSlice = createSlice({
@@ -17,7 +16,7 @@ export const timeLineSlice = createSlice({
   initialState,
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    setSelectedTime: (state, action: PayloadAction<number>) => {
+    setSelectedTime: (state, action: PayloadAction<number[]>) => {
       state.selectedTime = action.payload
     },
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Wrapper from '@components/Layout/Wrapper';
+import Wrapper from 'components/Layout/Wrapper';
 
 const Home: React.FC = () => {
   
