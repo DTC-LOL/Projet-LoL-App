@@ -34,7 +34,7 @@ const SearchPage: React.FC = () => {
         
         const formData = new FormData(e.target);
 
-        const data = {
+        const data: any = {
             name: formData.get('name'),
             location: formData.get('location')
         };
