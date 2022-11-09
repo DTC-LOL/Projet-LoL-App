@@ -5,11 +5,11 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
-import localSelector from '@services/momentjs/locales/fr';
-import { IGameData } from '@typesDef/match';
+import localSelector from 'services/momentjs/locales/fr';
+import { IGameData } from 'types/match';
 import styled from 'styled-components';
-import { mediaQueries } from '@services/media';
-import {capitalizeFirstLowercaseRest} from '@services/utility';
+import { mediaQueries } from 'services/media';
+import {capitalizeFirstLowercaseRest} from 'services/utility';
 
 type Props = {
 	gamesData: IGameData,

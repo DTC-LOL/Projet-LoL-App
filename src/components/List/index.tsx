@@ -4,9 +4,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 import ListItem from './ListItem';
 import { releaseCapture } from 'konva/lib/PointerEvents';
-import { IGameData } from '@typesDef/match';
+import { IGameData } from 'types/match';
 import styled from 'styled-components';
-import Pagination from '@components/List/Pagination';
+import Pagination from 'components/List/Pagination';
 
 type Props = {
 	playerData: any,

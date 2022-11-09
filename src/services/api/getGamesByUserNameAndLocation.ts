@@ -2,8 +2,8 @@ import axios from "axios";
 import getApiUrl from "./getApiUrl";
 
 interface IFormData {
-    name: FormDataEntryValue | null;
-    location: FormDataEntryValue | null;
+    name: string | null;
+    location: string | null;
 }
 
 interface IResponse { 
@@ -11,6 +11,7 @@ interface IResponse {
     data?: any;
     error?: any;
 }
+
 /**
 * This function is used to get the games by username and location
 * @param {IFormData} formData - The form data
@@ -20,7 +21,7 @@ const getGamesByUserNameAndLocation = async (data: IFormData) => {
     const response:IResponse = {
         success: false
     };
-    
+     
     const player_url = getApiUrl() + `player?name=${data.name}&location=${data.location}`;
     try {
         await axios.get(player_url, {
