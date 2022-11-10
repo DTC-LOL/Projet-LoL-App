@@ -54,6 +54,9 @@ const Container = styled.div`
     color: #fff;
     border-bottom : 1px solid #222222;
     position: relative;
+    &:not(:first-child) {
+        margin-top: 1rem 
+    }
 `;
 
 const CheckBox = styled.input.attrs({ type: "radio" }) <{ teamid: number }>`
