@@ -17,7 +17,6 @@ interface IProps {
 const TimeLineMap: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
 	const selectedFilter = useAppSelector(state => state.filters.selectedFilter);
 	const IsVisibleBuildings = useAppSelector(state => state.filters.isVisibleBuilding);
-	const selectedTime = useAppSelector(state => state.timeline.selectedTime);
 
 	return (
 		<Container>

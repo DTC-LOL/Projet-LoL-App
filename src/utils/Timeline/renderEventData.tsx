@@ -27,7 +27,7 @@ const getMonsterTextByIsType = (event: IGameTimeLineFrameEvent) => {
 }
 
 export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants : IParticipant[]) => {
-    console.log('event : ', event);
+    // console.log('event : ', event);
     switch (event.type) {
         case "ITEM_PURCHASED":
             if (event.participantId) {

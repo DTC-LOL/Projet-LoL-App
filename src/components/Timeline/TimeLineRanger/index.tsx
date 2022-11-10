@@ -2,26 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { RangerOptions, useRanger } from "react-ranger";
 import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { setSelectedTime } from 'store/features/timeline/timelineSlice';
 
 interface IProps {
     gameTimelineLength: number;
 }
 
 const TimeLineRanger: React.FC<IProps> = ({gameTimelineLength}) => {
-    const selectedTime: RangerOptions["values"] = useAppSelector(state => state.timeline.selectedTime);
-    console.log(selectedTime);
+
     const dispatch = useAppDispatch();
 
-    const setSTime = (value: number[]) => {
-        dispatch(setSelectedTime(value));
+    const setSTime = (e: any) => {
+        console.log('e : ', e);
+        
+        // dispatch(setSelectedTime(value));
     }
     
     const { getTrackProps, handles } = useRanger({
         min: 0, // minimum value
         max: gameTimelineLength, // maximum value
         stepSize: 1,
-        values: selectedTime, // initial values
+        values: [1], // initial values
         onChange: setSTime,   
     });
 
@@ -54,7 +54,7 @@ const TimeLineRanger: React.FC<IProps> = ({gameTimelineLength}) => {
     );
 };
 const Container = styled.div`
-    width: 98%;
-    margin: 20px auto 0 auto;
+    width: 88%;
+    margin: auto;
 `;
 export default TimeLineRanger;
