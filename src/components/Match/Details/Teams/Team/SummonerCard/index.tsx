@@ -136,10 +136,6 @@ const ChampionThumbnail = styled.img`
     height: 48px;
     border-radius: 999px;
     background-color: #000;
-    @media (min-width: 768px) and (max-width: 1020px) {
-        width: 80px;
-        height: 80px;
-    }
 `;
 
 

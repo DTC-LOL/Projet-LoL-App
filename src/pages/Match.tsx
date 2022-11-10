@@ -141,10 +141,9 @@ const Container = styled.div`
 `;
 
 const InnerContainer = styled.div`
-    width: 75%;
     @media (max-width: 820px) {
-        order: -1;
-        width: 100%;
+        grid-column: 1 / span 2; 
+        grid-row: 1 
     }
 `;
 
