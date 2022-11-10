@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mediaQueries } from 'services/media';
 import { IParticipant } from 'types/match';
 import ItemsGrid from './ItemsGrid';
 import { useAppDispatch } from 'store/hooks';
@@ -8,10 +7,9 @@ import {setActiveFilter, setSelectedSummoner} from "store/features/filters/filte
 
 interface IProps {
     summonerDetail: IParticipant;
-    team: string;
 }
 
-const SummonerCard: React.FC<IProps> = ({ summonerDetail , team}) => {
+const SummonerCard: React.FC<IProps> = ({ summonerDetail}) => {
     const dispatch = useAppDispatch();
 
     const handleSummonerClick = () => {
@@ -20,7 +18,7 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail , team}) => {
     }
 
     return (
-        <Container color={team}>
+        <Container>
             
             <SummonerCardInfosSummonerName>{summonerDetail.summonerName}</SummonerCardInfosSummonerName>
             <SummonerCardInfos>
@@ -48,17 +46,12 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail , team}) => {
 
 
 const Container = styled.div`
-      background-color: ${props => props.color == "Blue" ? "#222A68" : "#E84855"};
-      display: flex;
-      flex-wrap: wrap;
-      padding: 10px;
-      color: #fff;
-      position: relative;
-      {
-        &:not(:first-child) {
-            margin-top: 1rem
-        }
-      }
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    color: #fff;
+    border-bottom : 1px solid #222222;
+    position: relative;
 `;
 
 const CheckBox = styled.input.attrs({ type: "radio" }) <{ teamid: number }>`

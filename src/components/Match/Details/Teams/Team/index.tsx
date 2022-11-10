@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {IGameData, IParticipant} from 'types/match';
+import {IParticipant} from 'types/match';
 import SummonerCard from './SummonerCard';
 
 interface IProps {
@@ -13,7 +13,7 @@ const TeamDetails: React.FC<IProps> = ({teamName,participants}) => {
     return (
     <Container>
         {participants.map((participant, key) => (
-            <SummonerCard key={teamName + "_Summoner_"+ key} summonerDetail={participant} team={teamName}/>
+            <SummonerCard key={teamName + "_Summoner_"+ key} summonerDetail={participant}/>
         ))}
     </Container>);
 };

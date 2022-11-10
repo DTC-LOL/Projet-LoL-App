@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Map from 'components/Match/Map';
 import Filters from 'components/Filters';
 import getGameRecap from 'services/api/getGameRecap';
-import { IGameData, IGameRecap } from 'types/match';
+import { IGameData} from 'types/match';
 import { mediaQueries } from 'services/media';
 import Teams from 'components/Match/Details/Teams';
 import Tabs from 'components/Tabs/index';
@@ -53,18 +53,20 @@ const Match: React.FC = () => {
                                 title: "Recap",
                                 render: () =>
                                     <MatchLayout>
-                                        <MatchLayoutLeftPart>
-                                            <MapContainer>
-                                                <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
-                                            </MapContainer>
-                                            <Filters />
-                                        </MatchLayoutLeftPart>
+                                      
+                                      <DetailsContainer>
+                                            <Teams gameRecapData={gameRecapData}>
 
-                                        <MatchLayoutRightPart>
-                                            <DetailsContainer>
-                                                <Teams gameRecapData={gameRecapData} />
-                                            </DetailsContainer>
-                                        </MatchLayoutRightPart>
+                                                <InnerContainer className={"innerContainer"}>
+                                                    <MapContainer>
+                                                        <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
+                                                    </MapContainer>
+                                                    <Filters />
+                                                </InnerContainer>
+
+                                            </Teams>
+
+                                        </DetailsContainer>
                                     </MatchLayout>
 
                             },
@@ -110,9 +112,6 @@ const MatchLayout = styled.div`
     `}
 `
 
-const MatchLayoutRightPart = styled.div`
-    flex: 1;
-`
 
 const TimeLineLayout = styled.div`
     display: flex;

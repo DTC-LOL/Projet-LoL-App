@@ -35,7 +35,7 @@ const TimeLineRanger: React.FC<IProps> = ({gameTimelineLength}) => {
                     borderRadius: "2px"
                 }
             })}>
-            {handles.map(({ getHandleProps }, key: number) => (
+            {handles.map(({ getHandleProps } : any, key: number) => (
                 <button 
                     {...getHandleProps({
                         style: {
