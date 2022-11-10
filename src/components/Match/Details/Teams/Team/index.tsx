@@ -13,7 +13,7 @@ const TeamDetails: React.FC<IProps> = ({teamName,participants}) => {
     return (
     <Container>
         {participants.map((participant, key) => (
-            <SummonerCard key={teamName + "_Summoner_"+ key} summonerDetail={participant}/>
+            <SummonerCard key={teamName + "_Summoner_"+ key} summonerDetail={participant} team={teamName}/>
         ))}
     </Container>);
 };

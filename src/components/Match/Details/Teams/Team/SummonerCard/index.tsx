@@ -7,9 +7,10 @@ import {setActiveFilter, setSelectedSummoner} from "store/features/filters/filte
 
 interface IProps {
     summonerDetail: IParticipant;
+    team: string;
 }
 
-const SummonerCard: React.FC<IProps> = ({ summonerDetail}) => {
+const SummonerCard: React.FC<IProps> = ({ summonerDetail, team}) => {
     const dispatch = useAppDispatch();
 
     const handleSummonerClick = () => {
@@ -18,7 +19,7 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail}) => {
     }
 
     return (
-        <Container>
+        <Container color={team}>
             
             <SummonerCardInfosSummonerName>{summonerDetail.summonerName}</SummonerCardInfosSummonerName>
             <SummonerCardInfos>
@@ -46,6 +47,7 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail}) => {
 
 
 const Container = styled.div`
+    background-color: ${props => props.color == "Blue" ? "#222A68" : "#E84855"};
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
