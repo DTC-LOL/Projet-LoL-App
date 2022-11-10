@@ -54,6 +54,7 @@ const Container = styled.div`
     color: #fff;
     border-bottom : 1px solid #222222;
     position: relative;
+    border-radius:8px; 
     &:not(:first-child) {
         margin-top: 1rem 
     }
