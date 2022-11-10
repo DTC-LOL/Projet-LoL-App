@@ -39,7 +39,6 @@ const Match: React.FC = () => {
         }
     }, [])
 
-
     return (
         <Container>
             {

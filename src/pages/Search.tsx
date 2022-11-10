@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { setGamesData, setPlayerData } from 'store/features/games/gameSlice';
 
 const SearchPage: React.FC = () => {
-    const { gameDatas } = useAppSelector(state=>state);
+    const { gameDatas } = useAppSelector(state=> state);
 	
     const [isLoading, setLoading] = React.useState(false);
     const [player, setPlayer] = React.useState<any>(gameDatas.player);

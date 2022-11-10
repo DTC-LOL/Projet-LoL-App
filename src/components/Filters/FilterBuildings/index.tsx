@@ -13,7 +13,6 @@ const FilterBuildings: React.FC<IProps> = ({ filterState }) => {
     const { t } = useTranslation("filters/common");
     const dispatch = useAppDispatch()
 
-
     const handleFilterClick = () => {
         dispatch(setIsVisibleBuilding(filterState));
         if (filterState === false) {
@@ -22,8 +21,6 @@ const FilterBuildings: React.FC<IProps> = ({ filterState }) => {
             filterState = false;
         }
     }
-
-    
 
     return (
         <Container onClick={() => handleFilterClick()} >
