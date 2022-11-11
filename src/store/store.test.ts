@@ -10,12 +10,7 @@ test('reducers', () => {
                 selectedFilter:'',
                 isVisibleBuilding: true,
                 selectedSummoner: ''
-            }, 
-            timeline: { 
-                selectedTime: 1, 
-                mediaPlayerTime: 0, 
-                mediaPlayerState: 'stopped' 
-            }, 
+            },
             gameDatas: { 
                 games: null, 
                 player: null 

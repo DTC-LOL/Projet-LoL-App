@@ -2,9 +2,8 @@ import { IGameTimeLine, IGameTimeLineFrameEvent, IParticipant } from 'types/matc
 import React from 'react';
 import styled from 'styled-components';
 import useTranslation from 'hooks/useTranslation';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { useAppDispatch } from 'store/hooks';
 import { valueSelectorByType } from 'utils/Timeline/renderEventData';
-import { mediaQueries } from 'services/media';
 
 interface IProps {
   gameTimelineData: IGameTimeLine;
@@ -31,33 +30,42 @@ const TimeLineEventsList: React.FC<IProps> = ({time, gameTimelineData, participa
 
     return formattedTime;
   }
+
   React.useEffect(() => {
     listRef.current?.scrollTo(0,listRef.current.scrollHeight - listRef.current.clientHeight);
   })
-    // javaScript function that merge a collection of array into one array
+
   const mergeArrays = (arrays: any[]) => {
     const tempArray: Array<any> = [];
-    gameTimelineData.info.frames.forEach((frame) => {
+    arrays.forEach((frame) => {
       tempArray.push(frame.events);
-    })
+    });
     return tempArray.flat();
   }
-  const events:any = mergeArrays(gameTimelineData.info.frames);
+
+  const events: any = React.useMemo(() => mergeArrays(gameTimelineData.info.frames), [gameTimelineData.info.frames]);
+
+  const isInTimeRange = (eventTimestamp: number) => {
+    const range = 30000;
+    return eventTimestamp >= (time +1 ) - range && eventTimestamp <= time + 1;
+  }
+
   return (
     <>  
-      <Container ref={listRef}>
+      <Container ref={listRef} >
         {events.map((event: IGameTimeLineFrameEvent, key: string) => excludedEventType.includes(event.type) ?
-          "" : excludedWardEventType.includes(event.type) ? "" : (time) >= event.timestamp && (
-            <TimeLineListItem key={"Event_" + key} teamColor={event.participantId}>
+          "" : excludedWardEventType.includes(event.type) ? "" : event.timestamp > 0 ?
+            (isInTimeRange(event.timestamp) && (
+              <TimeLineListItem  key={"Event_" + key} teamColor={event.participantId}>
               {/* {event.type} */}
               <TimeLineListItemTime>
                 {unixTimestampToMinutes(event.timestamp)}
               </TimeLineListItemTime>
               {valueSelectorByType(event, participants) ? valueSelectorByType(event, participants) : event.type}
-            </TimeLineListItem>
-          )
-        )}
 
+            </TimeLineListItem>
+            )) : ""
+        )}
       </Container>
 
 
@@ -70,9 +78,7 @@ const TimeLineListItemTime = styled.div`
 `;
 
 const Container = styled.ul`
-    min-height: 400px;
-    max-height: 400px;
-    max-width: 400px;
+    height: 229px;
     overflow: hidden;
     overflow-y: scroll;
     padding-left: 0;

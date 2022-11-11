@@ -11,10 +11,7 @@ const Timer: React.FC<IProps> = (props) => {
                 {("0" + Math.floor((props.time / 60000) % 60)).slice(-2)}:
             </span>
             <span className="digits">
-                {("0" + Math.floor((props.time / 1000) % 60)).slice(-2)}.
-            </span>
-            <span className="digits mili-sec">
-                {("0" + ((props.time / 10) % 100)).slice(-2)}
+                {("0" + Math.floor((props.time / 1000) % 60)).slice(-2)}
             </span>
         </Container>
     );
@@ -22,7 +19,8 @@ const Timer: React.FC<IProps> = (props) => {
 
 const Container = styled.div`
     display: flex;
-    height: 12%;
+    margin: 0 10px;
+
     justify-content: center;
     align-items: center;
   
@@ -32,9 +30,6 @@ const Container = styled.div`
     color:  #f5f5f5;
 }
   
-.mili-sec{
-    color:  #e42a2a;
-}
 `
 
 export default Timer;

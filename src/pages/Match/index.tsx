@@ -13,6 +13,7 @@ import {
     useParams,
     useNavigate,
 } from "react-router-dom";
+import { useAppSelector } from 'store/hooks';
 
 const Match: React.FC = () => {
     const [loading, setLoading] = React.useState(true);
@@ -20,20 +21,29 @@ const Match: React.FC = () => {
     const [gameTimelineData, setGameTimelineData] = React.useState<any>(null);
     const { id } = useParams();
     const navigate = useNavigate();
+    const gamesDatas = useAppSelector((state) => state.gameDatas);
 
     React.useEffect(() => {
-        if (id) {
-            getGameRecap(id).then((res) => {
-                const gameData: IGameData = res.data;
-                setGameRecapData(gameData.recap);
-                setGameTimelineData(gameData.timeline);
+        if (gamesDatas.games) {
+            const gameData = gamesDatas.games.find((game: IGameData) => game.uuid === id);
+            setGameRecapData(gameData.recap);
+            setGameTimelineData(gameData.timeline);
+            setLoading(false);
 
-            }).then(() => {
-                setLoading(false);
-            });
         } else {
-            // TODO: REDIRECTION VERS LA PAGE D'acceuil si il n'y a pas d'id fournis
-            navigate("")
+            if (id) {
+                getGameRecap(id).then((res) => {
+                    const gameData: IGameData = res.data;
+                    setGameRecapData(gameData.recap);
+                    setGameTimelineData(gameData.timeline);
+
+                }).then(() => {
+                    setLoading(false);
+                });
+            } else {
+                // TODO: REDIRECTION VERS LA PAGE D'acceuil si il n'y a pas d'id fournis
+                navigate("")
+            }
         }
     }, [])
 

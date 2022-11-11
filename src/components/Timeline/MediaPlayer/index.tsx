@@ -1,95 +1,94 @@
 import React from 'react';
 import { mediaQueries } from 'services/media';
-import { setMediaPlayerState } from 'store/features/timeline/timelineSlice';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
 import styled from 'styled-components';
 import ControlButtons from './ControlButtons';
 import Timer from './Timer';
+import { IGameRecap } from 'types/match';
+import { IGameTimeLine } from 'types/match';
 
 interface IProps {
-    gameTimeLineData: any,
-    gameRecapData: any,
-    setTime: (value: number) => void,
-    time: number
+  gameTimeLineData: IGameTimeLine,
+  gameRecapData: IGameRecap,
+  setTime: () => void,
+  resetTime: () => void,
+  handleRangerChange: (value: number) => void,
+  time: number
 }
 
-const MediaPlayer: React.FC<IProps> = ({setTime, time,gameTimeLineData,gameRecapData}) => {
-    const [isActive, setIsActive] = React.useState(false);
-    const [isPaused, setIsPaused] = React.useState(true);
-    const dispatch = useAppDispatch();
-    const mediaPlayerState = useAppSelector(state => state.timeline.mediaPlayerState);
-    
-    React.useEffect(() => {
-        let interval: any;
+const MediaPlayer: React.FC<IProps> = ({ handleRangerChange, setTime, time,resetTime, gameRecapData }) => {
+  const [isActive, setIsActive] = React.useState(false);
+  const [isPaused, setIsPaused] = React.useState<boolean>(true);
+  const [speed, setSpeed] = React.useState(1);
+  let interval: any;
 
-        if (mediaPlayerState === "play") {
-            interval = setInterval(() => {
-                console.log('+1s')
-                setTime(time + 1000);
-            }, 1000);
-        } else {
-            clearInterval(interval);
-        }
-        return () => {
-            clearInterval(interval);
-        };
-    }, [mediaPlayerState, time]);
+  React.useEffect(() => {
+    if (time - 1 > gameRecapData.game_duration * 1000) {
+      setIsPaused(true);
+    } else {
+     
+      if (isActive && !isPaused) {
+        interval = setInterval(() => {
+          setTime();
+        }, 1000 / speed);
+      } else {
+        clearInterval(interval);
+      }
 
-    const handleStart = () => {
-        dispatch(setMediaPlayerState('play'));
-        setIsActive(true);
-        setIsPaused(false);
-    };
-
-    const handlePauseResume = () => {
-        dispatch(setMediaPlayerState(mediaPlayerState === 'paused' ? 'play' : 'paused'));
-        setIsPaused(!isPaused);
-    };
-
-    const handleReset = () => {
-        setIsActive(false);
-        setTime(0);
-    };
-
-    const handleRangeInputChange = (e: any) => {
-        console.log(e.target.value)
-        setTime(e.target.value);
-        // setSelectedTime(e.target.value);
+      return () => {
+        clearInterval(interval);
+      };
     }
+  }, [isActive, isPaused, time]);
+
+  const handleStart = () => {
+    setIsActive(true);
+    setIsPaused(false);
+  };
+
+  const handlePauseResume = () => {
+    setIsPaused(!isPaused);
+  };
+
+  const handleReset = () => {
+    setIsActive(false);
+    setIsPaused(true);
+    resetTime();
+  };
+
+  const handleRangeInputChange = (e: any) => {
+    setIsPaused(true);
+    handleRangerChange(parseInt(e.target.value));
+  }
+
+  const handleSpeedChange = (e: any) => {
+    setSpeed(e.target.value);
+  }
   
-    return (
-        <Container>
-            <Timer time={time} />
-            <TimeLineRangeInputContainer>
-                <input onChange={handleRangeInputChange} type="range" value={time} step="1" min="0" max={gameRecapData.game_duration * 1000} name="" id="" />
-            </TimeLineRangeInputContainer>
-            <ControlButtons
-                active={isActive}
-                isPaused={isPaused}
-                handleStart={handleStart}
-                handlePauseResume={handlePauseResume}
-                handleReset={handleReset}
-            />
-        </Container>
-    );
+  return (
+    <Container>
+      <Timer time={time} />
+      <TimeLineRangeInputContainer>
+        <input onChange={handleRangeInputChange} type="range" value={time} min="0" max={gameRecapData.game_duration * 1000} name="" id="" />
+      </TimeLineRangeInputContainer>
+      <Timer time={gameRecapData.game_duration * 1000} />
+      <ControlButtons
+        active={isActive}
+        isPaused={isPaused}
+        handleStart={handleStart}
+        handlePauseResume={handlePauseResume}
+        handleReset={handleReset}
+        handleSpeedChange={handleSpeedChange}
+      />
+    </Container>
+  );
 }
 
 const Container = styled.div`
     width: 100%;
-    background-color: #0d0c1b;
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-`;
-
-const TimeLineActions = styled.div`
-    display: flex;
-`;
-
-const TimeLineAction = styled.div`
-    min-height: 20px;
-    min-width: 20px;
+    margin: 10px 0;
 `;
 
 const TimeLineRangeInputContainer = styled.div`
@@ -99,8 +98,6 @@ const TimeLineRangeInputContainer = styled.div`
     input[type=range] {
 
   -webkit-appearance: none;
-
-    margin-top: 10px;
   width: 100%;
   ${mediaQueries('laptop')`
       min-width: 400px;
