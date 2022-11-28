@@ -34,9 +34,9 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             if (event.participantId) {
                 return (
                     <>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.participantId - 1].championName + ".png"} />
+                        <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.participantId - 1].championName + ".png"} />
                         <TimeLineListItemText>{participants[event.participantId - 1].summonerName} a acheté </TimeLineListItemText>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + event.itemId + ".png"} />
+                        <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/item/" + event.itemId + ".png"} />
                     </>
                 );
             }
@@ -45,9 +45,9 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             if (event.participantId) {
                 return (
                     <>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.participantId - 1].championName + ".png"} />
+                        <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.participantId - 1].championName + ".png"} />
                         <TimeLineListItemText>{participants[event.participantId - 1].summonerName} a vendu </TimeLineListItemText>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + event.beforeId + ".png"} />
+                        <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/item/" + event.beforeId + ".png"} />
                     </>
                 );
             }
@@ -56,9 +56,9 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             if (event.killerId && event.victimId) {
                 return (
                     <>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
+                        <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
                         <TimeLineListItemText>{participants[event.killerId - 1].summonerName} a tué {participants[event.victimId - 1].summonerName}</TimeLineListItemText>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.victimId - 1].championName + ".png"} />
+                        <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.victimId - 1].championName + ".png"} />
                     </>
                 );
             }
@@ -70,7 +70,7 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
                     case "KILL_FIRST_BLOOD":
                         return (
                             <>
-                                <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
+                                <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
                                 <TimeLineListItemText>{participants[event.killerId - 1].summonerName} a effectué le premier sang</TimeLineListItemText>
                                 <Placeholder />
                             </>
@@ -80,7 +80,7 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
                         killsSeries[event.killerId] += 1;
                         return (
                             <>
-                                <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
+                                <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
                                 <TimeLineListItemText>
                                     a reussi un
                                     {/*TODO: Ajouter le killstreak. 
@@ -94,7 +94,7 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
                     case "KILL_ACE":
                         return (
                             <>
-                                <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
+                                <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
                                 <TimeLineListItemText>{participants[event.killerId - 1].summonerName} a reussi un ace</TimeLineListItemText>
                                 <Placeholder />
                             </>
@@ -109,7 +109,7 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             if (event.killerId !== undefined) {
                 return (
                     <>
-                        {/* <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} /> */}
+                        {/* <Thumbnail src={"process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.killerId - 1].championName + ".png"} /> */}
 
                         <TimeLineListItemText>
                             PLAQUE Détruite
@@ -121,12 +121,12 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             break;
 
         case "BUILDING_KILL":
-            // console.log(event);
+
             if (event.killerId !== undefined) {
                 return (
                     <>
                         {/* TODO: FIXER L'AFFICHAGE DE LA THUMBNAIL DU DESTRUCTEUR DE LA TURRET 
-                            <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + event.killerId !== '10' ? participants[event.killerId].championName : ""  + ".png"} /> 
+                            <Thumbnail src={"process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + event.killerId !== '10' ? participants[event.killerId].championName : ""  + ".png"} /> 
                             Sachant que le destructeur de la tour portant l'id 10 est un sbire
                        */}
                         <TimeLineListItemText>
@@ -147,7 +147,7 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             if (event.killerId !== undefined) {
                 return (
                     <>
-                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
+                        <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
                         <TimeLineListItemText>
                             <>
                                 a tué le {getMonsterTextByIsType(event)}
@@ -168,9 +168,9 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
                 if (event.wardType !== "UNDEFINED") {
                     return (
                         <>
-                            <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.creatorId - 1].championName + ".png"} />
+                            <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.creatorId - 1].championName + ".png"} />
                             <TimeLineListItemText>{participants[event.creatorId - 1].summonerName} a placé/utilisé une ward </TimeLineListItemText>
-                            <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + participants[event.creatorId - 1].item6 + ".png"} />
+                            <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/item/" + participants[event.creatorId - 1].item6 + ".png"} />
                         </>
                     );
                 }
@@ -182,13 +182,13 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
 
             switch (event.wardType) {
                 case "TEEMO_MUSHROOM":
-                    // console.log(event)
+
                     if (event.killerId) {
                         return (
                             <>
-                                <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
+                                <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
                                 <TimeLineListItemText>{participants[event.killerId - 1].summonerName} a détruit une ward </TimeLineListItemText>
-                                <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/spell/FlashFrost.png"} />
+                                <Thumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/spell/FlashFrost.png"} />
                             </>
                         );
                     } else {
@@ -210,7 +210,7 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
                 </>
             );
         default:
-            // console.log('event : ', event);
+
             break;
     }
 }

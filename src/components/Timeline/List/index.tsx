@@ -11,7 +11,7 @@ interface IProps {
   time: number
 }
 
-const excludedEventType = ["SKILL_LEVEL_UP", "LEVEL_UP", "ITEM_DESTROYED", "ITEM_SOLD"];
+const excludedEventType = ["SKILL_LEVEL_UP","WARD_PLACED","WARD_KIL", "LEVEL_UP", "ITEM_DESTROYED", "ITEM_SOLD"];
 const excludedWardEventType = ["UNDEFINED"];
 
 

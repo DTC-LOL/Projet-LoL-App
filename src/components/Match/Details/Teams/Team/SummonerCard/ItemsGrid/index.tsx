@@ -13,7 +13,7 @@ const ItemsGrid: React.FC<IProps> = ({ summonerDetail }) => {
                 Array(7).fill(null).map((_, index) => (
                     <Item  key={"summonerCardItem" + index + "_" + Math.floor(Math.random() * 5000)}>
                         {
-                            summonerDetail['item' + index] ? <ItemImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + summonerDetail['item' + index] + ".png"} /> : <PlaceHolder />
+                            summonerDetail['item' + index] ? <ItemImage src={process.env.REACT_APP_DDRAGON_URL+"/img/item/" + summonerDetail['item' + index] + ".png"} /> : <PlaceHolder />
                         }
                     </Item>
                 ))

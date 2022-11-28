@@ -70,7 +70,7 @@ const MediaPlayer: React.FC<IProps> = ({ handleRangerChange, setTime, time,reset
       <TimeLineRangeInputContainer>
         <input onChange={handleRangeInputChange} type="range" value={time} min="0" max={gameRecapData.game_duration * 1000} name="" id="" />
       </TimeLineRangeInputContainer>
-      <Timer time={gameRecapData.game_duration * 1000} />
+      {/* <Timer time={gameRecapData.game_duration * 1000} /> */}
       <ControlButtons
         active={isActive}
         isPaused={isPaused}
@@ -102,7 +102,7 @@ const TimeLineRangeInputContainer = styled.div`
   ${mediaQueries('laptop')`
       min-width: 400px;
 
-      max-width: 400px;
+    
   `}
 }
 

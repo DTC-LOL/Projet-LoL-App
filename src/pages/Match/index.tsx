@@ -54,24 +54,24 @@ const Match: React.FC = () => {
                 !loading ?
                     <>
                         <Tabs tabs={[
-                            // {
-                            //     title: "Recap",
-                            //     render: () =>
-                            //         <MatchLayout>
-                            //             <MatchLayoutLeftPart>
-                            //                 <MapContainer>
-                            //                     <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
-                            //                 </MapContainer>
-                            //                 <Filters />
-                            //             </MatchLayoutLeftPart>
+                            {
+                                title: "Recap",
+                                render: () =>
+                                    <MatchLayout>
+                                        <MatchLayoutLeftPart>
+                                            <MapContainer>
+                                                <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
+                                            </MapContainer>
+                                            <Filters />
+                                        </MatchLayoutLeftPart>
 
-                            //             <MatchLayoutRightPart>
-                            //                 <DetailsContainer>
-                            //                     <Teams gameRecapData={gameRecapData} />
-                            //                 </DetailsContainer>
-                            //             </MatchLayoutRightPart>
-                            //         </MatchLayout>
-                            // },
+                                        <MatchLayoutRightPart>
+                                            <DetailsContainer>
+                                                <Teams gameRecapData={gameRecapData} />
+                                            </DetailsContainer>
+                                        </MatchLayoutRightPart>
+                                    </MatchLayout>
+                            },
                             {
                                 title: "Timeline",
                                 render: () =>
