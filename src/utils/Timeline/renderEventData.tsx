@@ -19,20 +19,21 @@ const getMonsterTextByIsType = (event: IGameTimeLineFrameEvent) => {
                     break;
             }
 
-            break;  
+            break;
 
         default:
             break;
     }
 }
 
-export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants : IParticipant[]) => {
-    console.log('event : ', event);
+
+
+export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants: IParticipant[]) => {
     switch (event.type) {
         case "ITEM_PURCHASED":
             if (event.participantId) {
                 return (
-                    <> 
+                    <>
                         <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.participantId - 1].championName + ".png"} />
                         <TimeLineListItemText>{participants[event.participantId - 1].summonerName} a acheté </TimeLineListItemText>
                         <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + event.itemId + ".png"} />
@@ -40,7 +41,17 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
                 );
             }
             break;
-
+        case "ITEM_UNDO":
+            if (event.participantId) {
+                return (
+                    <>
+                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.participantId - 1].championName + ".png"} />
+                        <TimeLineListItemText>{participants[event.participantId - 1].summonerName} a vendu </TimeLineListItemText>
+                        <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/" + event.beforeId + ".png"} />
+                    </>
+                );
+            }
+            break;
         case "CHAMPION_KILL":
             if (event.killerId && event.victimId) {
                 return (
@@ -56,6 +67,15 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
         case "CHAMPION_SPECIAL_KILL":
             if (event.killerId) {
                 switch (event.killType) {
+                    case "KILL_FIRST_BLOOD":
+                        return (
+                            <>
+                                <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
+                                <TimeLineListItemText>{participants[event.killerId - 1].summonerName} a effectué le premier sang</TimeLineListItemText>
+                                <Placeholder />
+                            </>
+                        );
+                        break;
                     case "KILL_MULTI":
                         killsSeries[event.killerId] += 1;
                         return (
@@ -101,11 +121,11 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
             break;
 
         case "BUILDING_KILL":
-            console.log(event);
+            // console.log(event);
             if (event.killerId !== undefined) {
                 return (
                     <>
-                       {/* TODO: FIXER L'AFFICHAGE DE LA THUMBNAIL DU DESTRUCTEUR DE LA TURRET 
+                        {/* TODO: FIXER L'AFFICHAGE DE LA THUMBNAIL DU DESTRUCTEUR DE LA TURRET 
                             <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + event.killerId !== '10' ? participants[event.killerId].championName : ""  + ".png"} /> 
                             Sachant que le destructeur de la tour portant l'id 10 est un sbire
                        */}
@@ -154,21 +174,32 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
                         </>
                     );
                 }
-                
+
             }
             break;
 
-        case "WARD_KILLED":
+        case "WARD_KILL":
 
-            return (
-                <>
-                    <Placeholder />
+            switch (event.wardType) {
+                case "TEEMO_MUSHROOM":
+                    // console.log(event)
+                    if (event.killerId) {
+                        return (
+                            <>
+                                <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participants[event.killerId - 1].championName + ".png"} />
+                                <TimeLineListItemText>{participants[event.killerId - 1].summonerName} a détruit une ward </TimeLineListItemText>
+                                <Thumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/spell/FlashFrost.png"} />
+                            </>
+                        );
+                    } else {
+                        break;
+                    }
+                
+                default:
+                    break;
+            }
 
-                    <TimeLineListItemText>Une ward a été placée</TimeLineListItemText>
-                    <Placeholder />
-
-                </>
-            );
+            break;
         case "GAME_END":
             return (
                 <>
@@ -179,6 +210,7 @@ export const valueSelectorByType = (event: IGameTimeLineFrameEvent, participants
                 </>
             );
         default:
+            // console.log('event : ', event);
             break;
     }
 }
