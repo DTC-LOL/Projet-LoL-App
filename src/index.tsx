@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
-import theme from '@services/theme';
+import theme from './services/theme';
 
 
 const root = ReactDOM.createRoot(

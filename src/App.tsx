@@ -3,10 +3,10 @@ import './App.css';
 import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from '@pages/Home';
-import Match from '@pages/Match';
-import Header from '@components/Layout/Header';
-import SearchPage from '@pages/Search';
+import Home from './pages/Home';
+import Match from './pages/Match';
+import Header from './components/Layout/Header';
+import SearchPage from './pages/Search';
 
 
 function App() {

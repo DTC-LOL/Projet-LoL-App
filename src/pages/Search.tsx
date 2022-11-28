@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import Wrapper from '@components/Layout/Wrapper';
-import Search from '@components/Search';
-import List from '@components/List';
+import Wrapper from 'components/Layout/Wrapper';
+import Search from 'components/Search';
+import List from 'components/List';
 //  import Container from 'react-bootstrap/Container';
-import getGamesByUserNameAndLocation from '@services/api/getGamesByUserNameAndLocation';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { setGamesData, setPlayerData } from '@store/features/games/gameSlice';
+import getGamesByUserNameAndLocation from 'services/api/getGamesByUserNameAndLocation';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { setGamesData, setPlayerData } from 'store/features/games/gameSlice';
 
 const SearchPage: React.FC = () => {
     const { gameDatas } = useAppSelector(state=>state);
@@ -34,7 +34,7 @@ const SearchPage: React.FC = () => {
         
         const formData = new FormData(e.target);
 
-        const data = {
+        const data: any = {
             name: formData.get('name'),
             location: formData.get('location')
         };

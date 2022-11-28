@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mediaQueries } from '@services/media';
+import { mediaQueries } from 'services/media';
 
 interface IProps {
     children: React.ReactNode;

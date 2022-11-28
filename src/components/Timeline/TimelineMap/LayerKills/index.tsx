@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Stage, Layer, Circle, Image } from 'react-konva';
-import { IGameTimeLineFrame, IGameTimeLineFrameEvent } from '@typesDef/match';
+import { IGameTimeLineFrame, IGameTimeLineFrameEvent } from 'types/match';
 
 interface IProps {
     selectedFilter: string;

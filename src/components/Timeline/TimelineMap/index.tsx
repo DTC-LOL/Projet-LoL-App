@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Stage, Layer, Circle, Image } from 'react-konva';
-import useBreakpoint from '@hooks/useBreakpoints';
+import useBreakpoint from 'hooks/useBreakpoints';
 import styled from 'styled-components';
-import { useAppSelector } from '@store/hooks';
+import { useAppSelector } from 'store/hooks';
 import LayerKill from './LayerKills/index';
 import LayerKillAram from './LayerKillsAram/index';
 import LayerBuildings from './LayerBuildings/index';
 import LayerBuildingsAram from './LayerBuildingsAram/index';
-import { IGameTimeLine } from '@typesDef/match';
+import { IGameTimeLine } from 'types/match';
 
 interface IProps {
 	gameTimelineData: IGameTimeLine;
@@ -26,7 +26,7 @@ const TimeLineMap: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
 					gameMode === "CLASSIC" &&
 						<>
 						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} />
-						<LayerKill selectedFilter={selectedFilter} selectedTime={selectedTime} frames={gameTimelineData.info.frames} />
+						<LayerKill selectedFilter={selectedFilter} selectedTime={1} frames={gameTimelineData.info.frames} />
 						</>
 				}
 				{

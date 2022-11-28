@@ -1,18 +1,19 @@
-import { IGameTimeLine, IGameTimeLineFrameEvent, IParticipant } from '@typesDef/match';
+import { IGameTimeLine, IGameTimeLineFrameEvent, IParticipant } from 'types/match';
 import React from 'react';
 import styled from 'styled-components';
-import useTranslation from '@hooks/useTranslation';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { setSelectedTime } from '@store/features/timeline/timelineSlice';
-import { valueSelectorByType } from '../../../utils/Timeline/renderEventData';
-import { mediaQueries } from '@services/media';
+import useTranslation from 'hooks/useTranslation';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { setSelectedTime } from 'store/features/timeline/timelineSlice';
+import { valueSelectorByType } from 'utils/Timeline/renderEventData';
+import { mediaQueries } from 'services/media';
 
 interface IProps {
   gameTimelineData: IGameTimeLine;
   participants: IParticipant[];
 }
 
-const excludedItems = ["SKILL_LEVEL_UP", "LEVEL_UP", "ITEM_DESTROYED", "ITEM_SOLD"];
+const excludedEventType = ["SKILL_LEVEL_UP", "LEVEL_UP", "ITEM_DESTROYED", "ITEM_SOLD"];
+const excludedWardEventType = ["UNDEFINED"];
 
 
 const TimeLineList: React.FC<IProps> = ({ gameTimelineData, participants }) => {
@@ -42,8 +43,8 @@ const TimeLineList: React.FC<IProps> = ({ gameTimelineData, participants }) => {
   return (
     <>
       <Container>
-        {gameTimelineData.info.frames[selectedTime].events.map((event, key) => excludedItems.includes(event.type) ?
-          "" : (
+        {gameTimelineData.info.frames[1].events.map((event, key) => excludedEventType.includes(event.type) ?
+          "" : excludedWardEventType.includes(event.type) ? "" : (
             <TimeLineListItem key={"Event_" + key} teamColor={event.participantId}>
               {/* {event.type} */}
               <TimeLineListItemTime>
@@ -55,10 +56,7 @@ const TimeLineList: React.FC<IProps> = ({ gameTimelineData, participants }) => {
         )}
 
       </Container>
-      <TimeLineRangeInputContainer>
-        <p>Minutes : {selectedTime}</p>
-        <input onChange={handleRangeInputChange} type="range" value={selectedTime} min= "1" max={gameTimelineData.info.frames.length - 1} name="" id="" />
-      </TimeLineRangeInputContainer>
+
 
     </>
   );
