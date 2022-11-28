@@ -10,28 +10,28 @@ import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { setGamesData, setPlayerData } from 'store/features/games/gameSlice';
 
 const SearchPage: React.FC = () => {
-    const { gameDatas } = useAppSelector(state=>state);
-	
+    const { gameDatas } = useAppSelector(state => state);
+
     const [isLoading, setLoading] = React.useState(false);
     const [player, setPlayer] = React.useState<any>(gameDatas.player);
     const [games, setGames] = React.useState<any>(gameDatas.games);
     const [error, setError] = React.useState<string>();
     const [submited, setSubmited] = React.useState<boolean>(false);
 
-	useEffect(() => {
-		if(gameDatas.games !== null && gameDatas.player !== null) {
-			setSubmited(true);
-			setError('');
-		}
-	}, []);
+    useEffect(() => {
+        if (gameDatas.games !== null && gameDatas.player !== null) {
+            setSubmited(true);
+            setError('');
+        }
+    }, []);
 
-	const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setLoading(true);
         setSubmited(true);
-        
+
         const formData = new FormData(e.target);
 
         const data: any = {
@@ -40,18 +40,18 @@ const SearchPage: React.FC = () => {
         };
 
         const response = await getGamesByUserNameAndLocation(data);
-        
+
         if (!response.success) {
-            
+
             setError(response.error);
         } else if (response.data) {
             setError('');
-			// store games data in redux
-			dispatch(setPlayerData(response.data));
-			dispatch(setGamesData(response.data.games));
+            // store games data in redux
+            dispatch(setPlayerData(response.data));
+            dispatch(setGamesData(response.data.games));
 
-			setPlayer(response.data);
-			setGames(response.data.games);
+            setPlayer(response.data);
+            setGames(response.data.games);
         }
 
         setLoading(false);

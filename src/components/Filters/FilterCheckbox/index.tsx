@@ -1,7 +1,7 @@
 import useTranslation from 'hooks/useTranslation';
 import React from 'react';
 import styled from 'styled-components';
-import { useAppDispatch } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import {setActiveFilter, setSelectedSummoner} from "store/features/filters/filtersSlice";
 
 interface IProps {
@@ -11,6 +11,7 @@ interface IProps {
 const FilterCheckbox: React.FC<IProps> = ({ filterType }) => {
     const { t } = useTranslation("filters/common");
     const dispatch = useAppDispatch();
+    const selectedFilter = useAppSelector((state) => state.filters.selectedFilter);
 
     const IconSelector = () => {
 
@@ -33,7 +34,7 @@ const FilterCheckbox: React.FC<IProps> = ({ filterType }) => {
 
     return (
         <Container onClick={() => handleFilterClick()}>
-            <CheckBox name="filter" />
+            <CheckBox checked={selectedFilter === filterType} name="filter" />
             <Icon src={IconSelector()}/>
             <Label>{t(filterType)}</Label>
         </Container>

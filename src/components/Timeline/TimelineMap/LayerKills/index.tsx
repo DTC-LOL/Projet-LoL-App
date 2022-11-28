@@ -10,6 +10,7 @@ interface IProps {
 }
 
 interface IKill {
+    timestamp: number;
     x: number;
     y: number;
 }
@@ -22,9 +23,9 @@ const LayerKill: React.FC<IProps> = ({ selectedFilter,selectedTime, frames }) =>
     frames[selectedTime].events.forEach((event: IGameTimeLineFrameEvent) => {
         if (event.type === "CHAMPION_KILL") {
             if (event.position) {
-                kills.push({ x: event.position.x, y: event.position.y });
+                kills.push({timestamp: event.timestamp, x: event.position.x, y: event.position.y });
             }
-            // console.log(kills)
+
         }
     })
 
