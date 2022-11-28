@@ -25,7 +25,7 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail }) => {
             <SummonerCardInfosSummonerName>{summonerDetail.summonerName}</SummonerCardInfosSummonerName>
             <SummonerCardInfos>
                 <CheckBox name="filter" onClick={() => handleSummonerClick()} teamid={summonerDetail.teamId}/>
-                <ChampionThumbnail src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + summonerDetail.championName + ".png"} />
+                <ChampionThumbnail src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + summonerDetail.championName + ".png"} />
             </SummonerCardInfos>
             <SummonerCardKDA>
                 {/* <KDA kills={summonerDetail.kills} deaths={summonerDetail.deaths} assists={summonerDetail.assists} /> */}
