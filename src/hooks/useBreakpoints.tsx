@@ -34,7 +34,7 @@ const useBreakpoints = () => {
     useEffect(() => {
         handleResize();
     }, [])
-    
+
     useEffect(() => {
         // handleResize();
         // console.log('isMobile', isMobile);
@@ -45,7 +45,7 @@ const useBreakpoints = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     });
-    
+
     return { isMobile, isTablet, isDesktop, isLandscape, isPortrait };
 };
 
