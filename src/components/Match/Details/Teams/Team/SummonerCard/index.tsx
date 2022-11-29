@@ -47,7 +47,7 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail, team}) => {
 
 
 const Container = styled.div`
-    background-color: ${props => props.color == "Blue" ? "#222A68" : "#E84855"};
+    background-color: ${props => props.color == "Blue" ? "rgba(14,24,100,0.5)" : "rgba(131,23,32,0.5)"};
     display: flex;
     flex-wrap: wrap;
     padding: 10px;

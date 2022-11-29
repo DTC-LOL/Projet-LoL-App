@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 import ListItem from './ListItem';
-import { releaseCapture } from 'konva/lib/PointerEvents';
 import { IGameData } from 'types/match';
 import styled from 'styled-components';
 import Pagination from 'components/List/Pagination';

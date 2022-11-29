@@ -42,7 +42,7 @@ const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 };
 
 const Container = styled.div`
-
+	margin-top: 2rem
 `;
 
 const ButtonPrimary = styled(Button)`
@@ -53,14 +53,14 @@ const ButtonPrimary = styled(Button)`
 
 const FormInput = styled(Form.Control)`
 	color: #fff !important;
-	background-color: #363636 !important;
+	background-color: rgb(54 54 54 / .5) !important;
 	border: none !important;
 	border-radius: 0 !important;
 `;
 
 const FormSelect = styled(Form.Select)`
 	color: #fff !important;
-	background-color: #363636 !important;
+	background-color: rgb(54 54 54 / .5) !important;
 	border: none !important;
 	border-radius: 0 !important;
 	position: relative;

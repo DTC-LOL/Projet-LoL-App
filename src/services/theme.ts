@@ -4,7 +4,7 @@ const theme: Theme = {
 	colors: {
 		layout: {
 			body: "#141414",
-			primary: "#363636",
+			primary: "rgb(54 54 54 / .5)",
 			secondary: "#dd0054"
 		},
 		text: {

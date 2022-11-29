@@ -44,7 +44,7 @@ const FilterCheckbox: React.FC<IProps> = ({ filterType }) => {
 const Container = styled.div`
     position: relative;
     border-radius: 8px;
-    background-color: #363636;
+	background-color: rgb(54 54 54 / .5) !important;
     width: 96px;
     height: 96px;
     transition: border-width 0.6s linear;

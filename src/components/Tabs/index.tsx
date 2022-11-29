@@ -18,7 +18,6 @@ const Tabs: React.FC<IProps> = ({ tabs }) => {
 				{tabs.map((tab, index) => (
 					<TabButton
 						key={"Tab_"+index}
-						active={activeTab === index}
 						onClick={() => setActiveTab(index)}
 					>
 						<Title>{tab.title}</Title>
@@ -48,7 +47,7 @@ const TabButton = styled.button`
   align-items: center;
   position: relative;
   transition: 0.6s;
-  background: ${(props: IActive) => (props.active ? "#363636" : "#363636")};
+  background-color: rgb(54 54 54 / .5) !important;
   &:focus {
     outline: none;
   }

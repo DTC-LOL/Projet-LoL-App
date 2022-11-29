@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         <Container>
             <Link to="/"><Logo src="/logo.png" alt="" /></Link>
             <Nav>
-                <NavItem to="/">Acceuil</NavItem>
+                <NavItem to="/">Accueil</NavItem>
                 <NavItem to="/search">
 					{location.pathname.split('/')[1] === "match" ? 'Retour' : 'Chercher un invocateur'}
 				</NavItem>
