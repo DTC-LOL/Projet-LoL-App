@@ -33,8 +33,8 @@ const TimeLineMap: React.FC<IProps> = ({ gameTimelineData, gameMode, time }) => 
 						</> 
 					:	
 						<>
-							<LayerBuildings isVisibleBuildings={true} />
-							<LayerKill selectedFilter={selectedFilter}  selectedTime={1} frames={gameTimelineData.info.frames} />
+							<LayerBuildings time={time} isVisibleBuildings={true} />
+							<LayerKill time={time} selectedFilter={selectedFilter}   frames={gameTimelineData.info.frames} />
 						</>
 				}
 

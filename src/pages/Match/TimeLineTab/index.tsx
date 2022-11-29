@@ -1,12 +1,10 @@
 import React from 'react';
 import { mediaQueries } from 'services/media';
 import styled from 'styled-components';
-
 interface IProps {
     gameTimelineData: IGameTimeLine,
     gameRecapData: IGameRecap
 }
-
 import TimeLineMap from 'components/Timeline/TimelineMap';
 import TimeLineEventsList from 'components/Timeline/List';
 import MediaPlayer from 'components/Timeline/MediaPlayer';
@@ -57,7 +55,7 @@ const TimeLineTab: React.FC<IProps> = ({ gameTimelineData, gameRecapData }) => {
 const Container = styled.div`
     display: grid;
     flex-direction: column;
-    padding: 0 10px;
+    /* padding: 0 10px; */
     grid-template-areas: 'leftPart' 
                          'controls' 
                         'filters'
@@ -82,6 +80,7 @@ const TimeLineLeftPart = styled.div`
 `;
 
 const TimeLineRightPart = styled.div`
+    margin-top: 10px;
     grid-area: rightPart;
 `;
 

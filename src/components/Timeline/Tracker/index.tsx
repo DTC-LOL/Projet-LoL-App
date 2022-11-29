@@ -16,7 +16,8 @@ const excludedEventType = ["PAUSE_END", "ITEM_PURCHASED", "WARD_PLACED", "WARD_K
 const TimeLineTrackers: React.FC<IProps> = ({gameMode, time, participants, gameTimelineData }) => {
     const [championStatsTracker, setChampionStatsTracker] = React.useState<any>([]);
     const [teamsGoldsTracker, setTeamsGoldsTracker] = React.useState<any>({blue: 0, red : 0});
-    
+    const [redTeamKills, setRedTeamKills] = React.useState<number>(0);
+    const [blueTeamKills, setBlueTeamKills] = React.useState<number>(0);
     const events: any = React.useMemo(() => mergeArrays(gameTimelineData.info.frames), [gameTimelineData.info.frames]);
     const [previousTime, setPreviousTime] = React.useState<number>(0);
 
@@ -62,7 +63,7 @@ const TimeLineTrackers: React.FC<IProps> = ({gameMode, time, participants, gameT
 
                     case 'CHAMPION_KILL':
                         if (event.killerId && event.victimId && event.assistingParticipantIds) {
-
+                            event.killerId > 5 ? setRedTeamKills((old) => old + 1 ) : setBlueTeamKills((old) => old + 1);
                             trkrs[event.killerId - 1].kills += 1;
                             trkrs[event.victimId - 1].deaths += 1;
                             trkrs[event.killerId - 1].gold += event.bounty;
@@ -96,14 +97,16 @@ const TimeLineTrackers: React.FC<IProps> = ({gameMode, time, participants, gameT
 
     return (
         <Container>
-            {Math.ceil(teamsGoldsTracker.blue)} vs {Math.ceil(teamsGoldsTracker.red)}
+            {blueTeamKills + "vs" + redTeamKills}
+
+            {/* {Math.ceil(teamsGoldsTracker.blue)} vs {Math.ceil(teamsGoldsTracker.red)} */}
             <ChampionCards>
                 {championStatsTracker.map((participant: any, key: number) => (
                     <ChampionCard teamColor={participant.teamId} key={"Champion_" + key}>
                         <ChampionImage src={process.env.REACT_APP_DDRAGON_URL + "/img/champion/" + participant.championName + ".png"} />
                         <p>{participant.level}</p>
                         <p>{participant.kills}/{participant.deaths}/{participant.assists}</p>
-                        <p>{Math.ceil(participant.gold)}</p>
+                        {/* <p>{Math.ceil(participant.gold)}</p> */}
 
                     </ChampionCard>
                 )

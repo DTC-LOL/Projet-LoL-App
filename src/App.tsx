@@ -7,12 +7,12 @@ import Home from './pages/Home';
 import Match from './pages/Match';
 import Header from './components/Layout/Header';
 import SearchPage from './pages/Search';
-
-
+import champions from './data/champions.json';
+const randomChampion = champions.champions[Math.floor(Math.random() * champions.champions.length)].name;
 function App() {
+	//Js random number between 0 and champions.champions.length
 	return (
-		<Container>
-			
+		<Container randomChampion={randomChampion}>
 			<BrowserRouter>
 				<Header/>
 				<Routes>
@@ -27,9 +27,20 @@ function App() {
 	);
 }
 
-const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.layout.body};
+const Container = styled.div<{randomChampion: any}>`
   min-height: 100vh;
+  position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+		background-image: ${(props) => ` url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${props.randomChampion}_0.jpg")`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+  z-index: -1;	
+	}
 `;
 
 

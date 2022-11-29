@@ -2,25 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 import { Stage, Layer, Circle, Image } from 'react-konva';
 import useImage from 'use-image';
+import useBreakpoints from 'hooks/useBreakpoints';
 
 interface IProps {
 	isVisibleBuildings: boolean;
+	time: number;
 }
 
-const division = 15000 / (window.innerWidth / 1.25);
-
-const URLImage = ({ image }: any) => {
+const URLImage = ({ image, visible }: any) => {
 	const [img] = useImage(image.src);
+	const { isMobile } = useBreakpoints();
+	const division = 13000/(window.innerWidth / (isMobile ? 1.25 : 2.5));
+
 	return (
 		<Image
 			image={img}
+			visible={visible}
 			x={image.x / division}
-			y={image.y / division}
-			width={15}
-			height={15}
+			y={(window.innerWidth/(isMobile ? 1.25 : 2.5)) - (image.y/division)}
+			width={isMobile ? 15 : 30}
+			height={isMobile ? 15 : 30}
 		/>
 	);
 };
+
 
 const LayerBuildings: React.FC<IProps> = ({ isVisibleBuildings }) => {
 	return (

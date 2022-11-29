@@ -20,6 +20,7 @@ const TimeLineEventsList: React.FC<IProps> = ({time, gameTimelineData, participa
   // const [selectedTime, setSelectedTime] = React.useState<number>(0);
   const dispatch = useAppDispatch();
   const listRef = React.useRef<any>();
+
   const unixTimestampToMinutes = (unixTimestamp: number) => {
     const date = new Date(unixTimestamp);
 
@@ -67,8 +68,6 @@ const TimeLineEventsList: React.FC<IProps> = ({time, gameTimelineData, participa
             )) : ""
         )}
       </Container>
-
-
     </>
   );
 };
