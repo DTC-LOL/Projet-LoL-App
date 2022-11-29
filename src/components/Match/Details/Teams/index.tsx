@@ -20,10 +20,15 @@ const Teams: React.FC<IProps> = ({gameRecapData, children}) => {
 };
 
 const Container = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; 
     gap: 2rem;
     padding: 0 25px;
     margin: 20px 0;
+    @media (max-width: 820px) {
+        grid-template-columns: 1fr 1fr;
+        
+    }
 `;
 
 export default Teams;

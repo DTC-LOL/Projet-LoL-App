@@ -54,6 +54,10 @@ const Container = styled.div`
     color: #fff;
     border-bottom : 1px solid #222222;
     position: relative;
+    border-radius:8px; 
+    &:not(:first-child) {
+        margin-top: 1rem 
+    }
 `;
 
 const CheckBox = styled.input.attrs({ type: "radio" }) <{ teamid: number }>`
@@ -132,10 +136,6 @@ const ChampionThumbnail = styled.img`
     height: 48px;
     border-radius: 999px;
     background-color: #000;
-    @media (min-width: 768px) and (max-width: 1020px) {
-        width: 80px;
-        height: 80px;
-    }
 `;
 
 

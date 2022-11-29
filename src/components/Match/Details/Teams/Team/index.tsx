@@ -19,7 +19,6 @@ const TeamDetails: React.FC<IProps> = ({teamName,participants}) => {
 };
 
 const Container = styled.div`
-    width: 50%;
     border-radius: 10px;
 
 `;
