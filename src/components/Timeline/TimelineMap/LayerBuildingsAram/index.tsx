@@ -27,8 +27,8 @@ const URLImage = ({ image, visible }: any) => {
 			x={image.x/division}
 			visible={visible}
 			y={(window.innerWidth/(isMobile ? 1.25 : 2.5)) - (image.y/division)}
-			width={15}
-			height={15}
+			width={isMobile ? 15 : 30}
+			height={isMobile ? 15 : 30}
 		/>
 	);
 };

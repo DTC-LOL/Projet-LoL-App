@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import {setActiveFilter, setSelectedSummoner} from "store/features/filters/filtersSlice";
+import { mediaQueries } from 'services/media';
 
 interface IProps {
     filterType: string;
@@ -45,8 +46,8 @@ const Container = styled.div`
     position: relative;
     border-radius: 8px;
     background-color: #363636;
-    width: 96px;
-    height: 96px;
+    width: 55px;
+    height: 55px;
     transition: border-width 0.6s linear;
     display: flex;
     flex-direction: column;
@@ -54,6 +55,10 @@ const Container = styled.div`
     align-items: center;
     text-align: center;
     gap: 10px;
+    ${mediaQueries("laptop")`
+            width: 96px;
+    height: 96px;
+    `}
 `;
 
 const Label = styled.div`
@@ -63,6 +68,10 @@ const Label = styled.div`
 
 const Icon = styled.img`
     width: 50px;
+    display: none;
+    ${mediaQueries("laptop")`
+        display: block;
+    `};
 `
 
 const CheckBox = styled.input.attrs({ type: "radio" })`

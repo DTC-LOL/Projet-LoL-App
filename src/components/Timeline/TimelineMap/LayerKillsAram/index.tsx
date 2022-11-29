@@ -34,7 +34,6 @@ const LayerKillAram: React.FC<IProps> = ({time, selectedFilter, frames }) => {
         })
     })
 
-    // js function that return an opacity value based on the time difference between the event and the current time
     const opacity = (timestamp: number) => {
         const timeDiff = time - timestamp;
         if (timeDiff < 20000) {
@@ -59,7 +58,7 @@ const LayerKillAram: React.FC<IProps> = ({time, selectedFilter, frames }) => {
                     <Circle
                         x={(kill.x / division)}
                         y={(window.innerWidth/(isMobile ? 1.25 : 2.5)) - (kill.y / division)}
-                        radius={4}
+                        radius={isMobile ? 4 : 8}   
                         fill={selectedFilter === "Rkills" ? "red" : "blue"}
                         shadowBlur={10}
                         opacity={kill.timestamp <= time ? opacity(kill.timestamp) : 0   }
