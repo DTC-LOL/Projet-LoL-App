@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from 'store/hooks';
 import {setIsVisibleBuilding} from "store/features/filters/filtersSlice";
+import {mediaQueries} from "../../../services/media";
 
 
 interface IProps {
@@ -42,8 +43,10 @@ const Container = styled.button`
     border-radius: 30px;
     border: none;
     background-color: #dd0054;
-    height: 15%;
     padding: 10px;
+	${mediaQueries("tablet")`
+        padding: 15px 30px;
+	`} 
     color: white;
 `;
 

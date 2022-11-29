@@ -47,12 +47,11 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail, team}) => {
 
 
 const Container = styled.div`
-    background-color: ${props => props.color == "Blue" ? "rgba(14,24,100,0.5)" : "rgba(131,23,32,0.5)"};
+    background: ${props => props.color == "Blue" ? "linear-gradient(155deg, rgba(0,42,84,1) 0%, rgba(5,130,255,1) 100%)" : "linear-gradient(126deg, rgba(84,0,0,1) 0%, rgba(255,0,0,1) 100%)"};
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
     color: #fff;
-    border-bottom : 1px solid #222222;
     position: relative;
     border-radius:8px; 
     &:not(:first-child) {

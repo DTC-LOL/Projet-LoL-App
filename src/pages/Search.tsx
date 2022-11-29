@@ -8,6 +8,7 @@ import List from 'components/List';
 import getGamesByUserNameAndLocation from 'services/api/getGamesByUserNameAndLocation';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { setGamesData, setPlayerData } from 'store/features/games/gameSlice';
+import Loader from "../components/Loader";
 
 const SearchPage: React.FC = () => {
     const { gameDatas } = useAppSelector(state => state);
@@ -63,7 +64,7 @@ const SearchPage: React.FC = () => {
                 {submited && !isLoading && !error && (
                     <List playerData={player} gamesData={games} total={games.length}/>
                 )}
-                {isLoading && <p>Loading...</p>}
+                {isLoading && <Loader/>}
                 {error && <p className="text-danger">{error}</p>}
             </Content>
         </Container>);

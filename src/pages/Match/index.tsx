@@ -8,6 +8,7 @@ import { mediaQueries } from 'services/media';
 import Teams from 'components/Match/Details/Teams';
 import Tabs from 'components/Tabs/index';
 import TimeLineTab from 'pages/Match/TimeLineTab';
+import Loader from "../../components/Loader";
 
 import {
     useParams,
@@ -84,7 +85,7 @@ const Match: React.FC = () => {
                         />
 
                     </>
-                    : <p>Loading...</p>
+                    : <Loader/>
             }
 
         </Container>
@@ -118,10 +119,8 @@ const DetailsContainer = styled.div`
       `}
 `;
 const MapContainer = styled.div`
-      ${mediaQueries('desktop')`
         display: flex;
         justify-content: center;
-      `}
 `;
 
 export default Match;

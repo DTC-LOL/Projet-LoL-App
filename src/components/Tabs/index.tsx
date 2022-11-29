@@ -47,7 +47,7 @@ const TabButton = styled.button`
   align-items: center;
   position: relative;
   transition: 0.6s;
-  background-color: rgb(54 54 54 / .5) !important;
+  background-color: rgb(40 40 40 / .9) !important;
   &:focus {
     outline: none;
   }
