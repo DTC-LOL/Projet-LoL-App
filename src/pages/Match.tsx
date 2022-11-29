@@ -59,7 +59,7 @@ const Match: React.FC = () => {
 
                                                 <InnerContainer className={"innerContainer"}>
                                                     <MapContainer>
-                                                        <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
+                                                        <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} size={window.innerWidth} />
                                                     </MapContainer>
                                                     <Filters />
                                                 </InnerContainer>
@@ -155,6 +155,7 @@ const DetailsContainer = styled.div`
 const MapContainer = styled.div`
       ${mediaQueries('desktop')`
         display: flex;
+        justify-content: center;
       `}
 `;
 

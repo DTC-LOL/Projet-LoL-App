@@ -5,11 +5,15 @@ import useImage from 'use-image';
 
 interface IProps {
     isVisibleBuildings: boolean;
+	size: number;
 }
-const division = 13000/(window.innerWidth/5);
 
-const URLImage = ({ image }: any) => {
+
+const URLImage = ({ image, size }: any) => {
 	const [img] = useImage(image.src);
+
+	const division = 13000/(window.innerWidth/size);
+
 	return (
 		<Image
 			image={img}

@@ -6,6 +6,7 @@ import { IGameTimeLineFrame, IGameTimeLineFrameEvent } from 'types/match';
 interface IProps {
     selectedFilter: string;
     frames: Array<IGameTimeLineFrame>;
+    size: number;
 }
 
 interface IKill {
@@ -13,10 +14,11 @@ interface IKill {
     y: number;
 }
 
-const division = 13000/(window.innerWidth/5);
 
-const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames }) => {
+const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames, size }) => {
     const kills: Array<IKill> = [];
+    const division= 13000/(window.innerWidth/size);
+
 
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
@@ -34,7 +36,7 @@ const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames }) => {
                 kills.map((kill, key) => (
                     <Circle
                         x={(kill.x /division)}
-                        y={(window.innerWidth/5) - (kill.y / division)}
+                        y={(division) - (kill.y / division)}
                         radius={4}
                         fill="red"
                         shadowBlur={10}

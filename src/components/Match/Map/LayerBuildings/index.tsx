@@ -5,12 +5,14 @@ import useImage from 'use-image';
 
 interface IProps {
 	isVisibleBuildings: boolean;
+	size: number;
 }
 
-const division = 15000 / (window.innerWidth / 5);
 
-const URLImage = ({ image }: any) => {
+
+const URLImage = ({ image , size }: any) => {
 	const [img] = useImage(image.src);
+	const division = 15000 / (window.innerWidth / size);
 	return (
 		<Image
 			image={img}
@@ -25,6 +27,12 @@ const URLImage = ({ image }: any) => {
 const LayerBuildings: React.FC<IProps> = ({ isVisibleBuildings }) => {
 	return (
 		<Layer visible={isVisibleBuildings === false ? true : false}>
+			<Circle
+				x={0}
+				y={0}
+				radius={20}
+				fill="red"
+			/>
 			{/* top Lane blue  building */}
 			<URLImage image={{ src: '/blue-innib.png', x: 916, y: 10400 }} />
 			<URLImage image={{ src: '/blue-turret.png', x: 916, y: 9568 }} />

@@ -6,6 +6,7 @@ import { IGameTimeLineFrame, IGameTimeLineFrameEvent } from 'types/match';
 interface IProps {
     selectedFilter: string;
     frames: Array<IGameTimeLineFrame>;
+    size: number;
 }
 
 interface IKill {
@@ -13,10 +14,11 @@ interface IKill {
     y: number;
 }
 
-const division = 15000/(window.innerWidth/5);
 
-const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
+
+const LayerKill: React.FC<IProps> = ({ selectedFilter, frames,size }) => {
     const kills: Array<IKill> = [];
+    const division = 15000/(window.innerWidth/size);
 
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
