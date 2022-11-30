@@ -23,6 +23,7 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; 
     gap: 2rem;
+    align-items: center;
     padding: 0 25px;
     margin: 20px 0;
     @media (max-width: 820px) {

@@ -72,7 +72,7 @@ const SearchPage: React.FC = () => {
 const Container = styled(Wrapper)``;
 
 const Content = styled.div`
-    margin: 1rem 0;
+    padding: 1rem 0;
 `
 
 export default SearchPage;

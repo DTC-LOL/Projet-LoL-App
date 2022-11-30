@@ -83,7 +83,6 @@ const Container = styled.ul`
     overflow-y: scroll;
     padding-left: 0;
 	${mediaQueries("desktop")`
-      min-width: 619px;
       overflow-y: hidden;
 	`} 
 `;
