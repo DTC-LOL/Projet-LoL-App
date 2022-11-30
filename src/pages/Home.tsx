@@ -18,6 +18,7 @@ const Container = styled(Wrapper)`
 
 const Image = styled.img`
     display: block;
+    width: 100%;
     margin: 5rem auto;
 `
 
