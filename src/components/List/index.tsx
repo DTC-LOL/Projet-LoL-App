@@ -47,7 +47,8 @@ const List: React.FC<Props> = ({ playerData, gamesData, total }) => {
 };
 
 const Container = styled.div`
-
+ position: relative;
+    z-index: 2;
 `
 
 export default List;

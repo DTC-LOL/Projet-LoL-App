@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const Wrapper: React.FC<IProps> = ({ children }) => {
-    
+
     return (
         <Container>
             {children}
@@ -15,13 +15,17 @@ const Wrapper: React.FC<IProps> = ({ children }) => {
     );
 };
 const Container = styled.div`
+
+    top: 0;
+    left: 0;
+    height:100%;
+    width: 100%;
     max-width: 370px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
+    margin: 0 auto;
 
     ${mediaQueries("tablet")`
           max-width: 780px;
+  
     `}
   
     ${mediaQueries("laptop")`

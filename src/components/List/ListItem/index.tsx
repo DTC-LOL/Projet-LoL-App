@@ -52,11 +52,11 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 							<Col>
 								<Row>
 									<Col className="pe-0 pl-2">
-										<ChampionImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + playerRecap.championName + ".png"} />
+										<ChampionImage src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + playerRecap.championName + ".png"} />
 									</Col>
 									<Col className="px-0">
-										<SpellImage src={"http://ddragon.leagueoflegends.com/cdn/12.18.1/img/spell/"+playerRecap.summoner1Id+".png"} />
-										<SpellImage src={"http://ddragon.leagueoflegends.com/cdn/12.18.1/img/spell/"+playerRecap.summoner2Id+".png"} />
+										<SpellImage src={process.env.REACT_APP_DDRAGON_URL+"/img/spell/"+playerRecap.summoner1Id+".png"} />
+										<SpellImage src={process.env.REACT_APP_DDRAGON_URL+"/img/spell/"+playerRecap.summoner2Id+".png"} />
 									</Col>
 								</Row>
 							</Col>
@@ -87,7 +87,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 						<Row>
 							{gamesData.recap.participants.map((participant: any) => {
 								return <Col key={participant.summonerName} className={participant.summonerName == playerRecap.summonerName ? "fw-bold" : ""} lg={6}>
-									<ParticipantsChampionImage src={"https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/" + participant.championName + ".png"} />
+									<ParticipantsChampionImage src={process.env.REACT_APP_DDRAGON_URL+"/img/champion/" + participant.championName + ".png"} />
 									{participant.summonerName}
 								</Col>	
 							})}

@@ -3,16 +3,16 @@ import type { RootState } from 'store/store'
 
 // Define a type for the slice state
 interface FiltersState {
-    selectedFilter: string
-    isVisibleBuilding: boolean
-    selectedSummoner: string
+  selectedFilter: string
+  isVisibleBuilding: boolean
+  selectedSummoner: string
 }
 
 // Define the initial state using that type
 const initialState: FiltersState = {
-    selectedFilter: "",
-    isVisibleBuilding: true,
-    selectedSummoner: "",
+  selectedFilter: "",
+  isVisibleBuilding: false,
+  selectedSummoner: "",
 }
 
 export const filtersSlice = createSlice({
@@ -22,7 +22,12 @@ export const filtersSlice = createSlice({
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
     setActiveFilter: (state, action: PayloadAction<string>) => {
-      state.selectedFilter = action.payload
+      if (state.selectedFilter === action.payload) {
+        state.selectedFilter = ""
+      } else {
+        state.selectedFilter = action.payload
+
+      }
     },
     setIsVisibleBuilding: (state, action: PayloadAction<boolean>) => {
       state.isVisibleBuilding = action.payload
