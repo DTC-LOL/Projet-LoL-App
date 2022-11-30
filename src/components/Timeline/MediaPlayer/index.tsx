@@ -89,6 +89,8 @@ const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 10px 0;
+    background-color: ${({ theme }) => theme.colors.layout.primary};
+    padding: 10px 0;
 `;
 
 const TimeLineRangeInputContainer = styled.div`
@@ -116,7 +118,7 @@ input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer;
   animate: 0.2s;
 
-  background: #363636;
+  background: ${({ theme }) => theme.colors.layout.body};
   border-radius: 0px;
 }
 
@@ -132,7 +134,8 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #363636;
+  background: ${({ theme }) => theme.colors.layout.body};
+
 }
 
 input[type=range]::-moz-range-track {

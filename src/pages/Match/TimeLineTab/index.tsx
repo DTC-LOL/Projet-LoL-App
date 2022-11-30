@@ -64,7 +64,7 @@ const Container = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
         grid-template-areas: 'leftPart filters rightPart rightPart rightPart rightPart rightPart' 
-                         'controls controls controls controls controls controls controls';
+                             'controls controls controls controls controls controls controls';
 `}
 `
 

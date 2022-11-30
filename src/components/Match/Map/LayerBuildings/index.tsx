@@ -24,7 +24,7 @@ const URLImage = ({ image }: any) => {
 
 const LayerBuildings: React.FC<IProps> = ({ isVisibleBuildings }) => {
 	return (
-		<Layer visible={isVisibleBuildings === false ? true : false}>
+		<Layer visible={isVisibleBuildings}>
 			{/* top Lane blue  building */}
 			<URLImage image={{ src: '/blue-innib.png', x: 916, y: 10400 }} />
 			<URLImage image={{ src: '/blue-turret.png', x: 916, y: 9568 }} />

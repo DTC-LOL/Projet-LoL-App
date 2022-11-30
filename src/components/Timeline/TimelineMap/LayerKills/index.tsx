@@ -20,7 +20,7 @@ interface IKill {
 const LayerKill: React.FC<IProps> = ({ time, selectedFilter, frames }) => {
     const kills: Array<IKill> = [];
     const { isMobile } = useBreakpoints();
-    const division = 13000/(window.innerWidth / (isMobile ? 1.25 : 2.5));
+    const division = 15000/(window.innerWidth / (isMobile ? 1.25 : 2.5));
 
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
@@ -62,7 +62,7 @@ const LayerKill: React.FC<IProps> = ({ time, selectedFilter, frames }) => {
                 kills.map((kill, key) => (
                     <Circle
                         x={kill.x / division}
-                        y={(window.innerWidth/(isMobile ? 1.25 : 2.5 / 5) - (kill.y / division))}
+                        y={(window.innerWidth/(isMobile ? 1.25 : 2.5) - (kill.y / division))}
                         radius={isMobile ? 4 : 8}
                         fill={selectedFilter === "Rkills" ? "red" : "blue"}
                         shadowBlur={10}

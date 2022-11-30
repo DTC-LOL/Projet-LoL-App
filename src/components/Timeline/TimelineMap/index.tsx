@@ -24,6 +24,7 @@ const TimeLineMap: React.FC<IProps> = ({ gameTimelineData, gameMode, time }) => 
 
 	return (
 		<Container>
+			{gameMode === 'CLASSIC' ? 'yep' : 'nope'}
 			<Canvas width={window.innerWidth / (isMobile ? 1.25 : 2.5)} height={window.innerWidth / (isMobile ? 1.25 : 2.5)} gameMode={gameMode}>
 				{
 					gameMode === "ARAM" ?
@@ -31,11 +32,13 @@ const TimeLineMap: React.FC<IProps> = ({ gameTimelineData, gameMode, time }) => 
 							<LayerBuildingsAram time={time} frames={gameTimelineData.info.frames} isVisibleBuildings={IsVisibleBuildings} />
 							<LayerKillAram time={time} selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
 						</> 
-					:	
+					: 
 						<>
-							<LayerBuildings time={time} isVisibleBuildings={true} />
+							
+							<LayerBuildings time={time} isVisibleBuildings={IsVisibleBuildings} />
 							<LayerKill time={time} selectedFilter={selectedFilter}   frames={gameTimelineData.info.frames} />
 						</>
+						
 				}
 
 			</Canvas>

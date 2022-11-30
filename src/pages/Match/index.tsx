@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Map from 'components/Match/Map';
 import Filters from 'components/Filters';
 import getGameRecap from 'services/api/getGameRecap';
@@ -82,7 +82,7 @@ const Match: React.FC = () => {
                         />
 
                     </>
-                    : <p>Loading...</p>
+                    : <LoadingIndicator src="/logo.png"  alt="" />
             }
 
         </Container>
@@ -123,5 +123,25 @@ const MapContainer = styled.div`
     display: flex;
   `}
 `;
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const LoadingIndicator = styled.img`
+    position: fixed;
+    top: 45%;
+    left: 45%;
+    transform: translate(-55%, -55%);
+    width: 200px;
+  animation: ${rotate360} 2s linear infinite;
+  filter: invert(14%) sepia(68%) saturate(5110%) hue-rotate(325deg) brightness(94%) contrast(116%);
+  `
 
 export default Match;
