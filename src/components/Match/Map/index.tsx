@@ -10,36 +10,40 @@ import LayerKillsByPlayer from './LayerKillsByPlayer/index';
 import LayerDeaths from './LayerDeaths';
 import LayerDeathsByPlayer from './LayerDeathsByPlayer/index';
 import { IGameTimeLine } from 'types/match';
+import useBreakpoints from 'hooks/useBreakpoints';
 
 
 interface IProps {
 	gameTimelineData: IGameTimeLine;
 	gameMode: string;
+	size: number;
 }
 
-const Map: React.FC<IProps> = ({ gameTimelineData, gameMode }) => {
+const Map: React.FC<IProps> = ({ gameTimelineData, gameMode, size }) => {
 	const selectedFilter = useAppSelector((state: { filters: { selectedFilter: any; }; }) => state.filters.selectedFilter);
 	const IsVisibleBuildings = useAppSelector((state: { filters: { isVisibleBuilding: any; }; }) => state.filters.isVisibleBuilding);
 	const selectedSummoner = useAppSelector((state: { filters: { selectedSummoner: any; }; }) => state.filters.selectedSummoner);
-	
+	const { isMobile } = useBreakpoints();
+	const division = isMobile ? 2 : 3.2;
+
 	return (
 		<Container>
-			<Canvas width={window.innerWidth/5} height={window.innerWidth/5} gameMode={gameMode}>
+						
+			<Canvas gameMode={gameMode} width={window.innerWidth / (isMobile ? 2 : 3.2)} height={window.innerWidth / (isMobile ? 2 : 3.2)} >
 				{
-					gameMode === "CLASSIC" &&
+					gameMode === "ARAM" ? 
+						<>
+						<LayerBuildingsAram isVisibleBuildings={IsVisibleBuildings}/>
+						<LayerKillAram selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+						</>
+						: 
 						<>
 						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} />
-						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames}/>
 						<LayerDeaths selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
 						<LayerKillsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} />
-						<LayerDeathsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} />
+						<LayerDeathsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants}/>
 						</>
-				}
-				{
-					gameMode === "ARAM" &&
-						<>
-						<LayerBuildingsAram isVisibleBuildings={IsVisibleBuildings} />
-						<LayerKillAram selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} /></>
 				}
 			</Canvas>
 		</Container>

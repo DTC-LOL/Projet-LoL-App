@@ -60,14 +60,14 @@ const Match: React.FC = () => {
                                     <MatchLayout>
                                         <MatchLayoutLeftPart>
                                             <MapContainer>
-                                                <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} />
+                                                <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} size={window.innerWidth} />
                                             </MapContainer>
                                             <Filters />
                                         </MatchLayoutLeftPart>
 
                                         <MatchLayoutRightPart>
                                             <DetailsContainer>
-                                                <Teams gameRecapData={gameRecapData} />
+                                                <Teams gameRecapData={gameRecapData} gameTimelineData={gameTimelineData}  />
                                             </DetailsContainer>
                                         </MatchLayoutRightPart>
                                     </MatchLayout>

@@ -6,15 +6,18 @@ import SummonerCard from './SummonerCard';
 interface IProps {
     teamName: string;
     participants: Array<IParticipant>;
+    puuids: Array<any>;
+    
 }
 
-const TeamDetails: React.FC<IProps> = ({teamName,participants}) => {
+const TeamDetails: React.FC<IProps> = ({teamName,participants, puuids}) => {
 
     return (
     <Container color={teamName}>
+
         <TeamName>{teamName} Team</TeamName>
         {participants.map((participant, key) => (
-            <SummonerCard key={teamName + "_Summoner_"+ key} summonerDetail={participant}/>
+            <SummonerCard key={teamName + "_Summoner_"+ key} puuid={puuids[teamName === "Red" ? key + 4 : key].puuid} summonerDetail={participant}/>
         ))}
     </Container>);
 };

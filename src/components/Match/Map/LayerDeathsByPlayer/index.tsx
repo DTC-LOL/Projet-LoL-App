@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Stage, Layer, Circle, Image } from 'react-konva';
 import { IGameTimeLineFrame, IGameTimeLineFrameEvent, IGameTimeLineParticipants } from 'types/match';
+import useBreakpoints  from 'hooks/useBreakpoints';
 
 interface IProps {
     selectedSummoner: string;
@@ -19,6 +20,8 @@ const division = 15000/(window.innerWidth/5);
 const LayerDeathsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, participants }) => {
     const kills: Array<IKill> = [];
     let i = 0;
+    const { isMobile } = useBreakpoints();
+    const division = 15000/(window.innerWidth / (isMobile ? 2 : 3.2))
 
     participants.forEach((participant) => {
         participant.puuid === selectedSummoner ? i = participant.participantId : null;
@@ -43,8 +46,8 @@ const LayerDeathsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, parti
                 kills.map((kill, key) => (
                     <Circle
                         x={kill.x / division}
-                        y={(window.innerWidth/5) - (kill.y / division)}
-                        radius={4}
+                        y={(window.innerWidth/(isMobile ? 2 : 3.2)) - (kill.y / division)}
+                        radius={isMobile ? 4 : 8}
                         fill="red"
                         shadowBlur={10}
                         opacity={0.5}

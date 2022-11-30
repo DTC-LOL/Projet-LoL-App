@@ -8,14 +8,15 @@ import {setActiveFilter, setSelectedSummoner} from "store/features/filters/filte
 
 interface IProps {
     summonerDetail: IParticipant;
-
+    puuid: string;
 }
 
-const SummonerCard: React.FC<IProps> = ({ summonerDetail }) => {
+const SummonerCard: React.FC<IProps> = ({ summonerDetail, puuid }) => {
     const dispatch = useAppDispatch();
 
     const handleSummonerClick = () => {
-        dispatch(setSelectedSummoner(summonerDetail.puuid));
+        console.log("summoner clicked : ", puuid);
+        dispatch(setSelectedSummoner(puuid));
         dispatch(setActiveFilter(""));
     }
 

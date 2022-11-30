@@ -57,8 +57,8 @@ export interface IGameTimeLineFrameEvent {
 }
 
 export interface IGameTimeLineParticipants {
-  participantId: number;
-  puuid: string;
+  participantId: number
+  puuid: string
 }
 
 
@@ -145,6 +145,7 @@ export interface IGameTimeLine {
 
 export interface IParticipant {
   [key: string]: any;
+  puuid: string;
   summonerName: string
   teamId: number
   championId: number

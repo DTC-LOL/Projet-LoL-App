@@ -55,8 +55,6 @@ const LayerKill: React.FC<IProps> = ({ time, selectedFilter, frames }) => {
 
     return (
         <Layer  
-         
-           
             >
             {kills.length > 0 &&
                 kills.map((kill, key) => (
