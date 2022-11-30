@@ -121,8 +121,8 @@ const TimeLineTrackers: React.FC<IProps> = ({gameMode, time, participants, gameT
 
     return (
         <Container>
-            <span className={'d-inline-block py-2 px-2'}>
-                {blueTeamKills + "vs" + redTeamKills}
+            <span className={'d-inline-block py-2 px-2 fw-bold'}>
+                {blueTeamKills + " vs " + redTeamKills}
             </span>
 
             {/* {Math.ceil(teamsGoldsTracker.blue)} vs {Math.ceil(teamsGoldsTracker.red)} */}
