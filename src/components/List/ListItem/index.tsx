@@ -100,7 +100,7 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 };
 
 const ListGroupItem = styled(ListGroup.Item)`
-	background-color: #363636;
+	background-color: rgb(40 40 40 / .9) !important;
 	margin-bottom: 0.5rem;
 	border: none !important;
 	font-size: 0.8rem !important;

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import useTranslation from 'hooks/useTranslation';
 import { useAppDispatch } from 'store/hooks';
 import { valueSelectorByType } from 'utils/Timeline/renderEventData';
+import {mediaQueries} from "../../../services/media";
 
 interface IProps {
   gameTimelineData: IGameTimeLine;
@@ -62,7 +63,7 @@ const TimeLineEventsList: React.FC<IProps> = ({time, gameTimelineData, participa
               <TimeLineListItemTime>
                 {unixTimestampToMinutes(event.timestamp)}
               </TimeLineListItemTime>
-              {valueSelectorByType(event, participants) ? valueSelectorByType(event, participants) : event.type}
+              {valueSelectorByType(event, participants) ? valueSelectorByType(event, participants) : <span style={{paddingRight: "1rem"}}>{event.type}</span>}
 
             </TimeLineListItem>
             )) : ""
@@ -81,6 +82,9 @@ const Container = styled.ul`
     overflow: hidden;
     overflow-y: scroll;
     padding-left: 0;
+	${mediaQueries("desktop")`
+      overflow-y: hidden;
+	`} 
 `;
 
 
@@ -90,7 +94,8 @@ const TimeLineListItem = styled.li<{ teamColor: any }>`
     justify-content: space-between;
     align-items: center;
     min-height: 48px;  
-    background-color: ${props => props.teamColor < 5 ? "#3998e6" : "#801414"};
+    background: ${props => props.teamColor < 5 ? "linear-gradient(90deg, rgba(0,42,84,1) 0%, rgba(5,130,255,1) 100%)" : "linear-gradient(90deg, rgba(84,0,0,1) 0%, rgba(255,0,0,1) 100%)"};
+    padding: 0 0 0 1rem;
 `;
 
 

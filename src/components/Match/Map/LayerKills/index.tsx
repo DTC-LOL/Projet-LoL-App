@@ -7,6 +7,7 @@ import useBreakpoints  from 'hooks/useBreakpoints';
 interface IProps {
     selectedFilter: string;
     frames: Array<IGameTimeLineFrame>;
+    size: number;
 }
 
 interface IKill {
@@ -14,9 +15,7 @@ interface IKill {
     y: number;
 }
 
-
-
-const LayerKill: React.FC<IProps> = ({ selectedFilter, frames }) => {
+const LayerKill: React.FC<IProps> = ({ selectedFilter, frames,size }) => {
     const kills: Array<IKill> = [];
     const { isMobile } = useBreakpoints();
     const division = 15000/(window.innerWidth / (isMobile ? 2 : 3.2));

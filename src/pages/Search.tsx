@@ -8,6 +8,7 @@ import List from 'components/List';
 import getGamesByUserNameAndLocation from 'services/api/getGamesByUserNameAndLocation';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { setGamesData, setPlayerData } from 'store/features/games/gameSlice';
+import Loader from "../components/Loader";
 
 const SearchPage: React.FC = () => {
     const { gameDatas } = useAppSelector(state => state);
@@ -58,28 +59,20 @@ const SearchPage: React.FC = () => {
     };
     return (
         <Container>
-            <Wrapper>
-                <Search submitMethod={handleSubmit} />
+            <Search submitMethod={handleSubmit} />
+            <Content>
                 {submited && !isLoading && !error && (
-                    <List playerData={player} gamesData={games} total={games.length} />
+                    <List playerData={player} gamesData={games} total={games.length}/>
                 )}
-                {isLoading && <p>Loading...</p>}
+                {isLoading && <Loader/>}
                 {error && <p className="text-danger">{error}</p>}
-
-            </Wrapper>
-            
+            </Content>
         </Container>);
 };
-const Container = styled.div`
-    /* padding: 20px 0; */
-    position: relative;
-    .row {
-        margin: 0;
-    }
-    .row>* {
-        
-        z-index: 99
-    }
-`;
+const Container = styled(Wrapper)``;
+
+const Content = styled.div`
+    padding: 1rem 0;
+`
 
 export default SearchPage;

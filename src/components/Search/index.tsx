@@ -30,7 +30,7 @@ const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 							</FormSelect>
 						</Form.Group>
 					</Col>
-					<Col sm={1}>
+					<Col sm={2}>
 						<ButtonPrimary variant="primary" type="submit">
 							Rechercher
 						</ButtonPrimary>
@@ -42,29 +42,29 @@ const Search: React.FC<Props> = ({ submitMethod }: Props) => {
 };
 
 const Container = styled.div`
-
+	margin-top: 2rem
 `;
 
 const ButtonPrimary = styled(Button)`
 	background-color: ${(props) => props.theme.colors.layout.secondary} !important;
-	border-radius: 0 !important;
+	border-radius: 50px !important;
 	border: none !important;
+	padding: 0.8rem 1.7rem;
 `;
 
 const FormInput = styled(Form.Control)`
 	color: #fff !important;
-	background-color: #363636 !important;
+	background-color: rgb(40 40 40 / .9) !important;
 	border: none !important;
-	border-radius: 0 !important;
+	padding: 0.9rem 1.9rem;
 `;
 
 const FormSelect = styled(Form.Select)`
 	color: #fff !important;
-	background-color: #363636 !important;
+	background-color: rgb(40 40 40 / .9) !important;
 	border: none !important;
-	border-radius: 0 !important;
 	position: relative;
-
+	padding: 0.9rem 1.9rem;
 `;
 
 export default Search;

@@ -35,6 +35,7 @@ const Container = styled.div<{randomChampion: any}>`
 		position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
+  background-color: ${(props) => props.theme.colors.layout.body}; 
 		background-image: ${(props) => ` url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${props.randomChampion}_0.jpg")`};
   background-size: cover;
   background-repeat: no-repeat;

@@ -24,8 +24,8 @@ const Container = styled.div`
     margin: 0 auto;
 
     ${mediaQueries("tablet")`
-          max-width: 780px;
-  
+        max-width: 780px;
+        padding: 0 1rem;
     `}
   
     ${mediaQueries("laptop")`

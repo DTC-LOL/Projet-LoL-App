@@ -3,11 +3,12 @@ import styled, { keyframes } from 'styled-components';
 import Map from 'components/Match/Map';
 import Filters from 'components/Filters';
 import getGameRecap from 'services/api/getGameRecap';
-import { IGameData, IGameRecap } from 'types/match';
+import { IGameData } from 'types/match';
 import { mediaQueries } from 'services/media';
 import Teams from 'components/Match/Details/Teams';
 import Tabs from 'components/Tabs/index';
 import TimeLineTab from 'pages/Match/TimeLineTab';
+import Loader from "../../components/Loader";
 
 import {
     useParams,
@@ -67,9 +68,23 @@ const Match: React.FC = () => {
 
                                         <MatchLayoutRightPart>
                                             <DetailsContainer>
-                                                <Teams gameRecapData={gameRecapData} gameTimelineData={gameTimelineData}  />
+                                                <Teams gameRecapData={gameRecapData} gameTimelineData={gameTimelineData} />
                                             </DetailsContainer>
                                         </MatchLayoutRightPart>
+
+                                        <DetailsContainer>
+                                            <Teams gameRecapData={gameRecapData}>
+
+                                                <InnerContainer className={"innerContainer"}>
+                                                    <MapContainer>
+                                                        <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} size={window.innerWidth} />
+                                                    </MapContainer>
+                                                    <Filters />
+                                                </InnerContainer>
+
+                                            </Teams>
+
+                                        </DetailsContainer>
                                     </MatchLayout>
                             },
                             {
@@ -82,7 +97,7 @@ const Match: React.FC = () => {
                         />
 
                     </>
-                    : <LoadingIndicator src="/logo.png"  alt="" />
+                    : <LoadingIndicator src="/logo.png" alt="" />
             }
 
         </Container>
@@ -95,33 +110,29 @@ const MatchLayout = styled.div`
 
     ${mediaQueries('laptop')`
         flex-direction: row;
-`}
-`
-const MatchLayoutLeftPart = styled.div`
-    width: 100%;
-    ${mediaQueries('laptop')`
-        width: 50%;
     `}
 `
 
-const MatchLayoutRightPart = styled.div`
-    flex: 1;
-`
 
 
 
 const Container = styled.div`
+`;
 
+const InnerContainer = styled.div`
+    @media (max-width: 820px) {
+        grid-column: 1 / span 2; 
+        grid-row: 1 
+    }
 `;
 
 const DetailsContainer = styled.div`
-  ${mediaQueries('desktop')`
-  `}
+      ${mediaQueries('desktop')`
+      `}
 `;
 const MapContainer = styled.div`
-  ${mediaQueries('desktop')`
-    display: flex;
-  `}
+        display: flex;
+        justify-content: center;
 `;
 
 const rotate360 = keyframes`

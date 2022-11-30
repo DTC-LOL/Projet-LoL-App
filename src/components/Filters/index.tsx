@@ -34,8 +34,8 @@ const Container = styled.div`
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
-    justify-content: start;
-
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     width: 100%;
 `;

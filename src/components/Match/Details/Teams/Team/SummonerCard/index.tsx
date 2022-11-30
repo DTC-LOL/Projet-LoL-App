@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mediaQueries } from 'services/media';
 import { IParticipant } from 'types/match';
 import ItemsGrid from './ItemsGrid';
 import { useAppDispatch } from 'store/hooks';
@@ -9,9 +8,11 @@ import {setActiveFilter, setSelectedSummoner} from "store/features/filters/filte
 interface IProps {
     summonerDetail: IParticipant;
     puuid: string;
+    team: string;
 }
 
-const SummonerCard: React.FC<IProps> = ({ summonerDetail, puuid }) => {
+
+const SummonerCard: React.FC<IProps> = ({ summonerDetail, team, puuid}) => {
     const dispatch = useAppDispatch();
 
     const handleSummonerClick = () => {
@@ -21,7 +22,7 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail, puuid }) => {
     }
 
     return (
-        <Container>
+        <Container color={team}>
             
             <SummonerCardInfosSummonerName>{summonerDetail.summonerName}</SummonerCardInfosSummonerName>
             <SummonerCardInfos>
@@ -49,12 +50,16 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail, puuid }) => {
 
 
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  color: #fff;
-  border-bottom : 1px solid #222222;
+    background: ${props => props.color == "Blue" ? "linear-gradient(155deg, rgba(0,42,84,1) 0%, rgba(5,130,255,1) 100%)" : "linear-gradient(126deg, rgba(84,0,0,1) 0%, rgba(255,0,0,1) 100%)"};
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    color: #fff;
     position: relative;
+    border-radius:8px; 
+    &:not(:first-child) {
+        margin-top: 1rem 
+    }
 `;
 
 const CheckBox = styled.input.attrs({ type: "radio" }) <{ teamid: number }>`
@@ -129,12 +134,10 @@ const SummonerCardInfosSummonerName = styled.div`
 `;
 
 const ChampionThumbnail = styled.img`
-    ${mediaQueries("desktop")`
-        width: 48px;
-        height: 48px;
-        border-radius: 999px;
-        background-color: #000;
-    `}
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background-color: #000;
 `;
 
 

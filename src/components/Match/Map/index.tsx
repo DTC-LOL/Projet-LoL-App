@@ -27,8 +27,7 @@ const Map: React.FC<IProps> = ({ gameTimelineData, gameMode, size }) => {
 	const division = isMobile ? 2 : 3.2;
 
 	return (
-		<Container>
-						
+		<Container>		
 			<Canvas gameMode={gameMode} width={window.innerWidth / (isMobile ? 2 : 3.2)} height={window.innerWidth / (isMobile ? 2 : 3.2)} >
 				{
 					gameMode === "ARAM" ? 
@@ -54,10 +53,18 @@ const Container = styled.div`
  
 `;
 
+
+
 const Canvas = styled(Stage)`
 	background-image: url("http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map${(props) => props.gameMode === 'ARAM' ? "12" : "11"}.png");
 	background-size: contain;
     background-repeat: no-repeat;
+	width: ${props => props.size/3.2}px;
+	height: ${props => props.size/3.2}px;
+    @media screen and (max-width: 768px) {
+    	width: ${props => props.size/2}px;
+		height: ${props => props.size/2}px;
+    }
 `;
 
 const Filter = styled.div`

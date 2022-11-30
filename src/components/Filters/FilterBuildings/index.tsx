@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from 'store/hooks';
 import {setIsVisibleBuilding} from "store/features/filters/filtersSlice";
+import {mediaQueries} from "../../../services/media";
 
 
 interface IProps {
@@ -36,19 +37,22 @@ const FilterBuildings: React.FC<IProps> = ({ filterState }) => {
 }
 
 const Container = styled.button`
-    width: 100%;
+    display: flex;
+    align-items: center;
     position: relative;
     border-radius: 30px;
     border: none;
     background-color: #dd0054;
-    width: 20%;
-    height: 15%;
     padding: 10px;
+	${mediaQueries("tablet")`
+        padding: 15px 30px;
+	`} 
     color: white;
 `;
 
 const Icon = styled.img`
     width: 20px;
+    margin-right: 0.5rem;
 `
 
 export default FilterBuildings;

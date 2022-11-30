@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { IGameTimeLine, IParticipant } from 'types/match';
 import { mergeArrays } from 'utils/mergeArray';
 import { IGameTimeLineFrameEvent } from '../../../types/match';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import {mediaQueries} from "../../../services/media";
 
 interface IProps {
     gameTimelineData: IGameTimeLine;
@@ -13,13 +16,33 @@ interface IProps {
 
 const excludedEventType = ["PAUSE_END", "ITEM_PURCHASED", "WARD_PLACED", "WARD_KILL", "ITEM_DESTROYED", "ITEM_SOLD"];
 
+function ChampionCardsContainer(statsTracker: Array<any>, teamId: number) {
+    return (
+        <ChampionCards teamColor={teamId}>
+            {statsTracker.map((participant: any, key: number) => (
+                    <ChampionCard key={"Champion_" + key}>
+                        <ChampionImage src={process.env.REACT_APP_DDRAGON_URL + "/img/champion/" + participant.championName + ".png"} />
+                        <p>{participant.level}</p>
+                        <p>{participant.kills}/{participant.deaths}/{participant.assists}</p>
+                        {/* <p>{Math.ceil(participant.gold)}</p> */}
+
+                    </ChampionCard>
+                )
+            )}
+        </ChampionCards>
+    )
+}
+
 const TimeLineTrackers: React.FC<IProps> = ({gameMode, time, participants, gameTimelineData }) => {
-    const [championStatsTracker, setChampionStatsTracker] = React.useState<any>([]);
+    const [blueChampionStatsTracker, setBlueChampionStatsTracker] = React.useState<any>([]);
+    const [redChampionStatsTracker, setRedChampionStatsTracker] = React.useState<any>([]);
     const [teamsGoldsTracker, setTeamsGoldsTracker] = React.useState<any>({blue: 0, red : 0});
     const [redTeamKills, setRedTeamKills] = React.useState<number>(0);
     const [blueTeamKills, setBlueTeamKills] = React.useState<number>(0);
     const events: any = React.useMemo(() => mergeArrays(gameTimelineData.info.frames), [gameTimelineData.info.frames]);
     const [previousTime, setPreviousTime] = React.useState<number>(0);
+    const [blueTeam, setBlueTeam] = React.useState<Array<any>>([]);
+    const [redTeam, setRedTeam] = React.useState<Array<any>>([]);
 
     React.useEffect(() => {
         const trkrs: Array<any> = [
@@ -89,7 +112,8 @@ const TimeLineTrackers: React.FC<IProps> = ({gameMode, time, participants, gameT
             setTeamsGoldsTracker({blue: blueTeamGold, red: redTeamGold});
         })
 
-        setChampionStatsTracker(trkrs)
+        setBlueChampionStatsTracker(trkrs.filter((p: any) => p.teamId === 100))
+        setRedChampionStatsTracker(trkrs.filter((p: any) => p.teamId === 200))
         // setChampionStatsTracker(trackers);
         setPreviousTime(time);
 
@@ -97,21 +121,15 @@ const TimeLineTrackers: React.FC<IProps> = ({gameMode, time, participants, gameT
 
     return (
         <Container>
-            {blueTeamKills + "vs" + redTeamKills}
+            <span className={'d-inline-block py-2 px-2 fw-bold'}>
+                {blueTeamKills + " vs " + redTeamKills}
+            </span>
 
             {/* {Math.ceil(teamsGoldsTracker.blue)} vs {Math.ceil(teamsGoldsTracker.red)} */}
-            <ChampionCards>
-                {championStatsTracker.map((participant: any, key: number) => (
-                    <ChampionCard teamColor={participant.teamId} key={"Champion_" + key}>
-                        <ChampionImage src={process.env.REACT_APP_DDRAGON_URL + "/img/champion/" + participant.championName + ".png"} />
-                        <p>{participant.level}</p>
-                        <p>{participant.kills}/{participant.deaths}/{participant.assists}</p>
-                        {/* <p>{Math.ceil(participant.gold)}</p> */}
-
-                    </ChampionCard>
-                )
-                )}
-            </ChampionCards>
+            <RowContainer>
+                {ChampionCardsContainer(blueChampionStatsTracker, 100)}
+                {ChampionCardsContainer(redChampionStatsTracker, 200)}
+            </RowContainer>
         </Container>
     );
 };
@@ -119,21 +137,27 @@ const TimeLineTrackers: React.FC<IProps> = ({gameMode, time, participants, gameT
 const Container = styled.div`
     height: 180px;
     max-height: 229px;
-    padding-left: 0;
+	${mediaQueries("desktop")`
+	    margin-bottom: 2rem;
+        padding-left: 0;
+	`} 
 `;
 
-const ChampionCards = styled.div`
- display: flex;
- flex-wrap: wrap;
- flex-direction: column;
-    max-height: 90%;
+const RowContainer = styled.div`
+    display: flex;
 `
 
-const ChampionCard = styled.div<{ teamColor: number }>`
+const ChampionCards = styled.div<{ teamColor: number }>`
+    background: ${props => props.teamColor === 100 ? "linear-gradient(155deg, rgba(0,42,84,1) 0%, rgba(5,130,255,1) 100%)" : "linear-gradient(126deg, rgba(84,0,0,1) 0%, rgba(255,0,0,1) 100%)"};
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+`
+
+const ChampionCard = styled.div`
     width: 50%;
     height: 32px;
     display: flex;
-    background-color: ${props => props.teamColor === 100 ? "blue" : "red"};
     /* padding: 10px; */
     box-sizing: border-box;
     align-items: center;

@@ -26,7 +26,13 @@ const TimeLineTab: React.FC<IProps> = ({ gameTimelineData, gameRecapData }) => {
             <TimeLineControls>
                 <MediaPlayer time={time} handleRangerChange={(value) => { setTime(value) }} setTime={() => setTime((time) => time + 1000)} resetTime={() => setTime(0)} gameTimeLineData={gameTimelineData} gameRecapData={gameRecapData} />
             </TimeLineControls>
-            <FiltersContainer />
+
+            {
+                isMobile ?
+                    <FiltersContainer />
+                    : null
+            }
+
             <TimeLineRightPart>
                 {isMobile
 
@@ -41,6 +47,7 @@ const TimeLineTab: React.FC<IProps> = ({ gameTimelineData, gameRecapData }) => {
                         }
                     ]} /> :
                     <>
+                        <FiltersContainer />
                         <TimeLineTrackers gameMode={gameRecapData.game_mode} time={time} participants={gameRecapData.participants} gameTimelineData={gameTimelineData} />
                         <TimeLineEventsList time={time} participants={gameRecapData.participants} gameTimelineData={gameTimelineData} />
                     </>
@@ -54,6 +61,7 @@ const TimeLineTab: React.FC<IProps> = ({ gameTimelineData, gameRecapData }) => {
 
 const Container = styled.div`
     display: grid;
+    align-items: center;
     flex-direction: column;
     /* padding: 0 10px; */
     grid-template-areas: 'leftPart' 
