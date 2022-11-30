@@ -23,7 +23,7 @@ const LayerDeathsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, parti
     let i = 0;
     const { isMobile } = useBreakpoints();
     const division = 15000/(window.innerWidth / (isMobile ? 2 : 3.2));
-    
+
     participants.forEach((participant) => {
         participant.puuid === selectedSummoner ? i = participant.participantId : null;
     })
