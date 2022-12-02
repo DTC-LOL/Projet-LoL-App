@@ -9,12 +9,11 @@ import Teams from 'components/Match/Details/Teams';
 import Tabs from 'components/Tabs/index';
 import TimeLineTab from 'pages/Match/TimeLineTab';
 import Loader from "../../components/Loader";
-
 import {
     useParams,
     useNavigate,
 } from "react-router-dom";
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector, useAppDispatch } from 'store/hooks';
 
 const Match: React.FC = () => {
     const [loading, setLoading] = React.useState(true);
@@ -22,7 +21,11 @@ const Match: React.FC = () => {
     const [gameTimelineData, setGameTimelineData] = React.useState<any>(null);
     const { id } = useParams();
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const gamesDatas = useAppSelector((state) => state.gameDatas);
+
+
+
 
     React.useEffect(() => {
         if (gamesDatas.games) {

@@ -13,11 +13,25 @@ import Tabs from '../../../components/Tabs/index';
 import Filters from 'components/Filters';
 import { IGameRecap, IGameTimeLine } from 'types/match';
 import useBreakpoints from 'hooks/useBreakpoints';
+import {setActiveFilter, setSelectedSummoner, setIsVisibleBuilding} from "store/features/filters/filtersSlice";
+import { useAppSelector, useAppDispatch } from 'store/hooks';
 
 const TimeLineTab: React.FC<IProps> = ({ gameTimelineData, gameRecapData }) => {
     const [time, setTime] = React.useState(0);
     const {isMobile} = useBreakpoints();
-
+    const dispatch = useAppDispatch();
+    
+    React.useEffect(() => {
+        dispatch(setActiveFilter(""));
+        dispatch(setSelectedSummoner(""));
+        dispatch(setIsVisibleBuilding(false));
+        return (() => {
+            dispatch(setActiveFilter(""));
+            dispatch(setSelectedSummoner(""));
+            dispatch(setIsVisibleBuilding(false));
+        })
+    })
+    
     return (
         <Container>
             <TimeLineLeftPart>

@@ -6,7 +6,6 @@ import useBreakpoints from 'hooks/useBreakpoints';
 
 interface IProps {
 	isVisibleBuildings: boolean;
-	size: number;
 }
 
 
@@ -14,10 +13,8 @@ const URLImage = ({ image, visible }: any) => {
 	const [img] = useImage(image.src);
 	const { isMobile } = useBreakpoints();
 
-	const division = 15000 / (window.innerWidth / (isMobile ? 2 : 3.2));
-	React.useEffect(() => {
-		console.log('division', division);
-	}, [isMobile]);
+	const division = 15000 / (window.innerWidth / (isMobile ? 1.25 : 3.2));
+
 	
 	return (
 		<Image

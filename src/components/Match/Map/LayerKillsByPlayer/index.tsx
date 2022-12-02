@@ -8,7 +8,6 @@ interface IProps {
     selectedSummoner: string;
     frames: Array<IGameTimeLineFrame>;
     participants: Array<IGameTimeLineParticipants>;
-    size: number;
 }
 
 interface IKill {
@@ -17,11 +16,11 @@ interface IKill {
 }
 
 
-const LayerKillsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, participants, size }) => {
+const LayerKillsByPlayer: React.FC<IProps> = ({ selectedSummoner, frames, participants }) => {
     const kills: Array<IKill> = [];
     let i = 0;
     const { isMobile } = useBreakpoints();
-    const division = 15000/(window.innerWidth / (isMobile ? 2 : 3.2))
+    const division = 15000/(window.innerWidth / (isMobile ? 1.25 : 3.2))
 
     participants.forEach((participant) => {
         participant.puuid === selectedSummoner ? i = participant.participantId : null;

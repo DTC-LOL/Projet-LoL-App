@@ -14,11 +14,6 @@ const URLImage = ({ image, visible }: any) => {
 	const { isMobile } = useBreakpoints();
 	const division = 15000/(window.innerWidth / (isMobile ? 1.25 : 2.5));
 	
-	React.useEffect(() => {
-		console.log('division', division);
-	}, [isMobile]);
-
-
 	return (
 		<Image
 			image={img}

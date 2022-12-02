@@ -7,7 +7,6 @@ import useBreakpoints  from 'hooks/useBreakpoints';
 interface IProps {
     selectedFilter: string;
     frames: Array<IGameTimeLineFrame>;
-    size: number;
 }
 
 interface IKill {
@@ -16,10 +15,10 @@ interface IKill {
 }
 
 
-const LayerDeaths: React.FC<IProps> = ({ selectedFilter, frames, size }) => {
+const LayerDeaths: React.FC<IProps> = ({ selectedFilter, frames }) => {
     const kills: Array<IKill> = [];
     const { isMobile } = useBreakpoints();
-    const division = 15000/(window.innerWidth / (isMobile ? 2 : 3.2));
+    const division = 15000/(window.innerWidth / (isMobile ? 1.25 : 3.2));
 
     frames.forEach((frame) => {
         frame.events.forEach((event: IGameTimeLineFrameEvent) => {
@@ -48,7 +47,7 @@ const LayerDeaths: React.FC<IProps> = ({ selectedFilter, frames, size }) => {
                 kills.map((kill, key) => (
                     <Circle
                         x={kill.x / division}
-                        y={(window.innerWidth/(isMobile ? 2 : 3.2) - (kill.y / division))}
+                        y={(window.innerWidth/(isMobile ? 1.25 : 3.2) - (kill.y / division))}
                         radius={isMobile ? 4 : 8}
                         fill="red"
                         shadowBlur={10}

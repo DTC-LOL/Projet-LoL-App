@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Stage, Layer, Circle, Image } from 'react-konva';
 import { IGameTimeLineFrame, IGameTimeLineFrameEvent } from 'types/match';
+import useBreakpoints  from 'hooks/useBreakpoints';
+
 
 interface IProps {
     selectedFilter: string;
     frames: Array<IGameTimeLineFrame>;
-    size: number;
 }
 
 interface IKill {
@@ -15,9 +16,10 @@ interface IKill {
 }
 
 
-const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames, size }) => {
+const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames }) => {
     const kills: Array<IKill> = [];
-    const division= 13000/(window.innerWidth/size);
+    const { isMobile } = useBreakpoints();
+    const division= 13000/(window.innerWidth/(isMobile ? 1.25 : 3.2));
 
 
     frames.forEach((frame) => {
@@ -36,7 +38,7 @@ const LayerKillAram: React.FC<IProps> = ({ selectedFilter, frames, size }) => {
                 kills.map((kill, key) => (
                     <Circle
                         x={(kill.x /division)}
-                        y={(division) - (kill.y / division)}
+                        y={(window.innerWidth/(isMobile ? 1.25 : 3.2) - (kill.y / division))}
                         radius={4}
                         fill="red"
                         shadowBlur={10}

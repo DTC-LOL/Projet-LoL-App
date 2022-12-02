@@ -28,20 +28,20 @@ const Map: React.FC<IProps> = ({ gameTimelineData, gameMode, size }) => {
 
 	return (
 		<Container>		
-			<Canvas gameMode={gameMode} width={window.innerWidth / (isMobile ? 2 : 3.2)} height={window.innerWidth / (isMobile ? 2 : 3.2)} >
+			<Canvas gameMode={gameMode} width={window.innerWidth / (isMobile ? 1.25 : 3.2)} height={window.innerWidth / (isMobile ? 1.25 : 3.2)} >
 				{
 					gameMode === "ARAM" ? 
 						<>
-						<LayerBuildingsAram isVisibleBuildings={IsVisibleBuildings} size={division}/>
-						<LayerKillAram selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} size={division}/>
+						<LayerBuildingsAram isVisibleBuildings={IsVisibleBuildings}/>
+						<LayerKillAram selectedFilter={selectedFilter} frames={gameTimelineData.info.frames}/>
 						</>
 						: 
 						<>
-						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} size={division} />
-						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} size={division} />
-						<LayerDeaths selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} size={division} />
-						<LayerKillsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} size={division} />
-						<LayerDeathsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} size={division}/>
+						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} />
+						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+						<LayerDeaths selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+						<LayerKillsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants}/>
+						<LayerDeathsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants}/>
 						</>
 				}
 			</Canvas>
