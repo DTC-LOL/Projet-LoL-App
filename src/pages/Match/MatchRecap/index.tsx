@@ -19,7 +19,6 @@ const MatchRecap: React.FC<IProps> = ({ gameTimelineData, gameRecapData}) => {
 
 
     React.useEffect(() => {
-        console.log("load");
         dispatch(setActiveFilter(""));
         dispatch(setSelectedSummoner(""));
         dispatch(setIsVisibleBuilding(false));
