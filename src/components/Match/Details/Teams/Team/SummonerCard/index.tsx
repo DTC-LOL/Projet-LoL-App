@@ -16,7 +16,7 @@ const SummonerCard: React.FC<IProps> = ({ summonerDetail, team, puuid}) => {
     const dispatch = useAppDispatch();
 
     const handleSummonerClick = () => {
-        console.log("summoner clicked : ", puuid);
+
         dispatch(setSelectedSummoner(puuid));
         dispatch(setActiveFilter(""));
     }
