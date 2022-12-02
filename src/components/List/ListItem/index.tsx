@@ -10,6 +10,7 @@ import { IGameData } from 'types/match';
 import styled from 'styled-components';
 import { mediaQueries } from 'services/media';
 import {capitalizeFirstLowercaseRest} from 'services/utility';
+import useTranslation from 'hooks/useTranslation';
 
 type Props = {
 	gamesData: IGameData,
@@ -17,10 +18,15 @@ type Props = {
 }
 
 const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
-
+	const {t} = useTranslation('listItem/common');
 	React.useEffect(() => {		
 		localSelector(navigator.language.split("-")[0]);
 	},[])
+
+
+	const getLocale = () => {
+		return navigator.language.split("-")[0];
+	}
 
 	let playerRecap: any = [];
 
@@ -39,13 +45,13 @@ const ListItem: React.FC<Props> = ({ gamesData, playerData }) => {
 					<Col lg={2}>
 						<Paragraph className="fw-bold">{capitalizeFirstLowercaseRest(gamesData.recap.game_mode)}</Paragraph>
 
-						<Paragraph className="border-bottom border-dark pb-2 w-50">Il y a {moment(gamesData.recap.game_creation).fromNow(true)}</Paragraph>
+						<Paragraph className="border-bottom border-dark pb-2 w-50">{t('ago',[moment(gamesData.recap.game_creation, "", getLocale()).fromNow(true)])}</Paragraph>
 
 						<Paragraph className={winingTeam === playerRecap.teamId ? "text-success pt-2 fw-bold" : "text-danger pt-2 fw-bold"}>
 							{winingTeam === playerRecap.teamId ? "Victoire" : "Défaite"}
 						</Paragraph>
 
-						<Paragraph>{moment.unix(gamesData.recap.game_duration).format("m:s")}</Paragraph>
+						<Paragraph>{moment.unix(gamesData.recap.game_duration).format("m:ss")}</Paragraph>
 					</Col>
 					<Col lg={6} className="border-start border-end border-dark">
 						<Row>

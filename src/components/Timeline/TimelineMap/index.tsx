@@ -24,7 +24,6 @@ const TimeLineMap: React.FC<IProps> = ({ gameTimelineData, gameMode, time }) => 
 
 	return (
 		<Container>
-			{gameMode === 'CLASSIC' ? 'yep' : 'nope'}
 			<Canvas width={window.innerWidth / (isMobile ? 1.25 : 2.5)} height={window.innerWidth / (isMobile ? 1.25 : 2.5)} gameMode={gameMode}>
 				{
 					gameMode === "ARAM" ?
