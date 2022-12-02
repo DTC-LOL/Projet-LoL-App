@@ -32,16 +32,16 @@ const Map: React.FC<IProps> = ({ gameTimelineData, gameMode, size }) => {
 				{
 					gameMode === "ARAM" ? 
 						<>
-						<LayerBuildingsAram isVisibleBuildings={IsVisibleBuildings}/>
-						<LayerKillAram selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
+						<LayerBuildingsAram isVisibleBuildings={IsVisibleBuildings} size={division}/>
+						<LayerKillAram selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} size={division}/>
 						</>
 						: 
 						<>
-						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} />
-						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames}/>
-						<LayerDeaths selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} />
-						<LayerKillsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} />
-						<LayerDeathsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants}/>
+						<LayerBuildings isVisibleBuildings={IsVisibleBuildings} size={division} />
+						<LayerKill selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} size={division} />
+						<LayerDeaths selectedFilter={selectedFilter} frames={gameTimelineData.info.frames} size={division} />
+						<LayerKillsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} size={division} />
+						<LayerDeathsByPlayer selectedSummoner={selectedSummoner} frames={gameTimelineData.info.frames} participants={gameTimelineData.info.participants} size={division}/>
 						</>
 				}
 			</Canvas>

@@ -16,7 +16,7 @@ const TeamDetails: React.FC<IProps> = ({teamName,participants, puuids}) => {
     <Container color={teamName}>
 
         {participants.map((participant, key) => (
-            <SummonerCard key={teamName + "_Summoner_"+ key} puuid={puuids[teamName === "Red" ? key + 4 : key].puuid} summonerDetail={participant}/>
+            <SummonerCard key={teamName + "_Summoner_"+ key} puuid={puuids[teamName === "Red" ? key + 4 : key].puuid} summonerDetail={participant} team={teamName}/>
         ))}
     </Container>);
 };

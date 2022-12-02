@@ -59,21 +59,8 @@ const Match: React.FC = () => {
                                 title: "Recap",
                                 render: () =>
                                     <MatchLayout>
-                                        <MatchLayoutLeftPart>
-                                            <MapContainer>
-                                                <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} size={window.innerWidth} />
-                                            </MapContainer>
-                                            <Filters />
-                                        </MatchLayoutLeftPart>
-
-                                        <MatchLayoutRightPart>
-                                            <DetailsContainer>
-                                                <Teams gameRecapData={gameRecapData} gameTimelineData={gameTimelineData} />
-                                            </DetailsContainer>
-                                        </MatchLayoutRightPart>
-
                                         <DetailsContainer>
-                                            <Teams gameRecapData={gameRecapData}>
+                                            <Teams gameTimelineData={gameTimelineData} gameRecapData={gameRecapData}>
 
                                                 <InnerContainer className={"innerContainer"}>
                                                     <MapContainer>

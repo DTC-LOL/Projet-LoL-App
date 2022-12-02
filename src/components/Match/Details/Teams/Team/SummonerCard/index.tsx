@@ -56,7 +56,8 @@ const Container = styled.div`
     padding: 10px;
     color: #fff;
     position: relative;
-    border-radius:8px; 
+    border-radius:8px;  
+    cursor: pointer;
     &:not(:first-child) {
         margin-top: 1rem 
     }
