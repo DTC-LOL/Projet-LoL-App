@@ -8,7 +8,9 @@ import { mediaQueries } from 'services/media';
 import Teams from 'components/Match/Details/Teams';
 import Tabs from 'components/Tabs/index';
 import TimeLineTab from 'pages/Match/TimeLineTab';
+import MatchRecap from 'pages/Match/MatchRecap';
 import Loader from "../../components/Loader";
+import {setActiveFilter, setSelectedSummoner, setIsVisibleBuilding} from "store/features/filters/filtersSlice";
 import {
     useParams,
     useNavigate,
@@ -23,8 +25,6 @@ const Match: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const gamesDatas = useAppSelector((state) => state.gameDatas);
-
-
 
 
     React.useEffect(() => {
@@ -61,21 +61,7 @@ const Match: React.FC = () => {
                             {
                                 title: "Recap",
                                 render: () =>
-                                    <MatchLayout>
-                                        <DetailsContainer>
-                                            <Teams gameTimelineData={gameTimelineData} gameRecapData={gameRecapData}>
-
-                                                <InnerContainer className={"innerContainer"}>
-                                                    <MapContainer>
-                                                        <Map gameTimelineData={gameTimelineData} gameMode={gameRecapData.game_mode} size={window.innerWidth} />
-                                                    </MapContainer>
-                                                    <Filters />
-                                                </InnerContainer>
-
-                                            </Teams>
-
-                                        </DetailsContainer>
-                                    </MatchLayout>
+                                    <MatchRecap gameRecapData={gameRecapData} gameTimelineData={gameTimelineData}></MatchRecap>
                             },
                             {
                                 title: "Timeline",
